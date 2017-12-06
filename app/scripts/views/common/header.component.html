@@ -1,0 +1,74 @@
+<header  class="navbar navbar-default" *ngIf="!hideNavbar" id="top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#help-links">
+                <span class="sr-only">help navigation</span>
+                <span class="content font-size-xxlarge">...</span>
+            </button>
+            <a class="navbar-brand">
+                <span class="icon-group icon-md">
+                    <span class="icon icon-index-dial"></span>
+                    <span class="icon-txt"><span class="text-white" [innerHtml]="Config.appConfig.tel">021-62210221</span><span class="text-primary">(人工09:00-17:00)</span></span>
+                </span>
+            </a>
+        </div>
+        <div class="navbar-collapse collapse in" id="help-links">
+            <ul class="nav navbar-nav navbar-right">
+                <li *ngIf="!hasLogin"><a class="text-white" routerLink="/sign/login">登录</a></li>
+                <li *ngIf="!hasLogin"><a class="text-white" routerLink="/sign/register">注册</a></li>
+                <li  class="text-white" *ngIf="hasLogin"><span>您好，</span><span [innerHtml]="userInfo.username"></span><a class="text-white unreadMsg" routerLink="/my/msgCenter" *ngIf="userInfo.unreadMsgNum > 0" [innerHtml]="userInfo.unreadMsgNum"></a></li>
+                <li><a class="text-white" (click)="logout()" *ngIf="hasLogin">退出</a></li>
+                <li><a class="text-primary" routerLink="/help">新手指引</a></li>
+                <li><a class="text-primary" routerLink="/help">帮助中心</a></li>
+                <li class="line"><a class="text-primary">|</a></li>
+                <li>
+                    <a class="weibo" routerLink="/help/download" title="客户端下载" target="_blank" >
+                        <span class="icon-group icon-md">
+                            <span class="icon icon-index-phone"></span>
+                        </span>
+                    </a>
+                </li>
+                <li class="wechat-qrcode">
+                    <a class="weibo hover" >
+                        <span class="icon-group icon-md">
+                            <span class="icon icon-index-wechat"></span>
+                        </span>
+                    </a>
+                    <span class="img"><i class="jiantou"></i></span>
+                </li>
+                <li>
+                    <a class="weibo" href="http://weibo.com/xingtouzi?refer_flag=1001030101_&is_hot=1" target="_blank"  title="星投资微博">
+                        <span class="icon-group icon-md">
+                            <span class="icon icon-index-sina"></span>
+                        </span>
+                    </a>
+                </li>
+                <li class="text-white"><span class="fengxian">理财有风险 投资需谨慎</span></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<nav  class="navbar navbar-default"  role="navigation" *ngIf="!hideNavbar">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#index-links">
+                <span class="sr-only">index navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" routerLink="/index"><img src="../../../images/logo.jpg" alt="logo"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="index-links">
+            <ul class="nav navbar-nav navbar-right  links  font-size-large">
+                <li><a routerLink="/index"   routerLinkActive="active">首页</a></li>
+                <li><a routerLink="/invest"  routerLinkActive="active">我要投资</a></li>
+                <!--<li><a [href]="bbsUrl" target="_blank">理财社区</a></li>-->
+                <li><a routerLink="/my" routerLinkActive="active">我的账户</a></li>
+                <!--<li><a routerLink="/platform" routerLinkActive="active">信息披露</a></li>-->
+                <li><a routerLink="/contact" routerLinkActive="active">关于我们</a></li>
+                <li><a routerLink="/shop" routerLinkActive="active">星币商城</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

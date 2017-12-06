@@ -1,0 +1,111 @@
+
+@media (max-width:480px) {
+  .my .my-account{
+    li>a{
+      padding-left:1px;
+      font-size: @font-size-xsmall;
+      &.active{
+        padding-left:0;
+        border-left:1px solid @text-danger;
+      }
+    }
+  }
+}
+@media (max-width:767px) {
+  .not-sm-xs{
+    display:none;
+  }
+  nav .links > li > a{
+    height:65px;
+    line-height:65px;
+  }
+  nav .navbar-brand{
+    padding:10px 15px;
+    > img{
+      height:30px;
+    }
+  }
+  header.navbar-default .navbar-nav > li{
+    border-bottom:1px solid @text-primary;
+    padding-left:15px;
+    >a{
+      padding-left:0;
+    }
+    &.wechat-qrcode > .img{
+      left:60px;top:-12px;
+      width:80px;height:80px;
+      >.jiantou{
+        top:28px;left:-19px;right:auto;
+        border:10px solid transparent;
+        border-right:10px solid #fff;
+      }
+    }
+  }
+  header.navbar-default .navbar-nav > li.line{
+    display:none;
+  }
+  header.navbar-default .navbar-toggle:hover,
+  header.navbar-default .navbar-toggle:focus{
+    border:1px solid #fff;
+    background-color:transparent;
+  }
+  header .navbar-brand{
+    height:60px;
+    line-height:60px;
+    padding-left:10px;
+    padding-right:0;
+    .icon-group{
+      line-height:38px;
+    }
+  }
+  header.navbar-default .navbar-toggle{
+      padding:0 5px;
+      border-radius: 50%;
+  }
+  header.navbar-default .navbar-toggle .content{
+    display:inline-block;
+    width:28px;
+    line-height: 28px;
+  }
+  footer .in-links > .item{
+    margin-right:0;
+    width:33.33%;
+  }
+  footer .in-links > .item > h6{
+    font-size:@font-size-md;
+  }
+  footer .in-links .item-ul{
+    font-size:@font-size-small;
+  }
+  .industry .title{
+    margin-bottom:30px;
+  }
+  .industry .content{
+    margin-top:0;
+    >.col-xs-12{
+      margin-bottom:20px;
+    }
+    &.last>.col-xs-12:last-child{
+      margin-bottom:0;
+    }
+  }
+  .novice .project .text-right{
+    text-align:center;
+  }
+  .switch-01{
+    display:none;
+  }
+  .switch-02{
+    width:90%;
+    margin:15px auto;
+    display:block;
+  }
+  .overview{
+    .btns{
+      border-left:0 ;
+    }
+  }
+  .row > div{
+    margin-bottom:15px;
+  }
+}

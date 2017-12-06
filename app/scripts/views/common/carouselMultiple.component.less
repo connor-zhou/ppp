@@ -1,0 +1,57 @@
+@import "../../../less/variables.less";
+
+.carousel-multiple{
+  width:1200px;
+  height:90px;
+  overflow:hidden;
+  position:relative;
+  .carousel-content{
+    height:100%;
+    min-width:2400px;
+    position:relative;
+    padding-left:40px;
+    transition: left 1s;
+    -moz-transition: left 1s; /* Firefox 4 */
+    -webkit-transition: left 1s; /* Safari 和 Chrome */
+    -o-transition: left 1s;
+  }
+  .item{
+    display:inline-block;
+    width:216px;height:100%;
+    border:1px solid #d0d0d0;
+    text-align:center;
+    margin-right:10px;
+    vertical-align: top;
+    &:hover{
+      border:1px solid @brand-warning;
+      cursor:pointer;
+    }
+    &.active{
+      border:1px solid @brand-warning;
+    }
+    img{
+      vertical-align: middle;
+      max-height:100%;
+    }
+  }
+  .arrow{
+    display:inline-block;
+    width:40px;
+    height:100%;
+    overflow:hidden;
+    background-color:#fff;
+    position:absolute;
+    top:0;
+    &.arrow-left{
+     left:0;
+    }
+    &.arrow-right{
+      left:1160px;
+    }
+    >i{
+      display:inline-block;
+      height:100%;
+      width:32px;
+    }
+  }
+}

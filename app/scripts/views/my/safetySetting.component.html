@@ -1,0 +1,273 @@
+<div class="pay-title">
+   <span class="to-pay font-size-xlarge">安全设置</span>
+</div>
+<div class="safetySetting font-size-md">
+   <div class="content">
+      <!--//登录密码-->
+      <div class="font-size-md text-all ">
+         <span class="text-info text-bold col-one">登陆密码</span>
+         <span class=" col-two">
+             <span >********</span>
+         </span>
+         <span class="col-three">
+             <span class="text-muted">建议密码为8-15位数字、字母组成</span>
+         </span>
+         <span class="icon-group icon-sm  col-four">
+             <span class="icon icon-ss-right-small" ></span>
+             <span class="icon-txt text-green" >已设置</span>
+         </span>
+         <span class="col-five">
+            <a class="text-warning cursor-pointer" *ngIf="switch == 0" (click)="setSwitch(1)">修改</a>
+            <a class="text-warning cursor-pointer" *ngIf="switch == 1 ||  switch == 2" (click)="setSwitch(0)">取消</a>
+         </span>
+      </div>
+      <div class="user-nickname login-password" [style.display]="switch == 1 ||  switch == 2 ? 'block':'none'">
+         <div class="form-content font-size-large" [style.display]="switch == 1 ? 'block':'none'">
+            <div class="form-line font-size-large line-bottom ">
+               <span class="line-left ">当前密码：</span>
+               <span class="right-box">
+                    <!--(ngModelChange)="requestRechargeUrl($event)"-->
+                    <input type="password" class="line-right  line-input input-style "  placeholder="请输入原密码" [(ngModel)]="loginPassword.oldPassword" name="oldPassword" (click)="clearTip(1)">
+                    <span class="error-tip" *ngIf="loginPassword.oldPasswordTip">{{loginPassword.oldPasswordTip}}</span>
+                </span>
+            </div>
+            <div class="form-line font-size-large line-bottom ">
+               <span class="line-left ">设置新密码：</span>
+               <span class="right-box">
+                    <!--(ngModelChange)="requestRechargeUrl($event)"-->
+                    <input type="password" class="line-right  line-input input-style " placeholder="请输入8-15位新密码"
+                           [(ngModel)]="loginPassword.newPassword"  (click)="clearTip(2)" name="newPwd">
+                  <span class="error-tip" *ngIf="loginPassword.newPasswordTip">{{loginPassword.newPasswordTip}}</span>
+                </span>
+            </div>
+            <div class="form-line font-size-large line-bottom ">
+               <span class="line-left ">确认新密码：</span>
+               <span class="right-box">
+                    <!--(ngModelChange)="requestRechargeUrl($event)"-->
+                    <input type="password" class="line-right  line-input input-style " placeholder="请再次输入新密码"
+                           [(ngModel)]="loginPassword.confirmPassword" (click)="clearTip(2)" name="conPwd">
+                  <span class="error-tip" *ngIf="loginPassword.confirmPasswordTip">{{loginPassword.confirmPasswordTip}}</span>
+                </span>
+            </div>
+            <button class="btn  btn-block text-white btn-height font-size-large btn-next-step" [ngClass]="{'disabled':!isChangePwd}"  (click)="alterPassword()">提交</button>
+         </div>
+         <div class="form-content font-size-large" [style.display]="switch == 2 ? 'block':'none'">
+            <div class="row">
+               <div class="col-xs-12">
+                  <dl class="text-center">
+                     <dt>
+                   <span class="icon-group icon-xx-lg">
+                      <span class="icon icon-status-success"></span>
+                   </span>
+                     </dt>
+                     <dd>
+                        <h4 class="font-size-large text-info bold">密码修改成功！</h4>
+                     </dd>
+                     <!--<dd>-->
+                        <!--<a class="btn  btn-block text-white btn-height font-size-large btn-next-step" (click)="setSwitch(0)">确定</a>-->
+                     <!--</dd>-->
+                  </dl>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!--//交易密码-->
+      <div class="font-size-md text-all">
+         <span class="text-info text-bold col-one">交易密码</span>
+         <span class=" col-two">
+             <span >********</span>
+         </span>
+         <span class="col-three">
+             <span class="text-muted">建议密码为8位以上数字</span>
+         </span>
+         <span class="icon-group icon-sm  col-four">
+             <span class="icon" [class.icon-ss-right-small]="securitySetting.escrowAccount"
+                   [class.icon-ss-error-small]="!securitySetting.escrowAccount"></span>
+             <span class="icon-txt"
+                  [class.text-green]="securitySetting.escrowAccount"
+                  [class.text-tip]="!securitySetting.escrowAccount"
+                  [innerHtml]="securitySetting.escrowAccount?'已设置':'未设置'"></span>
+         </span>
+         <span class="col-five">
+             <a class="text-warning cursor-pointer" *ngIf="securitySetting.escrowAccount" (click)="toRequestUrl()" >修改</a>
+             <a class="text-warning cursor-pointer" *ngIf="!securitySetting.escrowAccount" routerLink="/my/registerBf">立即认证</a>
+         </span>
+          <tip></tip>
+          <form class="hide-html"    [action]="actionUrl"   id="request-form" method="post" >
+              <input type="hidden" *ngFor="let key of dataRes.keys" [name]="key" [value]="dataRes.maps[key]">
+              <a class="btn btn-md   btn-height font-size-large btn-back" >返回修改</a>
+              <input type="submit"  id="autoSubmit"  class="btn btn-md  text-white btn-height font-size-large btn-go" value="前往充值"  />
+          </form>
+      </div>
+
+      <!--绑定邮箱-->
+      <div class="font-size-md text-all">
+         <span class="text-info text-bold col-one">绑定邮箱</span>
+         <span class=" col-two">
+             <span >-</span>
+         </span>
+         <span class="col-three">
+
+            <span class="text-muted" *ngIf="!securitySetting.email">获取账户资金变动信息，提升账户安全</span>
+            <span class="text-muted" *ngIf="securitySetting.email">已绑定邮箱：<b [innerHtml]="userInfo.email"></b></span>
+         </span>
+         <span class="icon-group icon-sm  col-four">
+            <span class="icon" [class.icon-ss-right-small]="securitySetting.email"
+                  [class.icon-ss-error-small]="!securitySetting.email"></span>
+            <span class="icon-txt"
+                  [class.text-green]="securitySetting.email"
+                  [class.text-tip]="!securitySetting.email"
+                  [innerHtml]="securitySetting.email?'已绑定':'未绑定'"></span>
+         </span>
+         <span class="col-five">
+             <a class="text-warning cursor-pointer"
+               *ngIf="stepNo == -1" (click)="stepNo = 0" [innerHtml]="securitySetting.email ? '修改邮箱':'立即绑定'">修改</a>
+             <a class="text-warning cursor-pointer"
+               *ngIf="stepNo != -1" (click)="stepNo = -1">取消</a>
+         </span>
+      </div>
+      <div class="user-nickname change-email" *ngIf="stepNo != -1">
+         <div class="form-content font-size-large" *ngIf="stepNo == 0">
+            <div class="form-line line-bottom" *ngIf="userInfo.email && userInfo.email.length>0">
+               <span class="line-left">原有邮箱：</span>
+               <span class="line-right">
+                    <span class="" [innerHtml]="userInfo.email">240</span>
+                </span>
+            </div>
+            <div class="form-line line-bottom" >
+               <span class="line-left">已绑定手机：</span>
+               <span class="line-right">
+                    <span class="" [innerHtml]="userInfo.realPhone">240</span>
+                </span>
+            </div>
+            <div class="form-line font-size-large line-bottom ">
+               <span class="line-left ">图形验证码：</span>
+               <span class="right-box">
+                    <!--(ngModelChange)="requestRechargeUrl($event)"-->
+                    <input  type="text" class="line-right  line-input input-style "  placeholder="请输入图形验证码"
+                            [(ngModel)]="data.imageCode" name="imgCode" (focus)="clearEmailTip('imageCode')">
+                    <span class="error-tip" *ngIf="tip.imageCode">{{tip.imageCode}}</span>
+                    <img [src]="imgCodeUrl" alt="图形验证码" class="imgCode" (click)="getImageCode()">
+                </span>
+            </div>
+            <div class="form-line font-size-large line-bottom ">
+               <span class="line-left ">手机验证码：</span>
+               <span class="right-box">
+                    <!--(ngModelChange)="requestRechargeUrl($event)"-->
+                    <input type="text" class="line-right  line-input input-style " placeholder="请输入手机验证码"
+                           name="smsCode" [(ngModel)]="data.smsCode"  (focus)="clearEmailTip('smsCode')"
+                           >
+                  <span class="error-tip" *ngIf="tip.smsCode">{{tip.smsCode}}</span>
+                  <a class="btn btn-md btn-default font-size-small pass"
+                     [class.fail]="smsCodeInfo.remainTime > 0" (click)="sendSmsCode()"
+                     [innerHtml]="smsCodeInfo.text">获取短信验证码</a>
+                </span>
+
+            </div>
+            <div class="form-line font-size-large line-bottom ">
+               <span class="line-left ">填写新邮箱：</span>
+               <span class="right-box">
+                    <input type="text" class="line-right  line-input input-style " placeholder="请输入邮箱"
+                           name="newEmail" [(ngModel)]="data.email"  (focus)="clearEmailTip('email')">
+                  <span class="error-tip" *ngIf="tip.email">{{tip.email}}</span>
+                </span>
+            </div>
+            <button class="btn  btn-block text-white btn-height font-size-large btn-next-step" [ngClass]=" isTrue == true ? 'disabled' : ''" (click)="goStepTwo()">提交</button>
+         </div>
+         <div class="form-content font-size-large" *ngIf="stepNo == 1">
+            <form class="form-horizontal" role="form">
+               <div colspan="3" class="text-muted">我们已经向邮箱<b [innerHtml]="data.email"></b>发送了验证码，请注意查收</div>
+               <div class="form-line font-size-large line-bottom ">
+                  <span class="line-left ">输入验证码：</span>
+                  <span class="right-box email-code-style">
+                       <!--(ngModelChange)="requestRechargeUrl($event)"-->
+                       <input  type="text" class="line-right  line-input input-style "   placeholder="请输入邮箱验证码"
+                               name="emailCode" [(ngModel)]="data.emailCode">
+                       <span class="error-tip" *ngIf="tip.emailCode">{{tip.emailCode}}</span>
+                   </span>
+               </div>
+               <a class="btn  btn-block text-white btn-height font-size-large btn-next-step" [ngClass]="isTrueEmail == true ? 'disabled' :''" (click)="goStepThree()">立即绑定</a>
+            </form>
+
+         </div>
+         <div class="form-content font-size-large" *ngIf="stepNo == 2">
+            <div class="row">
+               <div class="col-xs-12">
+                  <dl class="text-center">
+                     <dt>
+                   <span class="icon-group icon-xx-lg">
+                      <span class="icon icon-status-success"></span>
+                   </span>
+                     </dt>
+                     <dd>
+                        <h4 class="font-size-large text-info bold">成功！</h4>
+                     </dd>
+                     <!--<dd>-->
+                     <!--<a class="btn  btn-block text-white btn-height font-size-large btn-next-step" (click)="setSwitch(0)">确定</a>-->
+                     <!--</dd>-->
+                  </dl>
+               </div>
+            </div>
+         </div>
+      </div>
+
+
+      <!--<div class="row">-->
+         <!--<div class="col-xs-2">-->
+             <!--<span class="icon-group icon-sm">-->
+               <!--<span class="icon" [class.icon-ss-right-small]="securitySetting.bankCard"-->
+                     <!--[class.icon-ss-error-small]="!securitySetting.bankCard"></span>-->
+               <!--<span class="icon-txt"-->
+                     <!--[class.text-green]="securitySetting.bankCard"-->
+                     <!--[class.text-tip]="!securitySetting.bankCard"-->
+                     <!--[innerHtml]="securitySetting.bankCard?'已绑定':'未绑定'"></span>-->
+            <!--</span>-->
+         <!--</div>-->
+         <!--<div class="col-xs-2">-->
+            <!--<span class="text-info text-bold">绑定提现卡</span>-->
+         <!--</div>-->
+         <!--<div class="col-xs-6">-->
+            <!--<span class="text-muted">固定提现账户，保障资金安全</span>-->
+         <!--</div>-->
+         <!--<div class="col-xs-2">-->
+            <!--<a class="btn btn-block btn-md btn-warning font-size-small"-->
+               <!--[class.fail]="securitySetting.bankCard"-->
+               <!--[class.pass]="!securitySetting.bankCard"-->
+               <!--routerLink="/my/bank">绑定银行卡</a>-->
+            <!--&lt;!&ndash;<a class="btn btn-block btn-md btn-danger font-size-small fail">立即认证并开通</a>&ndash;&gt;-->
+         <!--</div>-->
+      <!--</div>-->
+   </div>
+   <div class="modal fade" id="setting-warning" tabindex="-1" role="dialog" aria-labelledby="settingWarningLabel" aria-hidden="true">
+      <div class="modal-dialog setting-success modal-sm">
+         <div class="modal-content">
+            <div class="modal-body  font-size-small text-center">
+               <dl class="body-dl setting-warning">
+                  <dt *ngIf="false">
+                     <span class="icon-group icon-xx-lg">
+                        <span class="icon  icon-status-success"></span>
+                     </span>
+                  </dt>
+                  <dt>
+                     <span class="icon-group icon-x-lg">
+                        <span class="icon  icon-big-mark"></span>
+                     </span>
+                  </dt>
+                  <dd *ngIf="false">
+                     <p class="text-info font-size-large">用户名设定成功！</p>
+                  </dd>
+                  <dd >
+                     <h3 class="text-info">提示！</h3>
+                     <p class="text-muted">用户名仅能设定一次且不能修改，确定使用该用户名？</p>
+                  </dd>
+                  <dd >
+                     <a class="btn btn-md btn-default font-size-small fail" data-dismiss="modal">取消</a>
+                     <a class="btn btn-md btn-warning font-size-small" data-dismiss="modal" (click)="saveNickname()">确定</a>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="modifyLoginPwd font-size-small">
+   <div class="my-sub-title font-size-large text-info">
+      <span>修改登录密码</span>
+   </div>
+   <div class="content" [style.display]="switch == 1 ? 'none':'block'">
+      <table>
+         <tr>
+            <td>原密码：</td>
+            <td>
+               <input type="password" placeholder="请输入原密码" [(ngModel)]="oldPassword" name="oldPassword">
+            </td>
+            <td><span class="text-tip" [style.display]="!oldPasswordTip ? 'none':'inline'">*{{oldPasswordTip}}</span></td>
+         </tr>
+         <tr>
+            <td>新密码：</td>
+            <td>
+               <input type="password" placeholder="请输入6-16位新密码"
+                      [ngModel]="newPassword" (ngModelChange)="newPasswordCheck($event)">
+            </td>
+            <td><span class="text-tip" [style.display]="!newPasswordTip ? 'none':'inline'">*{{newPasswordTip}}</span></td>
+         </tr>
+         <tr>
+            <td>再次输入新密码：</td>
+            <td>
+               <input type="password" placeholder="请再次输入新密码"
+                      [ngModel]="confirmPassword" (ngModelChange)="confirmPasswordCheck($event)">
+            </td>
+            <!--<td><span class="text-tip">*原密码不能为空</span></td>-->
+         </tr>
+         <tr>
+            <td></td>
+            <td class="text-right">
+               <button class="btn btn-danger btn-md font-size-small pwd-submit"
+                       [disabled]="btnInvalid()" (click)="alterPassword()">提交</button>
+            </td>
+            <td></td>
+         </tr>
+      </table>
+   </div>
+   <div class="content"  [style.display]="switch == 0 ? 'none':'block'">
+      <div class="row">
+         <div class="col-xs-12">
+            <dl class="text-center">
+               <dt>
+                   <span class="icon-group icon-xx-lg">
+                      <span class="icon icon-status-success"></span>
+                   </span>
+               </dt>
+               <dd>
+                  <h4 class="font-size-large text-info bold">密码修改成功！</h4>
+               </dd>
+               <dd>
+                  <a class="btn btn-danger btn-md font-size-small" routerLink="/my/safetySetting">返回安全设置</a>
+               </dd>
+            </dl>
+         </div>
+      </div>
+   </div>
+</div>

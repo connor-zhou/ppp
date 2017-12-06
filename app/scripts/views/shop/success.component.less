@@ -1,0 +1,118 @@
+@import "../../../less/variables.less";
+
+.coupondetail-content{
+  .star-left{
+    width: 897px;
+    display: inline-block;
+    padding-bottom:30px;
+    margin-top: 18px;
+    margin-bottom:20px;
+    background-color: @stemp-box-bg;
+    min-height: 500px;
+
+    .change-success{
+      margin: 80px auto;
+      width: 400px;
+      text-align: center;
+
+      .success-img{
+        .success-img-icon{
+          display: inline-block;
+          width: 88px;
+          height: 88px;
+          background-size: contain;
+          background-position: center;
+        }
+      }
+      .success-font{
+        font-size: 24px;
+        margin-top: 22px;
+
+      }
+      .success-num{
+        margin-top: 22px;
+        margin-bottom: 58px;
+      }
+      .btn-cancel{
+        width: 150px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        text-align: center;
+        border:1px solid @text-warning !important;
+        color:@text-warning;
+        background-color: @btn-primary-color;
+      }
+      .btn-affirm{
+        width: 150px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        margin-left: 18px;
+        text-align: center;
+        color:@btn-primary-color;
+        background-color: @text-warning;
+        border-color:@text-warning;
+      }
+    }
+
+  }
+  .star-right{
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 18px;
+    margin-top: 18px;
+    .record{
+      width: 280px;
+      min-height: 500px;
+      background-color: @stemp-box-bg;
+      .pay-title{
+        margin-bottom: 0px;
+        padding:0 30px;
+        border-bottom: 1px solid #d0d0d0;
+        height: 54px;
+        line-height: 54px;
+
+
+      }
+
+      ul{
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-bottom: 20px;
+        li{
+          border-bottom: 1px solid @stemp-box-line-border;
+          .have-exchange{
+            overflow: hidden;
+            padding-bottom: 20px;
+            padding-top: 20px;
+            .content-l{
+              font-size: @font-size-md;
+              color: @text-primary;
+              .bottom-p{
+                margin-bottom: 12px;
+              }
+            }
+            .content-r{
+              width: 65px;
+              height: 65px;
+              padding: 10px 7px;
+              border:1px solid @stemp-box-line-border;
+              img{
+                //width: 100%;
+                max-height: 100%;
+                max-width: 100%;
+              }
+            }
+          }
+        }
+        >li:nth-last-child(1){
+          border-bottom: 0px;
+        }
+
+      }
+    }
+  }
+}
+
+
+
+

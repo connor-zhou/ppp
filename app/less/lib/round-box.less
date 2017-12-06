@@ -1,0 +1,17 @@
+@import "../variables.less";
+
+.round-box{
+	border-radius: @border-radius-base;
+	&.box{
+		position: relative;
+		border:1px solid transparent;
+	}
+
+	&.box-default{
+		background-color: @box-default-bg;
+		border-color: @box-default-border;
+		padding: @box-padding-horizontal-base @box-padding-vertical-base;	
+		box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.3) inset, 0px 1px 1px rgba(0, 0, 0, 0.15);
+	}
+}
+

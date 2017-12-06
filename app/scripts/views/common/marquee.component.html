@@ -1,0 +1,3 @@
+<div class="marquee-notice" (mouseenter)="pause()" (mouseleave)="play()">
+    <p *ngFor="let list of textList"> <a class="text-info" (click)="click(list)">{{list.title}} <span class="text-primary">&nbsp;&nbsp;&nbsp;{{list.timeline}}</span></a></p>
+</div>

@@ -1,0 +1,30 @@
+@import "../../../less/variables.less";
+
+.modal-dialog{
+    margin-top:180px;
+    .modal-header{
+        border:0;
+        text-align:center;
+        .modal-title{
+            margin-top:20px;
+        }
+    }
+    .modal-content{
+        border-radius: 2px;
+    }
+}
+
+#updateModal{
+    &.modal{
+        z-index:8000;
+    }
+    .modal-dialog{
+        margin-top:80px;
+    }
+    .modal-body{
+        padding:0;
+        img{
+            width:100%;
+        }
+    }
+}

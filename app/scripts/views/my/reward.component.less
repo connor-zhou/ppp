@@ -1,0 +1,60 @@
+@import "../../../less/variables.less";
+
+.invitation{
+  min-width:970px;
+  border:1px solid @brand-success;
+  padding:0px 25px 30px;
+
+  .link-step{
+    margin-top:2.5rem;
+    min-height:40px;
+    >li{
+      float:left;
+      padding:0  15px;
+      margin-right:15px;
+      line-height:40px;
+      color:#fff;
+      background:#FC7533;
+      border-radius: 4px;
+      font-size: @font-size-md;
+      >div{
+        height:40px;
+        &.step01{
+          width:227px;
+          background: url("@{img-path}/icon/icon-my.png") no-repeat -14px -498px ;
+        }
+        &.step02{
+          width:316px;
+          background: url("@{img-path}/icon/icon-my.png") no-repeat -251px -499px ;
+        }
+        &.step03{
+          width:210px;
+          background: url("@{img-path}/icon/icon-my.png") no-repeat -251px -453px ;
+        }
+      }
+
+
+      &:first-child{
+        background:#FF9968;
+      }
+      &:last-child{
+        background:#FE5400;
+      }
+    }
+  }
+  .total{
+    padding:20px 0 15px;
+    line-height:@font-size-xlarge;
+    border-bottom:1px solid @brand-success;
+  }
+  .detail{
+    margin-top:2.5rem;
+    >p{
+      margin-bottom:1.5rem;
+    }
+    td{
+      font-size:@font-size-md;
+      color:@text-info;
+    }
+  }
+}

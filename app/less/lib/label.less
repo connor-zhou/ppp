@@ -1,0 +1,20 @@
+@import "../variables.less";
+@import "/bootstrap/less/mixins/reset-text";
+//
+// Labels
+// --------------------------------------------------
+.label{
+    padding:0.2rem;
+    margin-left:0.1rem;
+    margin-right:0.1rem;
+    border-radius: 50%;
+
+  &.label-default{
+    color: #fff;
+    background-color:@label-primary-bg;
+  }
+  &.label-danger{
+    color:#fff;
+    background-color:@label-danger-bg;
+  }
+}

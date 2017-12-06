@@ -1,0 +1,115 @@
+<div class="pay-title">
+    <span class="to-pay font-size-xlarge">消息中心</span>
+</div>
+
+<div class="msgCenter font-size-small">
+   <!--<div class="my-sub-title font-size-large text-info">-->
+      <!--<span>消息中心</span>-->
+   <!--</div>-->
+   <ul class="select-zone">
+      <li>
+         <span class="select-icon icon-msgCenter-unselect" [class.icon-msgCenter-select]="allSelected"
+               (click)="selectAllMessage()"></span>
+         <span>全选</span>
+      </li>
+      <li>
+         <a class="btn btn-md btn-default fail" (click)="readSelectedMessages()">标记为已读</a>
+      </li>
+      <!--<li>-->
+         <!--<a class="btn btn-md btn-default fail" data-toggle="modal" data-target="#msgDelete">删除</a>-->
+      <!--</li>-->
+   </ul>
+   <div class="tab">
+      <a class="tab-item text-success" [ngClass]="{active:switch == 0}" (click)="switch = 0;getMessageList(switch);">账户消息</a>
+      <a class="tab-item text-success" [ngClass]="{active:switch == 1}" (click)="switch = 1;getMessageList(switch);" >系统消息
+          <!--（<span></span>）-->
+      </a>
+      <p class="fr text-success">共<span class="text-info"> {{msgCount.total}} </span>条信息 其中<span class="text-danger"> {{msgCount.unread}} </span>条未读</p>
+   </div>
+    <!--<ul class="sub-tab left-padding" >-->
+        <!--<li><a class="btn btn-md" [ngClass]="{activeRead:statusSwitch==-1}"-->
+               <!--(click)="statusSwitch=-1;getMessageList(switch,statusSwitch);">全部</a></li>-->
+        <!--<li><a class="btn btn-md" [ngClass]="{activeRead:statusSwitch==0}"-->
+               <!--(click)="statusSwitch=0;getMessageList(switch,statusSwitch);">未读</a></li>-->
+        <!--<li><a class="btn btn-md" [ngClass]="{activeRead:statusSwitch==1}"-->
+               <!--(click)="statusSwitch=1;getMessageList(switch,statusSwitch);">已读</a></li>-->
+
+
+
+    <!--</ul>-->
+   <ul class="accordion" id="msgCenterAccordion">
+      <li class="accordion-group text-success" *ngFor="let message of messageList;let i =  index;">
+         <div class="accordion-heading">
+            <div class="accordion-toggle">
+               <div class="row">
+                  <div class="col-xs-1">
+                     <span class="select-icon icon-msgCenter-unselect"
+                           [class.icon-msgCenter-select]="message.selected"
+                           (click)="message.selected=!message.selected"></span>
+                     <span class="icon-group icon-sm">
+                         <!--[class.icon-msgCenter-read-mailbox]="message.status!=0"-->
+                         <!--[class.icon-msgCenter-unread-mailbox]="message.status==0"-->
+                         <!--[ngClass]="message.status !=0  ? 'icon-msgCenter-read-mailbox':'icon-msgCenter-unread-mailbox'"-->
+                        <span class="icon text-success" [class.icon-msgCenter-read-mailbox]="message.status!=0"
+                              [class.icon-msgCenter-unread-mailbox]="message.status==0"
+
+                              ></span>
+                     </span>
+                  </div>
+                  <a class="col-xs-11 text-success" (click)="readMessage(i,message)"
+                     data-toggle="collapse" data-parent="#msgCenterAccordion"
+                     [href]="'#msgAccount'+message.id">
+                      <span [innerHtml]="message.title"></span>
+                      <span class="fr" [innerHtml]="message.timeline"></span>
+                  </a>
+               </div>
+            </div>
+         </div>
+         <div [id]="'msgAccount'+message.id" class="accordion-body collapse">
+            <div class="row accordion-inner">
+               <div class="col-xs-1"></div>
+               <div class="col-xs-11">
+                  <div class="msg-info">
+                     <span class="jiantou"><i></i></span>
+                     <!--<p class="operate text-right text-muted">-->
+                        <!--<span class="hover" (click)="">删除</span>&nbsp;&nbsp;-->
+                        <!--<a  data-toggle="collapse" data-parent="#msgCenterAccordion" [href]="'#msgAccount'+message.msgsId"><i class="text-danger text-bold">↑</i>收起</a>-->
+                     <!--</p>-->
+                     <p [innerHtml]="message['detail']"></p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </li>
+   </ul>
+    <div class="modal fade" id="msgDelete" tabindex="-1" role="dialog" aria-labelledby="msgDeleteLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body  font-size-small text-center">
+                    <dl class="body-dl">
+                        <dt>
+                     <span class="icon-group icon-x-lg">
+                        <span class="icon icon-big-mark"></span>
+                     </span>
+                        </dt>
+                        <dd>
+                            <h3 class="text-info text-bold">提示！</h3>
+                            <p class="text-muted">消息删除后不可恢复，您确定要删除吗？</p>
+                        </dd>
+                        <dd>
+                            <a class="btn btn-md btn-default font-size-small fail" data-dismiss="modal">取消</a>
+                            <a class="btn btn-md btn-danger font-size-small">确定</a>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-top">
+        <p class="text-center font-size-md text-success" *ngIf="totalPage <= 0">
+            <span class="icon-my-nodata"></span><br>
+            暂无数据
+        </p>
+        <pager *ngIf="totalPage > 0"  [totalPage]="totalPage" (changePage)="selectPage($event)" ></pager>
+    </div>
+</div>

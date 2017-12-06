@@ -1,0 +1,80 @@
+@import "../../../less/variables.less";
+
+
+
+.latest{
+  .tab{
+
+    .tab-height{
+      height: 30px;
+      line-height: 30px;
+      display: inline-block;
+      font-size: @font-size-md;
+    }
+  }
+  .active{
+    color: @text-warning;
+    border-bottom: 2px solid @text-warning;
+  }
+  .info{
+    >li{
+      >a{
+        display:block;
+        width:100%;
+        overflow: hidden;
+        border-bottom:1px solid @brand-success;
+        line-height:4rem;
+        font-size:@font-size-md;
+        color:@text-info;
+        >.timeline{
+          float:right;
+          color:@text-success;
+        }
+      }
+    }
+  }
+  .status {
+    overflow:hidden;
+    > li {
+      float:left;
+      margin:0;
+      &:nth-child(odd){
+        width:51%;
+        padding-right:1%;
+      }
+      &:nth-child(even){
+        width:49%;
+      }
+      .media {
+        background: #fff;
+        padding:0;
+        margin:2rem 0 ;
+      }
+      .media .media-left {
+        > img {
+          width: 145px;
+          height: 145px;
+          padding: 2px;
+          border: 1px solid @brand-success;
+        }
+      }
+      .media .media-body {
+        > .date {
+          width: 5rem;
+          padding: 6px 3px;
+          border: 1px solid @brand-success;
+          margin-bottom: 15px;
+        }
+      }
+    }
+  }
+  .title-width{
+    width: 700px;
+    display: inline-block;
+    float: left;
+  }
+  .page-top{
+    margin-top: 50px;
+  }
+
+}

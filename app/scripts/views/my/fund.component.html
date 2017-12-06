@@ -1,0 +1,61 @@
+
+<div class="pay-title">
+   <span class="to-pay font-size-large">交易记录</span>
+</div>
+<div class="fund">
+   <div class="content-box">
+      <div class="select  font-size-md text-success">
+         <ul class="duration">
+            <li class="special no-margin">交易日期：</li>
+            <li class="special"><a [ngClass]="{active: durationActive == 0}" (click)="setDuration(0)">全部</a></li>
+            <li><a [ngClass]="{active: durationActive == 1}" (click)="setDuration(1)">最近七天</a></li>
+            <li><a [ngClass]="{active: durationActive == 2}" (click)="setDuration(2)">30天</a></li>
+            <li><a [ngClass]="{active: durationActive == 3}" (click)="setDuration(3)">90天</a></li>
+            <li>
+               <input class="date-left"  type="text"  id="beforeDate">-<input type="text" id="afterDate">
+               <button class="btn btn-sm btn-danger font-size-md sure" (click)="setDuration(4)">搜索</button>
+            </li>
+         </ul>
+         <ul class="category">
+            <li class="special no-margin">交易类型：</li>
+            <!--setCategory(0)-->
+            <li class="special"><a [ngClass]="{active: categoryActive == 0}" (click)="setCategory(0)">全部</a></li>
+            <li><a [ngClass]="{active: categoryActive == 1}" (click)="setCategory(1)">充值</a></li>
+            <li><a [ngClass]="{active: categoryActive == 2}" (click)="setCategory(2)">提现</a></li>
+            <li><a [ngClass]="{active: categoryActive == 3}" (click)="setCategory(3)">投资</a></li>
+            <li><a [ngClass]="{active: categoryActive == 4}" (click)="setCategory(4)">回款</a></li>
+            <li><a [ngClass]="{active: categoryActive == 5}" (click)="setCategory(5)">奖励</a></li>
+            <li><a [ngClass]="{active: categoryActive == 6}" (click)="setCategory(6)">其他</a></li>
+         </ul>
+      </div>
+      <div class="content">
+         <table class="table table-hover text-info font-size-md">
+            <tr class="text-success">
+               <th>时间</th>
+               <th>交易类型</th>
+               <th>交易详情</th>
+               <th>交易金额（元）</th>
+
+               <th>交易后余额（元）</th>
+
+               <!--<th>备注</th>-->
+            </tr>
+            <tr class="lucky text-success bottom-line" *ngFor="let record of recordAll">
+               <td [innerHtml]="record.timeline"></td>
+               <td [innerHtml]="record.categoryText"></td>
+               <td [innerHtml]="record.remark"></td>
+               <td [innerHtml]="record.cash"></td>
+               <td [innerHtml]="record.money"></td>
+
+            </tr>
+         </table>
+      </div>
+      <div class="page-top">
+         <p class="text-center font-size-md text-success" *ngIf="totalPage <= 0">
+            <span class="icon-my-nodata"></span><br>
+            暂无流水
+         </p>
+         <pager *ngIf="totalPage > 0" [refresh]="fundData.pageNumber == 1 ? true:false"  [totalPage]="totalPage" (changePage)="selectPage($event)" ></pager>
+      </div>
+   </div>
+</div>

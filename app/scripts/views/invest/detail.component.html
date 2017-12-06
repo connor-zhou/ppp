@@ -1,0 +1,252 @@
+<div class="projectDetail">
+    <div class="container">
+        <ul class="detail-info">
+            <li class="info">
+                <div class="project">
+                    <div class="title  ">
+                        <h3 class="over-ignore">
+                            <span>{{project.title}}</span>
+                            <!--<span class="sanbiao-other" [ngClass]="{'sanbiao': type == 2}" [innerHtml]="type == 1 ?'新手':type == 2 ? '散标':'理财'">散标</span>-->
+                        </h3>
+                    </div>
+                    <div class="content">
+                        <div class="revenue text-left">
+                            <dl>
+                                <dt class="text-warning"><span>{{project.annualizedRate}}</span><small>%</small></dt>
+                                <dd>借款年利率</dd>
+                            </dl>
+                        </div>
+                        <div class="limit">
+                            <dl>
+                                <dt class="text-info"><span>{{project.duration}}</span><small>{{project.durationUnit}}</small></dt>
+                                <dd>投资期限</dd>
+                            </dl>
+                        </div>
+                        <div class="rongzi">
+                            <dl>
+                                <dt class="text-info" *ngIf="project.money >= 100000000"><span  >{{project.money / 100000000}}</span><small>亿元</small></dt>
+                                <dt class="text-info" *ngIf="project.money >= 10000 && project.money < 100000000 "><span  >{{project.money / 10000}}</span><small>万元</small></dt>
+                                <dt class="text-info" *ngIf="project.money < 10000 && project.money < 10000"><span  >{{project.money}}</span><small>元</small></dt>
+                                <dd>融资金额</dd>
+                            </dl>
+                        </div>
+                        <div class="minInvest">
+                            <dl>
+                                <dt class="text-info" *ngIf="project.minInvest >= 100000000"><span  >{{project.minInvest / 100000000}}</span><small>亿元</small></dt>
+                                <dt class="text-info" *ngIf="project.minInvest >= 10000 && project.minInvest < 100000000 "><span  >{{project.minInvest / 10000}}</span><small>万元</small></dt>
+                                <dt class="text-info" *ngIf="project.minInvest < 10000 && project.minInvest < 10000"><span  >{{project.minInvest}}</span><small>元</small></dt>
+                                <dd>起投金额</dd>
+                            </dl>
+                        </div>
+
+                    </div>
+                    <div class="more-detail-item">
+                        <p class="item">
+                            <span>还款方式：</span><span [innerHtml]="project.repaymentMode">10000.00元</span>
+                        </p>
+                        <div class="item schedule">
+                            <span>融资进度：</span>
+                            <div class="progress">
+                                <p class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" [style.width]="project.schedule +'%'"></p>
+                            </div>
+                            <span>{{project.schedule}}%</span>
+                        </div>
+                        <p class="item">
+                            <span>发布时间：</span><span [innerHtml]="project.publishTimeline">10000.00元</span>
+                        </p>
+                        <p class="item">
+                            <span>剩余金额：</span><span [innerHtml]="(project.remainInvest | number:'1.2-2')+'元'">10000.00元</span>
+                        </p>
+                        <p class="item">
+                            <span>截止时间：</span><span [innerHtml]="project.expireTimeline">10000.00元</span>
+                        </p>
+                        <p class="item">
+                            <span>温馨提示：</span><span [innerHtml]="project.tips">投资期限到期可退</span>
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li class="extra">
+                <div class="end no-login" *ngIf="project.status == 0 && accountInfo.hasLogin == false">
+                    <dl class="text-center">
+                        <dt>
+                            <span class="icon-group icon-x-lg">
+                                <span class="icon icon-big-mark"></span>
+                            </span>
+                        </dt>
+                        <dd>
+                            <h3>请登录后再投资</h3>
+                            <p class="text-primary word-small">您还未登录账号，请登录后再投资</p>
+                        </dd>
+                        <dd>
+                            <a class="btn btn-md btn-warning font-size-md" routerLink="/sign/login">立即登录</a>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="end" *ngIf="project.status == 0 && accountInfo.hasLogin == true">
+                    <div class="remain-money">
+                        <!---->
+                        <span class="text-primary">可用余额：</span><span [innerHtml]=" !accountInfo.hasLogin ? '不可用':(accountInfo.money | number:'1.2-2')+'元' ">15450.25546元</span><a class="recharge-icon" *ngIf="!getUserActon()"  [routerLink]="action.url">充值 <span class="font-size-base" [innerHtml]="action.text"> 1000000000.00元</span></a>
+                    </div>
+                    <div class="profit-calc">
+                        <input class="invest-money" *ngIf="project.minInvest < project.remainInvest" type="text" [disabled]="project.remainInvest < project.minInvest" [placeholder]="'请输入'+project.minInvest+'-'+(project.remainInvest < project.maxInvest ? project.remainInvest:project.maxInvest)+'之间的整数'" [(ngModel)]="data.money" maxlength="10" (keyup)="calcProfit$.next($event.target.value)"  name="money">
+                        <input class="invest-money disabled" *ngIf="project.minInvest >= project.remainInvest" type="text" [disabled]="project.remainInvest < project.minInvest" [placeholder]="project.remainInvest"  maxlength="10"   name="money">
+                        元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <p class="profit">预计可获得收益：<span class="text-warning" [innerHtml]="profit | number:'1.2-2'">0.125</span>元</p>
+                    </div>
+                    <p class="text-danger font-size-md" *ngIf="data.errText" [innerHtml]="data.errText"></p>
+                    <a class="btn btn-warning btn-block btn-md" (click)="goInvest()">立即投资</a>
+                </div>
+                <div class="end no-login" *ngIf="project.status == 1" >
+                    <dl class="text-center">
+                        <dt>
+                            <span class="icon-group icon-x-lg">
+                                <span class="icon icon-big-mark"></span>
+                            </span>
+                        </dt>
+                        <dd>
+                            <h3>投资已结束 <span [innerHtml]="project.borrowerType==0 ? '借款人' : '企业'"></span>还款中</h3>
+                            <!--<p class="text-primary word-small">您还未登录账号，请登录后再投资</p>-->
+                        </dd>
+                        <dd>
+                            <a class="btn btn-md btn-warning font-size-md" routerLink="/invest/overall">看看其它项目</a>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="end no-login" *ngIf="project.status == 2" >
+                    <dl class="text-center">
+                        <dt>
+                            <span class="icon-group icon-x-lg">
+                                <span class="icon icon-big-mark"></span>
+                            </span>
+                        </dt>
+                        <dd>
+                            <h3>投资已结束 <span [innerHtml]="project.borrowerType==0 ? '借款人' : '企业'"></span>已还款</h3>
+                            <!--<p class="text-primary word-small">您还未登录账号，请登录后再投资</p>-->
+                        </dd>
+                        <dd>
+                            <a class="btn btn-md btn-warning font-size-md" routerLink="/invest/overall">看看其它项目</a>
+                        </dd>
+                    </dl>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="tab-zone">
+            <div class="tab tab-margin">
+                <a class="tab-item"  [ngClass]="{active:data.switch == 0}" (click)="switchMode(0)">项目信息</a>
+                <a class="tab-item" [ngClass]="{active:data.switch == 1}" (click)="switchMode(1)">相关文件</a>
+                <a class="tab-item" [ngClass]="{active:data.switch == 2}" (click)="switchMode(2)">风控信息</a>
+                <a class="tab-item" [ngClass]="{active:data.switch == 3}"  (click)="switchMode(3)">投资记录</a>
+            </div>
+            <div class="tab-content intro borrow-person" *ngIf="data.switch == 0">
+                <div class="borrow-info">
+                    <!--<h1 [innerHtml]="appendix.type == 1 ?'借款人信息':'企业信息'"></h1>-->
+                    <div>
+                        <span class="info-one margin-r" >
+                            <span class="info-one-left" [innerHtml]="appendix.type == 1 ?'借款人姓名':'法人姓名'">借款人信息</span>
+                            <span class="info-one-right" ><span [innerHtml]="appendix.projectInfo.name">星投资平台专注于中小微企业信贷、</span></span>
+                        </span>
+                        <span class="info-one ">
+                            <span class="info-one-left" [innerHtml]="appendix.type == 1 ? '借款人身份证' : '企业名称'">借款人信息</span>
+                            <span class="info-one-right">
+                                <span  [innerHtml]="appendix.type == 1 ? appendix.projectInfo.chinaId : appendix.projectInfo.company">星投资平台专注于中小微企业信贷、</span>
+                            </span>
+                        </span>
+
+                    </div>
+                    <div>
+                        <span class="info-one margin-r">
+                            <span class="info-one-left" [innerHtml]="appendix.type == 1 ?'借款人居住地':'公司地址'">地址</span>
+                            <span class="info-one-right" ><span [innerHtml]="appendix.projectInfo.address">星投资平台专注于中小微企业信贷、</span></span>
+                        </span>
+                        <span class="info-one">
+                            <span class="info-one-left">借款用途</span>
+                            <span class="info-right-fit" ><span [innerHtml]="appendix.projectInfo.application">借款用途</span></span>
+                        </span>
+
+                    </div>
+                    <div>
+                        <span class="info-one">
+                            <span class="info-one-left">项目说明</span>
+                            <span class="info-right-fit"><span [innerHtml]="appendix.projectInfo.instruction">借款用途</span></span>
+                        </span>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="tab-content safe-all" *ngIf="data.switch == 1">
+                <div class="borrow-info"  *ngIf="appendix.files.photos.length > 0 ">
+                    <!--<ul class="register-info">-->
+                        <!--<li class="personimg" data-toggle="modal" *ngFor="let img of appendix.files.photos" data-target="#borrow-person-pic" (click)="appendix.bigPic = img" >-->
+                            <!--<img [src]="img"  alt="资料图片">-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                    <div class="file-multiple" *ngIf="appendix.files.photos.length > 0">
+                        <p class="file"><img [src]="file"></p>
+                        <carousel-multiple  [imgList]="appendix.files.photos" [contentWidth]="880" [contentHeight]="104" [frameWidth]="190" [minNumber]="4" (selected)="getFile($event)"></carousel-multiple>
+                    </div>
+
+                </div>
+                <p class="info-content font-size-md" *ngIf="appendix.files.photos.length <= 0">暂无附件</p>
+            </div>
+            <div class="tab-content risk-info" *ngIf="data.switch == 2" >
+
+                <p class="risk-con text-info" [innerHtml]="appendix.riskInfo">集团成立于1964年，集团曾荣获全国优秀施工企业、全国“五一”劳动奖状、
+                    全国质量奖、全国和谐劳动关系模范企业、全国建筑业AAA级信用企业、全国文明单位等称号，2013
+                    年上海市市长质量奖，被上海市人民政府命名“建设精锐”特色公司。在上海市建筑施工企业综合实力
+                    30强评选中九次名列第一。</p>
+                <!--<div>风控：后台返回的数据：<span [innerHtml]="appendix.riskInfo"></span></div>-->
+            </div>
+            <div class="tab-content invest-records" *ngIf="data.switch == 3">
+                <p style="line-height:60px;" class="text-success text-center" *ngIf="accountInfo.hasLogin && appendix.investRecords.lists.length <= 0">暂无投资信息</p>
+                <p style="line-height:60px;" class="text-success font-size-large text-center" *ngIf="!accountInfo.hasLogin">需要<a class="text-warning" routerLink="/sign/login">登录</a>查看</p>
+                <!--<h2 ><span>已还款金额：<i>10000元</i></span><span>已还款金额：<i>10000元</i></span><span>已还款金额：<i>10000元</i></span><span>已还款金额：<i>10000元</i></span></h2>-->
+                <div class="content"  *ngIf="accountInfo.hasLogin && appendix.investRecords.lists.length > 0">
+                    <table class="table  table-hover">
+                        <tr class="text-success font-size-md">
+                            <th>序号</th>
+                            <th>投资人</th>
+                            <th>投资金额（元）</th>
+                            <th>投资来源</th>
+                            <th>投资时间</th>
+                        </tr>
+                        <tr class="lucky"  *ngFor="let record of appendix.investRecords.lists">
+                            <td>{{record.no}}</td>
+                            <td>{{record.name}}</td>
+                            <td>{{record.money | number:'1.2-2'}}</td>
+                            <td>
+                               <span class="icon-group icon-sm">
+                                    <span class="icon icon-source-{{record.terminal == 'website' ? 'pc':'mobile'}}"> </span>
+                                   <!--<span class="icon icon-source-pc"></span>-->
+                               </span>
+                            </td>
+                            <td>{{record.timeline}}</td>
+                        </tr>
+                    </table>
+                    <div class="page">
+                        <pager   [totalPage]="investRecords.count" (changePage)="selectPage($event)" ></pager>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="coupon-modal-03" tabindex="-1" role="dialog" aria-labelledby="coupon03Label" aria-hidden="true">
+        <div class="modal-dialog modal-sm text-center">
+            <a class="big-pic"><img [src]="bigPic" alt=""><span data-dismiss="modal">X</span></a>
+        </div>
+    </div>
+</div>
+<div class="detail">
+    <div class="modal" id="borrow-person-pic" tabindex="-1" role="dialog" aria-labelledby="registerPicLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg text-center">
+            <a class="pic-close project-files">
+                <img [src]="appendix.bigPic">
+                <span class="text-muted" data-dismiss="modal">X</span>
+            </a>
+        </div>
+    </div>
+</div>

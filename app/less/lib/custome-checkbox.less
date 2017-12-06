@@ -1,0 +1,41 @@
+@import "../variables.less";
+
+.checkbox-custome{
+	display:inline-block;
+	//vertical-align: middle;
+	width:@font-size-xlarge;
+	height:@font-size-xlarge;
+	border:1px solid @text-primary;
+	overflow:hidden;
+}
+
+.checkbox-custome.checked:before{
+	display: inline-block;
+	content: '';
+	width: 18px;
+	height: 18px;
+	/* background: red; */
+	border: 2px solid @text-warning;
+	-webkit-transform: rotate(30deg) translate(-8px,-4px);
+	-moz-transform: rotate(30deg) translate(-8px,-4px);
+	-ms-transform: rotate(30deg) translate(-8px,-4px);
+	-o-transform: rotate(30deg) translate(-8px,-4px);
+	transform: rotate(30deg) translate(-8px,-4px);
+}
+
+.checkbox-custome.checked:after{
+	display: inline-block;
+	width: 29px;
+	height: 18px;
+	background-color: #fff;
+	content: '';
+	-webkit-transform: rotate(30deg) translate(10px,-33px);
+	-moz-transform: rotate(30deg) translate(10px,-33px);
+	-ms-transform: rotate(30deg) translate(10px,-33px);
+	-o-transform: rotate(30deg) translate(10px,-33px);
+	transform: rotate(-33deg) translate(10px,-33px);
+}
+
+.checkbox-custome:hover{
+	cursor:pointer;
+}

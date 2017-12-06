@@ -1,0 +1,141 @@
+@import "../../../less/variables.less";
+
+.intro{
+  .intro-content{
+    padding:20px 0 ;
+  }
+  .modal-lg{
+
+    .pic-close{
+      position:relative;
+      display:inline-block;
+      >img{
+        border:7px solid #fff;
+      }
+      >span{
+        position:absolute;
+        top:-10px;right:-7px;
+        display:inline-block;
+        border-radius: 50%;
+        width:20px;height:20px;
+        background:#fff;
+        text-align:center;
+        line-height:20px;
+        &:hover{
+          cursor:pointer;
+        }
+      }
+    }
+  }
+  .advantage{
+    overflow:hidden;
+    >li{
+      float: left;
+      width:33.33%;
+      margin:20px 0;
+      font-size:@font-size-md;
+      dd>span{
+        >i{
+          padding-bottom:1rem;
+          border-bottom:1px solid @text-warning;
+        }
+      }
+    }
+  }
+  .history{
+    margin:3rem 0 2rem;
+    padding:0 2rem 0 7rem;
+    font-size:@font-size-md;
+    tr > td{
+      vertical-align: top;
+      &:first-child{
+        text-align:right;
+      }
+    }
+    .timeline{
+      color:@text-success;
+    }
+    .event{
+      color:@text-info;
+      &.left{
+        white-space: nowrap;
+      }
+    }
+    .point{
+      display:inline-block;
+      margin:0 2rem -5px;
+      position:relative;
+      width:0;
+      height:100%;
+      padding:2rem 0;
+      border-left:1px solid @brand-success;
+      &:hover{
+        border-color:@brand-warning;
+        >span{
+          background-color:@brand-warning;
+        }
+      }
+      &.last{
+        border:0;
+      }
+      >span{
+        display:inline-block;
+        width:14px;
+        height:14px;
+        position:absolute;
+        border:1px solid @brand-warning;
+        background:#fff;
+        border-radius: 50%;
+        top:0;
+        left:-7px;
+      }
+    }
+
+  }
+  .register-info{
+    overflow: hidden;
+    margin:2rem 0;
+    li>{
+      float:left;
+      margin-right:20px;
+      text-align:center;
+      &:hover{
+        cursor:pointer;
+        >img{
+          border:1px solid @text-danger;
+        }
+        >p{
+          color:@text-success;
+        }
+      }
+      >img{
+        width:220px;
+        height:160px;
+      }
+      >p{
+        margin-top:7px;
+        color:@text-muted;
+        font-size:@font-size-md;
+      }
+    }
+  }
+  .file-multiple{
+    margin:30px auto 0;
+    width:800px;
+    padding-bottom:30px;
+    .file{
+      text-align:center;
+      width:720px;
+      height:450px;
+      margin-left:40px;
+      margin-bottom:10px;
+      border:1px solid @brand-primary;
+      line-height:448px;
+      >img{
+        max-width:100%;
+        max-height:100%;
+        vertical-align: top;
+      }
+    }
+  }
+}

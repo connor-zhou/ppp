@@ -1,0 +1,23 @@
+@import "../../../less/variables.less";
+/// ---- tip
+.common-tip{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+    width: 50%;
+    padding: 10px 15px;
+    z-index: 8000;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    >h2{
+        text-align:center;
+        color:#fff;
+        font-size:@font-size-md;
+        line-height: @font-size-large;
+    }
+}

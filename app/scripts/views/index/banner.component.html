@@ -1,0 +1,50 @@
+<div class="ban">
+    <div class="banner-box">
+        <div id="carousel-banner" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators" [style.display]="slides.length > 0 ? 'block':'none'">
+                <li  *ngFor="let slide of slides;let i = index;"  [attr.data-slide-to]="i"  [class.active]='slide.id == active' data-target="#carousel-banner"></li>
+            </ol>
+            <!-- Wrapper for slides -->
+            <!--<div class="carousel-inner" role="listbox">-->
+                <!--<div class="item" *ngFor="let slide of slides"    [class.active]='slide.id == active'>-->
+                    <!--<a [href]="slide.target" target="_blank"><img [src]="slide.photo"></a>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <div class="carousel-inner" role="listbox">
+                <div *ngFor="let slide of slides;let i = index;" class="item" [class.active]='slide.id == active'>
+                    <a [href]="slide.target" target="_blank"><img [src]="slide.photo"></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="login-box text-center text-white">
+            <div class="info-box" *ngIf="!isLogin">
+                <h2 class="title">星投资</h2>
+                <p class="font-size-large">过去三个月平均历史年化收益率</p>
+                <p class="num text-warning revenue">8-12<small>%</small></p>
+                <a class="register-tip" routerLink="/sign/register">注册领红包</a>
+                <p class="login-info font-size-md text-right">已有账号，<a class="text-warning" routerLink="/sign/login">立即登录</a> </p>
+            </div>
+            <div class="info-box text-left isLogin" *ngIf="isLogin && accountInfo">
+                <p class="text-warning">您好！<span class="text-white" *ngIf="accountInfo.nickname || accountInfo.mobile">{{accountInfo.nickname ? accountInfo.nickname:accountInfo.mobile}}</span><span class="text-white" *ngIf="!accountInfo.uname">{{accountInfo.realPhone}}</span></p>
+                <div class="account-info">
+                    <!--<span class="icon-group icon-md" *ngIf="isSign === 1">-->
+                    <!--<span class="icon icon-sign-yes"></span>-->
+                    <!--<span class="icon-txt font-size-md sign-in no">已成功领取899星币</span>-->
+                    <!--</span>-->
+                    <!--<span class="icon-group icon-md" *ngIf="isSign === 0">-->
+                    <!--<span class="icon icon-sign-no"></span>-->
+                    <!--<span class="icon-txt font-size-md sign-in yes" (click)="signIn()">签到领星币</span>-->
+                    <!--</span>-->
+                    <p>可用余额：<span [style.display]="isHideBalance ? 'none':'inline'">{{accountInfo.money}}</span><span [style.display]="!isHideBalance ? 'none':'inline'">****</span>元 <span class="hide-btn" (click)="hideBalance()">{{hideText}}</span> </p>
+                </div>
+                <a  class="intoMy" routerLink="/my">进入我的账户</a>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,101 @@
+@import "../../../less/variables.less";
+
+.my-menu{
+  border: 1px solid @brand-primary;
+
+
+
+  .collapse-title{
+    color: @text-info;
+    display: inline-block;
+    background-color: @icon-bg-color;
+    width: 100%;
+    .icon{
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .icon-text{
+      display: inline-block;
+      line-height: 50px;
+      vertical-align: middle;
+    }
+  }
+  .title-width{
+    .title-icon-left{
+      width: 26px;
+      height: 26px;
+      margin-left: 45px;
+      background-position: center center;
+    }
+    .icon-postion{
+      width: 10px;
+      height: 7px;
+      background-size: 10px 7px;
+      background-position: center center;
+    }
+    .icon-text-left{
+      margin-left: 8px;
+    }
+
+  }
+  .colloapse-content{
+    font-size: @font-size-md;
+
+    background-color: @btn-default-bg;
+    a{
+      color: @text-primary;
+    }
+    .icon-text-second{
+      padding-bottom: 13px;
+      padding-top: 13px;
+      display: inline-block;
+      width: 100%;
+      padding-left: 81px;
+      &:hover{
+        background-color: @text-warning;
+        color: @btn-default-border;
+      }
+      &.active{
+        background-color: @text-warning;
+        color: @btn-default-border;
+
+      }
+
+
+    }
+
+  }
+  //.overview{
+  //  color: @btn-default-bg;
+  //  background-color: @text-warning;
+  //}
+
+
+  .single{
+    //background-color: @text-warning;
+    //color: @btn-default-bg;
+    &:hover{
+      background-color: @text-warning;
+      color: @btn-default-bg;
+    }
+  }
+  .many{
+
+    &:hover{
+      //background-color: @text-warning;
+      color: @text-warning;
+    }
+    &.active{
+      color: @text-warning;
+
+    }
+  }
+  .single-select{
+    background-color: @text-warning;
+    color: @btn-default-bg;
+  }
+  .many-select{
+    color: @text-warning;
+  }
+
+}

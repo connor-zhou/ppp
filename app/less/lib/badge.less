@@ -1,0 +1,27 @@
+@import "../variables.less";
+
+.badge{
+	position: absolute;	
+	display: block !important;	
+	padding:0; 
+	min-width: 0.5rem;
+	min-height: 0.5rem;
+	border-radius: 50%;
+}
+
+.badge-default-position{
+	top:@badge-default-vertical;
+	right:@badge-default-horizontal;
+}
+
+.badge-primary-position{
+	top:@badge-primary-vertical;
+	right:@badge-primary-horizontal;
+}
+
+.badge-default{
+	background-color:@badge-default-bg;
+}
+.badge-danger{
+	background-color:@badge-danger-bg;
+}

@@ -1,0 +1,31 @@
+<div class="media">
+    <div class="box">
+        <div class="container">
+            <div class="row title">
+                <div class="col-xs-6 text-left">
+                    <h2 >媒体报道</h2>
+                </div>
+                <div class="col-xs-6 text-right">
+                    <a routerLink="/contact/media"  class="text-success font-size-md">查看更多 &gt;</a>
+                </div>
+            </div>
+            <div class="items">
+                <div class="item" *ngFor="let article of articleList">
+                    <a class="a-link" [routerLink]="['/contact/article',0,article.id]">
+                        <dl>
+                            <dt class="item-img text-center">
+                                <img [src]="article.profile" alt="" style="width:100%;height:180px;">
+                                <!--<img src="../../../images/ad01.jpg" alt="" style="width:100%;height:100%;vertical-align: top">-->
+                            </dt>
+                            <dd class="dd01">
+                                <span class="font-size-large text-info">{{article.title}}</span><br>
+                                <span class="text-primary font-size-md">{{article.timeline|date:'y-MM-dd'}}</span>
+                            </dd>
+                            <dd class="dd02 font-size-md text-success">{{article.intro}}</dd>
+                        </dl>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

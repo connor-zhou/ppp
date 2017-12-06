@@ -1,0 +1,121 @@
+@import "../../../less/variables.less";
+
+.sign{
+  background-color: @login-bg;
+  position: relative;
+  height: calc(100%);
+  min-height: 590px;
+  &.login-bg{
+    background-size: contain;
+    background-position: center;
+  }
+  .sign-bg-left{
+    width: 1200px;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    .bg-left-box{
+      //width: 600px;
+      height: 100%;
+      background-size: contain;
+      background-position: center center;
+      //max-height: 650px;
+      .left-img{
+        position: absolute;
+        left: 100px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: -1;
+      }
+      .left-bg{
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+  }
+  .box-content-width{
+    width: 420px;
+    margin-left: 720px;
+  }
+  .sign-bg{
+    .box-content{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .icon-bg-color{
+      background-color: @icon-bg-color;
+    }
+    .cursor-pointer{
+      cursor:pointer;
+    }
+    .register-group-margin{
+      margin-top: 30px;
+      margin-bottom: 100px;
+    }
+    .content-bottom{
+      .password-select{
+        margin-top: 16px;
+      }
+      .input-check{
+        width: 18px;
+        height: 18px;
+        margin: 0px;
+        cursor:pointer;
+      }
+      .input-check-r{
+        line-height: 18px;
+        color: @text-success;
+        vertical-align: top;
+      }
+      .forget-password{
+        color: @text-warning;
+      }
+    }
+  }
+  .client{
+    width: 370px;
+    height: 190px;
+    position: absolute;
+    left: 110px;
+    bottom: -80px;
+    .client-box{
+      width: 136px;
+      height: 190px;
+      border: 1px solid white;
+      padding: 12px 11px;
+      .client-app{
+        width: 112px;
+        height: 112px;
+      }
+      .client-line{
+        border-top: 1px solid white;
+        margin-top: 11px;
+        padding-top: 14px;
+        text-align: center;
+      }
+    }
+  }
+  .spacial-log{
+    width: 370px;
+    height: 340px;
+    position: absolute;
+    bottom: 160px;
+    left: 110px;
+    div{
+
+      width: 370px;
+      height: 340px;
+    }
+  }
+  .login-bg-line{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}

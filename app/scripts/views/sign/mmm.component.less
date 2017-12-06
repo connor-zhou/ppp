@@ -1,0 +1,84 @@
+@import "../../../less/variables.less";
+
+.register {
+  background: #4C9BD6 ;
+  .bg{
+    width: 100%;
+    height: 690px;
+    position: relative;
+
+    .reg-box {
+      margin-right:57px;
+      .links {
+        overflow: hidden;
+        line-height: @font-size-xxlarge;
+        >a:hover{
+          cursor:pointer;
+        }
+      }
+      .pay-tip {
+        text-align: center;
+        margin: 40px auto;
+        padding: 0 15px;
+        &.rem{
+          margin:15px auto;
+        }
+        .icon-txt{
+          line-height:25px;
+        }
+      }
+      .msg {
+        padding-right: 8px;
+      }
+      .getmsg {
+        padding-left: 0;
+        > button {
+          line-height: 36px;
+          background: #fff;
+          color: @text-danger;
+          border: 1px solid @text-danger;
+          border-radius: 1px;
+          outline: 0;
+          &.fail{
+            background:#969696;
+            color:#fff !important;
+            border:1px solid #969696;
+          }
+          &:focus {
+            box-shadow: none;
+          }
+        }
+      }
+      .title {
+        overflow: hidden;
+        margin: 0 15px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid @brand-success;
+        > .fr {
+          padding-top:10px;
+          line-height: @font-size-xlarge;
+        }
+      }
+      padding: 20px;
+      width: 425px;
+      height: 500px;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+      background: #fff;
+    }
+    .remConfirm  .confirm{
+      margin-top:35px;
+    }
+    .invitationPhone{
+      margin:10px auto;
+    }
+  }
+  .bottom-height{
+    margin-bottom: 15px;
+    width: 100%;
+  }
+}

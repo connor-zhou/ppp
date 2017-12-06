@@ -1,0 +1,34 @@
+<div class="platform-url ">
+    <form class="hide-html"    [action]="actionUrl"   id="request-form" method="post" >
+        <input type="hidden" *ngFor="let key of dataRes.keys" [name]="key" [value]="dataRes.maps[key]">
+        <a class="btn btn-md   btn-height font-size-large btn-back" >返回修改</a>
+        <input type="submit"  id="autoSubmit"  class="btn btn-md  text-white btn-height font-size-large btn-go" value="前往充值"  />
+    </form>
+    <div class="recharge font-size-small" >
+
+        <div class="icon-success" style="position: relative;">
+            <tip></tip>
+            <span class="icon-success-bg icon-my-paying" ></span>
+            <div class=" font-size-xxlarge text-info">正在处理中，请稍后...</div>
+            <div class="form-content font-size-large" *ngIf="switchType == 'recharge'">
+                <div class="form-line text-success " >
+                    <span class="">充值金额：</span>
+                    <span class="">{{recharge.money}}</span>
+                    <span class="">元</span>
+                </div>
+                <a class="btn btn-md   btn-height font-size-large btn-back btn-last" routerLink="/my/overview">进入我的账户</a>
+                <a class="btn btn-md  text-white btn-height font-size-large btn-go btn-last" routerLink="/my/recharge">重新充值</a>
+            </div>
+            <div class="form-content font-size-large" *ngIf="switchType == 'withdraw'">
+                <div class="form-line text-success ">
+                    <span class="">提现金额：</span>
+                    <span class="">{{withdraw.money}}</span>
+                    <span class="">元</span>
+                </div>
+
+                <a class="btn btn-md   btn-height font-size-large btn-back btn-last" routerLink="/my/overview">进入我的账户</a>
+                <a class="btn btn-md  text-white btn-height font-size-large btn-go btn-last" routerLink="/my/withdraw">重新提现</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,123 @@
+<div class="sign login-bg icon-login-bg" xmlns="http://www.w3.org/1999/html">
+    <!--icon-login-bg iocn-login-line-bg-->
+    <!--<img class="login-bg-line" src="../../../images/login/login-bg-all.jpg" alt="">-->
+    <!--<div class="sign-bg-left">-->
+        <!--<div class="bg-left-box ">-->
+            <!--<img class="left-img" src="../../../images/login/login-new-left-bg.png" alt="">-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="sign-bg box">
+        <div class="box-content box-content-width" [ngClass]="{disabledform: isLogin}">
+            <div class="content-title">
+                <div class="title-height">
+                    <!--密码登录-->
+                    <p class="title-left fl font-size-xxlarge" *ngIf="loginMode == 0">登录</p>
+                    <!--<p class="title-right fr font-size-large cursor-pointer" *ngIf="loginMode == 0" (click)="switchMode(1)">手机验证码登录</p>-->
+
+
+                    <!--手机验证码登录方式-->
+                    <p class="title-left fl font-size-xxlarge" *ngIf="loginMode == 1">手机验证码登录</p>
+                    <p class="title-right fr font-size-large cursor-pointer" *ngIf="loginMode == 1" (click)="switchMode(0)">密码登录</p>
+
+                </div>
+            </div>
+
+            <div class="content-auto" >
+                <div class="content-middle">
+                    <form action="" (keydown)="press($event)">
+                        <div class="input-list-group register-group-margin">
+                            <div class="input-group "  [ngClass]="{'error-addon':tip.mobile}">
+                                <span class="input-group-addon  icon-addon ">
+                                    <i class="icon icon-bg-size icon-sign-phone " ></i>
+                                </span>
+                                <input type="text" class="form-control"  [(ngModel)]="data.mobile"   (focus)="clearTip('mobile')" [placeholder]="loginMode == 0 ? '请输入手机号码':'请输入手机号码'" name="mobile">
+                                <span class="input-group-addon error-box" *ngIf="tip.mobile"><i>{{tip.mobile}}</i></span>
+                            </div>
+
+                            <!--密码登录-->
+                            <div class="input-group"  *ngIf="loginMode == 0" [ngClass]="{'error-addon':tip.pwd}">
+                                <span class="input-group-addon icon-addon">
+                                    <i class="icon icon-bg-size icon-sign-password"></i>
+                                </span>
+                                <input type="password" class="form-control" [(ngModel)]="data.pwd"  (focus)="clearTip('pwd')" placeholder="请输入8-15位大小写字母和数字的密码" name="pwd">
+                                <span class="input-group-addon error-box" *ngIf="tip.pwd"><i>{{tip.pwd}}</i></span>
+                            </div>
+                            <div class="input-group" *ngIf="loginError" [ngClass]="{'error-addon':tip.imageCode}" >
+                                <span class="input-group-addon icon-addon">
+                                    <i class="icon icon-bg-size icon-sign-img-code"></i>
+                                </span>
+                                <input type="text" class="form-control" [(ngModel)]="data.imageCode"  [disabled]="smsCodeInfo.remainTime > 0"  (focus)="clearTip('imageCode')" placeholder="请输入图片验证码"  name="imageCode">
+                                <span class="input-group-addon error-box" *ngIf="tip.imageCode"><i>{{tip.imageCode}}</i></span>
+                                <span class="input-group-addon cursor-pointer" (click)="getImageCode()">
+                                    <span class="code-img">
+                                        <img  src="{{imgCodeUrl}}" alt="">
+                                    </span>
+                                </span>
+                            </div>
+
+                            <!--验证码登录方式-->
+                            <div class="input-group" *ngIf="loginMode == 1" [ngClass]="{'error-addon':tip.imageCode}" >
+                                <span class="input-group-addon icon-addon">
+                                    <i class="icon icon-bg-size icon-sign-img-code"></i>
+                                </span>
+                                <input type="text" class="form-control" [(ngModel)]="data.imageCode"  [disabled]="smsCodeInfo.remainTime > 0"  (focus)="clearTip('imageCode')" placeholder="请输入图片验证码"  name="imageCode">
+                                <span class="input-group-addon error-box" *ngIf="tip.imageCode"><i>{{tip.imageCode}}</i></span>
+                                <span class="input-group-addon cursor-pointer" (click)="getImageCode()">
+                                    <span class="code-img">
+                                        <img  src="{{imgCodeUrl}}" alt="">
+                                    </span>
+                                </span>
+                            </div>
+                            <div class="input-group" *ngIf="loginMode == 1" [ngClass]="{'error-addon':tip.smsCode}">
+                                <span class="input-group-addon icon-addon">
+                                    <i class="icon icon-bg-size icon-sign-password"></i>
+                                </span>
+                                <input type="text" class="form-control" [(ngModel)]="data.smsCode" (blur)="checkSmsCode()" (focus)="clearTip('smsCode')"  placeholder="请输入短信验证码" [(ngModel)]="smsCode" name="smscode">
+                                <span class="input-group-addon error-box" *ngIf="tip.smsCode"><i>{{tip.smsCode}}</i></span>
+                                <span class="input-group-addon text-info cursor-pointer" (click)="sendSmsCode()">
+                                    <span class="phone-code" [ngClass]="{'text-success':smsCodeInfo.remainTime > 0}">{{smsCodeInfo.text}}</span>
+                                </span>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+                <tip></tip>
+                <a class="btn btn-lg btn-block btn-warning" (click)="login()"  [innerHtml]="isLogin ? '登录中...':'登录'" [ngClass]="{'disabled':isLogin}" >登录</a>
+
+                <div class="content-bottom" *ngIf="loginMode == 0">
+                    <p class="font-size-small password-select">
+                        <!--<span class="fl">-->
+                            <!--<span class="checkbox-custome cursor-pointer" [ngClass]="{'checked':data.agree}" (click)="data.agree = !data.agree"></span>-->
+                            <!--&lt;!&ndash;<input class="input-check" type="checkbox">&ndash;&gt;-->
+                            <!--<a class="input-check-r">记住密码</a>-->
+                        <!--</span>-->
+                        <a  class="fr input-check-r forget-password cursor-pointer" routerLink="/sign/find">忘记密码?</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--<div class="client">-->
+            <!--<div>-->
+                <!--<div class="client-box fl">-->
+                    <!--<div class="icon-sign-app client-app"></div>-->
+                    <!--<div class="client-name client-line font-size-large text-white">-->
+                        <!--APP下载-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="client-box fr">-->
+                    <!--<div class="icon-sign-app client-app"></div>-->
+                    <!--<div class="client-name client-line font-size-large text-white">-->
+                        <!--微信-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="spacial-log">-->
+            <!--<div class="icon-login-spacial-log">-->
+
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+
+</div>

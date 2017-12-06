@@ -1,0 +1,142 @@
+@import "../../../less/variables.less";
+
+.stardetail-content{
+  .star-left{
+    width: 890px;
+    display: inline-block;
+    padding-bottom:30px;
+    margin-top: 18px;
+    margin-bottom:20px;
+    .shop-detail{
+      background-color: @stemp-box-bg;
+      min-height: 500px;
+      .tab{
+        margin-top: 0px;
+        .tab-item{
+          height: 53px;
+        }
+      }
+      .left-padding{
+        padding-left: 30px;
+      }
+      .right-padding{
+        padding-right: 30px;
+      }
+      .sub-tab{
+        overflow:hidden;
+        border:1px solid transparent;
+        .icon{
+          width:26px;height:26px;
+        }
+        .btn{
+          background:#fff;
+          border:1px solid @brand-success;
+          color:@text-info;
+          font-size:@font-size-small;
+          &.active{
+            border:1px solid @text-warning;
+            color:@text-warning;
+            box-shadow:none;
+          }
+        }
+        >li{
+          float:left;
+          padding-right:15px;
+        }
+        >li:last-child{
+          padding-right:0;
+        }
+      }
+      .content{
+        margin-top: 30px;
+        .detail-head{
+          >th{
+            text-align: center;
+          }
+          >th:nth-child(1){
+            text-align: left;
+          }
+        }
+        .detail-content{
+          >td{
+            text-align: center;
+          }
+          >td:nth-child(1){
+            text-align: left;
+          }
+
+        }
+      }
+      .bottom-line{
+        border-bottom: 1px solid @brand-primary;
+      }
+    }
+
+  }
+  .star-right{
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 18px;
+    margin-top: 18px;
+    .record{
+      width: 280px;
+      min-height: 500px;
+      background-color: @stemp-box-bg;
+      .pay-title{
+        margin-bottom: 0px;
+        padding:0 30px;
+        border-bottom: 1px solid #d0d0d0;
+        height: 54px;
+        line-height: 54px;
+
+
+      }
+
+      ul{
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-bottom: 20px;
+        li{
+          border-bottom: 1px solid @stemp-box-line-border;
+          .have-exchange{
+            overflow: hidden;
+            padding-bottom: 20px;
+            padding-top: 20px;
+            .content-l{
+              font-size: @font-size-md;
+              color: @text-primary;
+              .bottom-p{
+                margin-bottom: 12px;
+              }
+            }
+            .content-r{
+              width: 65px;
+              height: 65px;
+              padding: 10px 7px;
+              border:1px solid @stemp-box-line-border;
+              position: relative;
+              img{
+                //width: 100%;
+                max-height: 100%;
+                max-width: 100%;
+                width: 80%;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%,-50%);
+              }
+            }
+          }
+        }
+        >li:nth-last-child(1){
+          border-bottom: 0px;
+        }
+
+      }
+    }
+  }
+}
+
+
+
+

@@ -1,0 +1,208 @@
+<div class="confirmInvest">
+    <div class="container">
+        <div class="main">
+            <div class="pay-title font-size-xlarge">
+                <span class="to-pay">确认投资</span><span class="text-primary"> > </span><span >{{projectInfo.title}}</span>
+            </div>
+
+            <div class="invest-info text-success font-size-md">
+                <!--<div class="invest-box">-->
+                    <!--<div class="invest-box-left">-->
+                        <div class="project-item-group" style="width: 66%">
+                            <div class="project-detail">
+                                <div class="item detail-rate">
+                                    <p class="duration-content"><span [innerHtml]="projectInfo.annualizedRate">45</span><small >%</small></p>
+                                    <p class="remark">借款年利率</p>
+                                </div>
+                                <div class="item detail-duration">
+                                    <p class="duration-content"><span [innerHtml]="projectInfo.duration">>45</span><small [innerHtml]="projectInfo.durationUnit">月</small></p>
+                                    <p class="remark">借款期限</p>
+                                </div>
+                                <div class="item detail-money">
+                                    <p class="money-content" *ngIf="data.money >= 100000000"><span [innerHtml]="data.money | number : '1.2-2'">0000</span><small>亿元</small></p>
+                                    <p class="money-content" *ngIf="data.money >= 10000 && data.money < 100000000 "><span [innerHtml]="data.money | number : '1.2-2'">1000</span><small>万元</small></p>
+                                    <p class="money-content" *ngIf="data.money >=0 && data.money < 10000"><span [innerHtml]="data.money | number : '1.2-2'">1000</span><small>元</small></p>
+                                    <p class="remark">借款金额</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info-content">
+                            <p><span class="fl">可用余额</span><span class="text-info fr">{{accountInfo.money | number : '1.2-2'}}元</span></p>
+                            <p>
+                                <span class="fl">现金券</span>
+                                <span class="select fl" (click)="openModal('cash')" *ngIf="projectInfo.canUseCashTicket == 1  && cashTickets.length > 0">
+                            <i class="icon icon-my-add"></i>
+                            <i>选择现金券</i>
+                        </span>
+                                <span class="text-info fr" [innerHtml]="projectInfo.canUseCashTicket == 0 ? '不可用':cashTickets.length <= 0 ? '无可用':'抵扣'+(data.cashTicketTotalValue |  number : '1.2-2')+'元'"></span>
+                            </p>
+                            <p>
+                                <span class="fl">加息券</span>
+                                <span class="select fl" (click)="openModal('rate')" *ngIf="projectInfo.canUseRateTicket == 1 && rateTickets.length > 0">
+                          <i class="icon icon-my-add"></i>
+                          <i>选择加息券</i>
+                        </span>
+                                <span class="text-info fr" [innerHtml]="projectInfo.canUseRateTicket == 0 ? '不可用':rateTickets.length <= 0 ? '无可用':'+'+data.rateTicketValue+'%'"></span>
+                            </p>
+                            <p><span class="fl">实际支付</span><span class="text-danger fr">{{data.money - data.cashTicketTotalValue | number : '1.2-2'}}元</span></p>
+                        </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="content font-size-md">
+                <p>
+                    <span class="info-one margin-r">
+                        <span class="info-one-left" >起息时间</span>
+                        <span class="info-one-right" ><span [innerHtml]="projectInfo.expireTimeline">星投资</span></span>
+                    </span>
+                    <span class="info-one ">
+                        <span class="info-one-left" >还款日期</span>
+                        <span class="info-one-right"><span  [innerHtml]="projectInfo.repaymentTimeline  | date:'y-MM-dd'">星投资</span></span>
+                    </span>
+                    <span class="info-one margin-r">
+                        <span class="info-one-left">还款方式</span>
+                        <span class="info-one-right"><span  [innerHtml]="projectInfo.repaymentMode">星投资</span></span>
+                    </span>
+                    <span class="info-one " >
+                        <span class="info-one-left" >预期收益（元）</span>
+                        <!--[innerHtml]="rateProfit.profit"-->
+                        <span class="info-one-right"><span  [innerHtml]="rateProfit.profit"></span></span>
+                    </span>
+                </p>
+
+                <div class="btns-invest text-center">
+                    <tip></tip>
+                    <a class="btn btn-md btn-warning font-size-md padding-confirm" [ngClass]="{'disabled':!data.agree || isLogin}" [innerHtml]="isLogin ? '准备投资...':'确认投资'"  (click)="confirm()">确认投资</a>
+                </div>
+                <p class="text-center">
+                    <span class="checkbox-custome "  [ngClass]="{'checked':data.agree}" (click)="data.agree = !data.agree"></span><span class="checkbox-text">我已阅读并同意签署<a class="text-warning"  target="_blank" (click)="openAgreement()">《信息咨询服务协议书》</a></span>
+
+                </p>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal fade" id="coupon-modal-01" tabindex="-1" role="dialog" aria-labelledby="coupon01Label" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="fl font-size-xlarge text-info" [innerHtml]="modalType == 'cash'?'选择现金券':'选择加息券'">选择现金券</span>
+                    <span class="title-info text-info font-size-md small-word">
+                    最多可选择<span class="text-warning">{{data.maxSelectMoney | number : '1.2-2'}}</span>元，已选择<span class="text-warning">{{tempData.cashTicketTotalValue  | number : '1.2-2'}}</span>元
+                    </span>
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="font-size-xxlarge">&times;</span><span class="sr-only">Close</span></button>
+                </div>
+                <div class="modal-body  font-size-small" *ngIf="modalType == 'cash'">
+                    <div class="content-select">
+                        <ul>
+                            <li *ngFor="let ticket of cashTickets" (click)="selectTicket('cash',ticket.id,ticket.value,ticket.useLimitMoney);" [ngClass]="{'fail':!canSelectTicket('cash',ticket.id,ticket.value,ticket.useLimitMoney)}">
+                                <div class="ticket-box">
+                                    <div class="top-box icon-my-cash" >
+                                        <span class="word-left" [innerHtml]="ticket.value">
+                                            10
+                                        </span>
+                                        <span class="word-right">
+                                            <span class="right-top-word">￥</span><br>
+                                            <span class="right-bottom-word">现金券</span>
+                                        </span>
+                                    </div>
+                                    <div class="bottom-box">
+                                        <p class="line-word">
+                                            <span>使用规则：</span>
+                                            <span [innerHtml]="ticket.useRule">投资券可用投资额</span>
+                                        </p>
+                                        <p class="line-word">
+                                            <span>有效时间：</span>
+                                            <span [innerHtml]="ticket.expireTimeline | date:'y-MM-dd'">投资券过期时间</span>
+                                        </p>
+                                        <p class="line-word">
+                                            <span>来源：</span>
+                                            <span class="source" [innerHtml]="ticket.remark">投资券过期时间</span>
+                                        </p>
+                                        <div class="mask" [ngClass]="{'showMask':isSelectedTicket('cash',ticket.id)}">
+                                            <span class="icon-invest-select icon-select"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="page-invest-select">
+                            <pager   [totalPage]="tempData.totalPage" (changePage)="selectPage($event)" ></pager>
+                        </div>
+                        <div class="select-sure text-center">
+                            <a class="btn btn-warning btn-md" data-dismiss="modal" (click)="forSureSelect('cash')">确定</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body  font-size-small" *ngIf="modalType == 'rate'">
+                    <div class="title">
+                        <p class="title-info text-info font-size-md">
+                            选择<span class="text-warning">+{{tempData.rateTicketValue  | number : '1.2-2'}}</span>%
+                        </p>
+                    </div>
+
+                    <div class="content-select">
+                        <ul>
+                            <li *ngFor="let ticket of rateTickets" (click)="selectTicket('rate',ticket.id,ticket.rate)" [ngClass]="{'fail':!canSelectTicket('rate',ticket.id,ticket.rate)}">
+                                <div class="ticket-box">
+                                    <div class="top-box icon-my-rate" >
+                                        <span class="word-left" [innerHtml]="ticket.rate">
+                                            10
+                                        </span>
+                                                            <span class="word-right">
+                                            <span class="right-top-word">%</span><br>
+                                            <span class="right-bottom-word" [innerHtml]="ticket.name">加息券</span>
+                                        </span>
+                                    </div>
+                                    <div class="bottom-box">
+                                        <p class="line-word">
+                                            <span>使用规则：</span>
+                                            <span [innerHtml]="ticket.useRule"></span>
+                                        </p>
+                                        <p class="line-word">
+                                            <span>有效时间：</span>
+                                            <span [innerHtml]="ticket.getTimeline | date:'y-MM-dd'"></span>
+                                            <span>至</span>
+                                            <span [innerHtml]="ticket.expireTimeline | date:'y-MM-dd'"></span>
+                                        </p>
+                                        <p class="line-word">
+                                            <span>来源：</span>
+
+                                            <span  class="source" [innerHtml]="ticket.getRemark">投资券过期时间</span>
+                                        </p>
+                                        <div class="mask" [ngClass]="{'showMask':isSelectedTicket('rate',ticket.id)}">
+                                            <span class="icon-invest-select icon-select"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="page-invest-select">
+                            <pager   [totalPage]="tempData.totalPage" (changePage)="selectPage($event)" ></pager>
+                        </div>
+                        <div class="select-sure text-center">
+                            <a class="btn btn-warning btn-md" data-dismiss="modal" (click)="forSureSelect('rate')">确定</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="agreementConsult" tabindex="-1" role="dialog" aria-labelledby="agreementConsult" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header  text-center">
+                    <span class="fl font-size-xlarge text-info">信息咨询服务协议书</span>
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="font-size-xxlarge">&times;</span><span class="sr-only">Close</span></button>
+                </div>
+                <div class="modal-body  font-size-md" [innerHtml]="agreement" >
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <form [action]="form.url" method="post" id="bfInvestForm" >
+        <input type="hidden" *ngFor="let key of form.keys" [name]="key" [value]="form.maps[key]">
+    </form>
+</div>

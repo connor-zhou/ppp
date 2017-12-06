@@ -1,0 +1,250 @@
+<div class="help contact font-size-md">
+    <div class="container">
+        <div class="my-sub-title font-size-large text-info">
+            <span>帮助中心</span>
+        </div>
+        <div class="nav-left">
+            <p class="title">联系客服</p>
+            <div class="content text-center">
+                <ul>
+                    <li>
+                        <dl>
+                            <dt>
+                                <span class="icon-group icon-lg">
+                                    <span class="icon icon-index-phone-big"></span>
+                                </span>
+                            </dt>
+                            <dd>
+                                <h3 class="font-size-xxlarge text-info" [innerHtml]="Config.appConfig.tel">400-823-9800</h3>
+                                <p class="font-size-md text-success">(工作日09:00-17:00)</p>
+                            </dd>
+                        </dl>
+                    </li>
+                    <!--<li>-->
+                        <!--<dl>-->
+                            <!--<dt>-->
+                                <!--<span class="icon-group icon-lg">-->
+                                    <!--<span class="icon icon-help-qq"></span>-->
+                                <!--</span>-->
+                            <!--</dt>-->
+                            <!--<dd><p class="text-muted">在线客服</p></dd>-->
+                        <!--</dl>-->
+                    <!--</li>-->
+                    <li>
+                        <dl>
+                            <dt>
+                                <img src="../../../images/qrcode.jpg">
+                            </dt>
+                            <dd>
+                                <h3 class="weixin font-size-md text-info">微信客服</h3>
+                                <p class="text-success">关注星投资官方微信，随时随地了解最新活动，咨询问题</p>
+                            </dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="content-right font-size-md fqa" id="xtz-accordion">
+            <ul class="nav nav-tabs" role="tablist" id="questionTabs">
+                <li role="presentation" [class]="i == 0 ? 'active':''" *ngFor="let title of titles;let i = index"><a [href]="'#title'+i"  role="tab" data-toggle="tab" [innerHtml]="title">关于星投资</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content" >
+                <div role="tabpanel" class="tab-pane" [ngClass]="i == 0 ? 'active':''" id="{{'title'+i}}" *ngFor="let title of titles;let i = index">
+                    <div class="panel-group" id="{{'title00'+i}}" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default" *ngFor="let question of getFqa(title);let j=index">
+                            <div class="panel-heading" role="tab" id="{{'title00'+i+'question'+j}}">
+                                <h4 class="panel-title">
+                                    <a [innerHtml]="question.title"  class="navbar-toggler" role="button" data-toggle="collapse" [attr.data-parent]="'#'+'title00'+i"  href="{{'#'+'title00'+i+'question00'+j}}" aria-expanded="true" [attr.aria-controls]="'title00'+i">
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="{{'title00'+i+'question00'+j}}" class="ab panel-collapse collapse"  role="tabpanel">
+                                <div class="panel-body" [innerHtml]="question.content"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<div class="content-right zizhu font-size-md text-success">-->
+            <!--<div class="assistant">-->
+                <!--<p class="title">自助服务</p>-->
+                <!--<ul class="content">-->
+                    <!--<li>-->
+                        <!--<a routerLink="/sign/find" target="_blank">-->
+                            <!--<dl>-->
+                                <!--<dt>-->
+                                   <!--<span class="icon-group icon-lg">-->
+                                       <!--<span class="icon icon-help-find-loginPwd"></span>-->
+                                   <!--</span>-->
+                                <!--</dt>-->
+                                <!--<dd>找回登陆密码</dd>-->
+                            <!--</dl>-->
+                        <!--</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a routerLink="/my/safetySetting/loginPwd" target="_blank">-->
+                            <!--<dl>-->
+                            <!--<dt>-->
+                               <!--<span class="icon-group icon-lg">-->
+                                   <!--<span class="icon icon-help-modify-loginPwd"></span>-->
+                               <!--</span>-->
+                            <!--</dt>-->
+                            <!--<dd>修改登录密码</dd>-->
+                        <!--</dl>-->
+                        <!--</a>-->
+                    <!--</li>-->
+                    <!--&lt;!&ndash;<li>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<a routerLink="/my/safetySetting/modifyPhone" target="_blank">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<dl>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<dt>&ndash;&gt;-->
+                               <!--&lt;!&ndash;<span class="icon-group icon-lg">&ndash;&gt;-->
+                                   <!--&lt;!&ndash;<span class="icon icon-help-modify-phone"></span>&ndash;&gt;-->
+                               <!--&lt;!&ndash;</span>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</dt>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<dd>修改手机号码</dd>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</dl>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</a>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                    <!--<li>-->
+                        <!--<a routerLink="/my/safetySetting/modifyEmail" target="_blank">-->
+                            <!--<dl>-->
+                            <!--<dt>-->
+                               <!--<span class="icon-group icon-lg">-->
+                                   <!--<span class="icon icon-help-modify-email"></span>-->
+                               <!--</span>-->
+                            <!--</dt>-->
+                            <!--<dd>修改邮箱</dd>-->
+                        <!--</dl>-->
+                        <!--</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a routerLink="/my/bank" target="_blank">-->
+                            <!--<dl>-->
+                            <!--<dt>-->
+                               <!--<span class="icon-group icon-lg">-->
+                                   <!--<span class="icon icon-help-bind-card"></span>-->
+                               <!--</span>-->
+                            <!--</dt>-->
+                            <!--<dd>绑定提现银行卡</dd>-->
+                        <!--</dl>-->
+                        <!--</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a routerLink="/my/safetySetting/username" target="_blank">-->
+                            <!--<dl>-->
+                            <!--<dt>-->
+                               <!--<span class="icon-group icon-lg">-->
+                                   <!--<span class="icon icon-help-find-mmmPwd"></span>-->
+                               <!--</span>-->
+                            <!--</dt>-->
+                            <!--<dd>找回托管平台支付密码</dd>-->
+                        <!--</dl>-->
+                        <!--</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a routerLink="/my/safetySetting/username" target="_blank">-->
+                            <!--<dl>-->
+                            <!--<dt>-->
+                               <!--<span class="icon-group icon-lg">-->
+                                   <!--<span class="icon icon-help-modify-mmmPwd"></span>-->
+                               <!--</span>-->
+                            <!--</dt>-->
+                            <!--<dd>修改托管平台支付密码</dd>-->
+                        <!--</dl>-->
+                        <!--</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a routerLink="/help/download" target="_blank">-->
+                            <!--<dl>-->
+                            <!--<dt>-->
+                               <!--<span class="icon-group icon-lg">-->
+                                   <!--<span class="icon icon-help-download-app"></span>-->
+                               <!--</span>-->
+                            <!--</dt>-->
+                            <!--<dd>下载app</dd>-->
+                        <!--</dl>-->
+                        <!--</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a routerLink="/my/recharge" target="_blank">-->
+                            <!--<dl>-->
+                            <!--<dt>-->
+                               <!--<span class="icon-group icon-lg">-->
+                                   <!--<span class="icon icon-help-recharge"></span>-->
+                               <!--</span>-->
+                            <!--</dt>-->
+                            <!--<dd>充值</dd>-->
+                        <!--</dl>-->
+                        <!--</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a routerLink="/my/withdraw" target="_blank">-->
+                            <!--<dl>-->
+                            <!--<dt>-->
+                               <!--<span class="icon-group icon-lg">-->
+                                   <!--<span class="icon icon-help-withdraw"></span>-->
+                               <!--</span>-->
+                            <!--</dt>-->
+                            <!--<dd>提现</dd>-->
+                        <!--</dl>-->
+                        <!--</a>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+    <!--<div class="container fqa">-->
+        <!--<ul class="nav nav-tabs" role="tablist" id="questionTabs">-->
+            <!--<li role="presentation" [class]="i == 0 ? 'active':''" *ngFor="let title of titles;let i = index"><a [href]="'#title'+i"  role="tab" data-toggle="tab" [innerHtml]="title">关于星投资</a></li>-->
+        <!--</ul>-->
+
+        <!--&lt;!&ndash; Tab panes &ndash;&gt;-->
+        <!--<div class="tab-content">-->
+            <!--<div role="tabpanel" class="tab-pane" [ngClass]="i == 0 ? 'active':''" id="{{'title'+i}}" *ngFor="let title of titles;let i = index">-->
+                <!--<div class="panel-group" id="{{'title00'+i}}" role="tablist" aria-multiselectable="true">-->
+                    <!--<div class="panel panel-default" *ngFor="let question of getFqa(title);let j=index">-->
+                        <!--<div class="panel-heading" role="tab" id="{{'title00'+i+'question'+j}}">-->
+                            <!--<h4 class="panel-title">-->
+                                <!--<a [innerHtml]="question.title" role="button" data-toggle="collapse" [attr.data-parent]="'#'+'title00'+i" href="{{'#'+'title00'+i+'question00'+j}}" aria-expanded="true" [attr.aria-controls]="'title00'+i">-->
+                                <!--</a>-->
+                            <!--</h4>-->
+                        <!--</div>-->
+                        <!--<div id="{{'title00'+i+'question00'+j}}" class="panel-collapse collapse" role="tabpanel">-->
+                            <!--<div class="panel-body" [innerHtml]="question.content"></div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--&lt;!&ndash;<div class="search-box">&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="title">所有帮助主题</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="content">&ndash;&gt;-->
+                <!--&lt;!&ndash;<div class="search">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="input-group">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<input class="form-control font-size-small text-info" type="text" placeholder="请输入问题关键字，如‘投资’" #keyword>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<div class="input-group-addon glyphicon glyphicon-search" style="background:#ff5500;color:#fff;" (click)="search(keyword.value)"></div>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<p class="hot-key">热门搜索词：&ndash;&gt;-->
+                            <!--&lt;!&ndash;<span *ngFor="let k of ['注册','充值','投资','问题']" (click)="search(k);keyword.value=k">{{k}} </span>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</p>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--&lt;!&ndash;<div class="find">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<ul class="out">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<li *ngFor="let category of categoryList">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<a (click)="selectCategory(category)">{{category.note}}</a>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<ul class="inside">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<li *ngFor="let question of questionList"><a (click)="selecteQuestion(question)">{{question.title}}</a></li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="content-out" *ngIf="answer">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<p [innerHtml]="answer.answer"></p>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--</div>-->
+</div>

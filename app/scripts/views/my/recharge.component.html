@@ -1,0 +1,126 @@
+<div class="recharge font-size-md">
+    <div [style.display]="page == 0 ? 'block':'none'">
+        <div class="pay-title">
+            <span class="to-pay font-size-xlarge">充值</span>
+        </div>
+        <div class="form-content font-size-large">
+            <div class="form-line line-bottom">
+                <span class="line-left">可用余额：</span>
+                <span class="line-right">
+                    <span class="line-balance" [innerHtml]="userInfo.money | number:'1.2-2'">240</span>
+                    <span class="line-right-word">元</span>
+                </span>
+            </div>
+            <div class="form-line font-size-large line-bottom ">
+                <span class="line-left ">充值金额：</span>
+                <span class="right-box">
+                    <!--(ngModelChange)="requestRechargeUrl($event)"-->
+                    <input type="text" class="line-right  line-input input-style " [(ngModel)]="onlineMoney" placeholder="请输入不小于100的金额" name="onlineMoney" (click)="clearTip(1)">
+                    <span class="error-tip" *ngIf="errTip.moneyTip">{{errTip.moneyTip}}</span>
+                </span>
+            </div>
+            <div class="form-line font-size-large">
+                <span class="line-left ">充值方式：</span>
+                <!--<input type="text" class="pay-right input-style pay-input"-->
+                       <!--[(ngModel)]="onlineMoney" placeholder="请输入不小于100的金额" >-->
+                <span class="right-box">
+                    <select  [(ngModel)]="errTip.method" class="line-right line-input input-style text-success" name="method"  (click)="clearTip(2)">
+                        <option value="0">快捷支付</option>
+                        <option value="1">网银支付</option>
+                    </select>
+                </span>
+            </div>
+            <!--<a class="btn  btn-block text-white  btn-first-bg btn-height font-size-large disabled"  *ngIf="!onlineMoney || onlineMoney < 100 "  >下一步</a>-->
+            <a class="btn  btn-block text-white btn-height font-size-large btn-next-step"   (click)="add()" *ngIf="bankCardList.length > 0">下一步</a>
+            <a class="btn  btn-block text-white btn-height font-size-large btn-next-step disabled"    *ngIf="bankCardList.length <= 0">下一步</a>
+
+        </div>
+        <div>
+            <div class="tag">
+                <div class="arrow">
+                    <em></em><span></span>
+                </div>
+                <div class="content-tips text-muted">
+                    <div class="font-size-xlarge text-info tip-bottom">温馨提示：</div>
+                    <p>1.充值不收取任何费用。</p>
+                    <p>2.您的资金将由星投资代您转入您的第三方资金托管账户。</p>
+                    <p>3.如未能及时充值,请联系客服。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div [style.display]="page == 1 ? 'block':'none'">
+        <div class="pay-title">
+            <span class="to-pay font-size-xlarge">确认充值</span>
+        </div>
+        <div class="form-content font-size-large">
+            <div class="form-line">
+                <span class="line-left">充值金额：</span>
+                    <span class="line-right">
+                    <span class="line-balance" >{{onlineMoney}}</span>
+                    <span class="line-right-word">元</span>
+                </span>
+            </div>
+            <div>
+                <a class="btn btn-md   btn-height font-size-large btn-back" (click)="sub()">返回修改</a>
+                <!--[routerLink]="'/my/platform'" [queryParams]="{money: onlineMoney,method:errTip.method,type:'recharge'}"-->
+                <a class="btn btn-md  text-white btn-height font-size-large btn-go" [ngClass]="{'disabled': !isTo}" (click)="toRequestUrl()">前往充值</a>
+                <tip></tip>
+                <form class="hide-html"    [action]="actionUrl"   id="request-form" method="post" >
+                    <input type="hidden" *ngFor="let key of dataRes.keys" [name]="key" [value]="dataRes.maps[key]">
+                    <a class="btn btn-md   btn-height font-size-large btn-back" >返回修改</a>
+                    <input type="submit"  id="autoSubmit"  class="btn btn-md  text-white btn-height font-size-large btn-go" value="前往充值"  />
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade tip-alert" id="mmm-warning-recharge" tabindex="-1" role="dialog" aria-labelledby="mmmWarningLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body  font-size-md text-center">
+                    <dl class="body-dl">
+                        <dt>
+                     <span class="icon-group icon-x-lg ">
+                        <span class="icon  icon-big-mark"></span>
+                     </span>
+                        </dt>
+                        <dd>
+                            <h3 class="text-info">提示！</h3>
+                            <p class="text-tip tip-warning">您还未绑定上海银行托管平台，请绑定后进行操作</p>
+                        </dd>
+                        <dd>
+                            <a class="btn btn-md btn-affirm font-size-md" data-dismiss="modal" routerLink="/my/registerBf">立即绑定</a>
+                            <a class="btn btn-md btn-cancel font-size-md" data-dismiss="modal" routerLink="/my/overview">返回账户首页</a>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade tip-alert" id="warning-bank" tabindex="-1" role="dialog" aria-labelledby="mmmWarningLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body  font-size-md text-center">
+                    <dl class="body-dl">
+                        <dt>
+                             <span class="icon-group icon-x-lg ">
+                                <span class="icon  icon-big-mark"></span>
+                             </span>
+                        </dt>
+                        <dd>
+                            <h3 class="text-info">提示！</h3>
+                            <p class="text-tip tip-warning">您还未添加银行卡，请绑定后进行操作</p>
+                        </dd>
+                        <dd>
+                            <a class="btn btn-md btn-affirm font-size-md" data-dismiss="modal" routerLink="/my/bank">立即添加</a>
+                            <a class="btn btn-md btn-cancel font-size-md" data-dismiss="modal" routerLink="/my/overview">返回账户首页</a>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="invest-success">
+    <div class="container">
+        <dl class="text-center">
+            <dt>
+               <span class="icon-group icon-x-lg" *ngIf="code == 0">
+                    <span class="icon icon-big-success"></span>
+                </span>
+                <span class="icon-group icon-x-lg" *ngIf="code != 0">
+                    <span class="icon icon-big-fail"></span>
+                </span>
+            </dt>
+            <dd>
+                <h4 [innerHtml]="code == 0 ? '恭喜您投资成功':text ? '投资失败（'+text+'）':'投资失败'">恭喜您投资成功</h4>
+            </dd>
+            <dd>
+                <a class="btn btn-md btn-warning font-size-md" routerLink="/invest/overall">投资其它项目</a>
+                <a class="btn btn-md btn-warning font-size-md" *ngIf="code == 0" routerLink="/my/fund">查看账户流水</a>
+                <a class="btn btn-md btn-warning font-size-md" *ngIf="code != 0" routerLink="/my/overview">返回个人中心</a>
+            </dd>
+        </dl>
+    </div>
+</div>

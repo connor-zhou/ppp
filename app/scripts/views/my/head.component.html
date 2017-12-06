@@ -1,0 +1,52 @@
+
+
+
+
+
+
+
+<ul class="my-data">
+    <!--<li class="sign-in text-right">-->
+        <!--&lt;!&ndash;<a routerLink="">&ndash;&gt;-->
+                         <!--&lt;!&ndash;<span class="icon-group icon-sm font-size-small">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<span class="icon icon-my-signIn"></span>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<span class="icon-txt">签到领星币</span>&ndash;&gt;-->
+                       <!--&lt;!&ndash;</span>&ndash;&gt;-->
+        <!--&lt;!&ndash;</a>&ndash;&gt;-->
+    <!--</li>-->
+    <li class="portrait text-center">
+        <dl>
+            <dt>
+                <a><img [src]="userInfo.avatar" alt=""></a>
+            </dt>
+            <dd class="text-info font-size-md" [innerHtml]="userInfo.uname"></dd>
+        </dl>
+    </li>
+    <li class="light-info">
+        <div class="text-center">
+            <a routerLink="/my/safetySetting">
+               <span class="icon-group icon-md">
+                   <span class="icon icon-profile-mmm"  ></span>
+                   <span class="icon-tip font-size-xsmall" >立即开通资金托管</span>
+               </span>
+            </a>
+        </div>
+        <div class="text-center">
+            <a routerLink="/my/safetySetting">
+               <span class="icon-group  icon-md">
+                   <span class="icon icon-profile-card" ></span>
+                   <span class="icon-tip font-size-xsmall" >立即绑定银行卡</span>
+               </span>
+            </a>
+        </div>
+        <div class="text-right">
+            <a routerLink="/my/safetySetting">
+                   <span class="icon-group  icon-md">
+                       <span class="icon" [class.icon-profile-open-email]="userInfo.hasEmail" [class.icon-profile-email]="!userInfo.hasEmail"></span>
+                        <span class="icon-tip font-size-xsmall" *ngIf="userInfo.hasEmail">立即绑定邮箱</span>
+                        <span class="icon-tip font-size-xsmall" *ngIf="userInfo.hasEmail">您已绑定邮箱</span>
+                   </span>
+            </a>
+        </div>
+    </li>
+</ul>

@@ -1,0 +1,184 @@
+<div class="modifyPhone font-size-small">
+   <div class="my-sub-title font-size-large text-info">
+      <span>修改绑定手机</span>
+   </div>
+   <div class="sub-content">
+      <div class="find-box" [ngSwitch]="stepNo">
+         <div class="row step-bar text-white">
+            <div class="col-xs-4 col-md-4 col-lg-4 active">
+               <div class="step-num">
+                  <p class="num font-size-xxlarge">1</p>
+               </div>
+               <p class="step-tip">验证身份信息</p>
+            </div>
+            <div class="col-xs-4 col-md-4 col-lg-4" [ngClass]="{active:stepNo >= 2}">
+               <div class="step-num">
+                  <p class="num font-size-xxlarge">2</p>
+               </div>
+               <p class="step-tip">验证新手机号码</p>
+            </div>
+            <div  class="col-xs-4 col-md-4 col-lg-4" [ngClass]="{active:stepNo === 3}">
+               <div class="step-num">
+                  <p class="num font-size-xxlarge">3</p>
+               </div>
+               <p class="step-tip">修改成功</p>
+            </div>
+         </div>
+         <div class="step-content">
+            <!--<div class="tab">-->
+               <!--<a class="tab01" [ngClass]="{active:switch == 0}" (click)="switch = 0">通过手机修改</a>-->
+               <!--<a class="tab02" [ngClass]="{active:switch == 1}" (click)="switch = 1" >通过邮箱修改</a>-->
+            <!--</div>-->
+            <div class="info1"  *ngSwitchCase="1">
+               <div class="reg-login-form no-addon" [style.display]="switch == 1 ? 'none':'block'">
+                  <form class="form-horizontal" role="form">
+                     <table>
+                        <tr>
+                           <td class="text-right">原手机号码：</td>
+                           <td [innerHtml]="userInfo.phone"></td>
+                        </tr>
+                         <tr>
+                             <td class="text-right">图形验证码：</td>
+                             <td>
+                                 <div class="input-group">
+                                     <input [(ngModel)]="imgCodeNum" type="text" class="form-control font-size-small"
+                                            placeholder="请输入图形验证码" name="imgCode">
+                                     <span class="unvalid-tip font-size-small" [style.display]="!imgCodeTip ? 'none':'inline'">*{{imgCodeTip}}</span>
+                                 </div>
+                             </td>
+                             <td class="msgCode imgCodeImg">
+                                 <img src="{{imgCodeUrl}}" alt="" class="imgCode" (click)="getMsgVerifyCode()">
+                             </td>
+                         </tr>
+                        <tr>
+                           <td class="text-right">原手机验证码：</td>
+                           <td>
+                              <div class="input-group">
+                                 <input [(ngModel)]="oldSmsCode" type="text" class="form-control font-size-small"
+                                        placeholder="请输入原手机验证码" name="oldSmsCode">
+                                 <span class="unvalid-tip font-size-small" [style.display]="!smsCodeTip ? 'none':'inline'">*{{smsCodeTip}}</span>
+                              </div>
+                           </td>
+                           <td class="msgCode">
+                              <a class="btn btn-md btn-danger font-size-small "
+                                 [class.fail]="remainTime > 0" (click)="sendSmsCode(userInfo.realPhone)"
+                                 [innerHtml]="smsText"></a>
+                           </td>
+                        </tr>
+                        <tr>
+                        <td class="text-right">新手机号码：</td>
+                        <td colspan="2">
+                        <div class="input-group">
+                        <input [(ngModel)]="newPhone" type="text" class="form-control font-size-small"
+                               placeholder="请输入新的手机号码" name="newPhone">
+                        <span class="unvalid-tip font-size-small" [style.display]="!newPhoneTip ? 'none':'inline'">*{{newPhoneTip}}</span>
+                        </div>
+                        </td>
+                        </tr>
+                        <tr>
+                           <td colspan="2"></td>
+                           <td class="text-right">
+                              <a class="btn btn-danger btn-block btn-md font-size-small" (click)="goStepTwo()">下一步</a>
+                           </td>
+                        </tr>
+                     </table>
+                  </form>
+               </div>
+               <!--<div class="email" [hidden]="switch == 0">-->
+                     <!--<p class="text-muted">已绑定邮箱： <span class="text-info">347854**@qq.com</span></p>-->
+                     <!--<a class="btn btn-danger btn-md font-size-small" (click)="goNextStep()">发送验证邮件</a>-->
+               <!--</div>-->
+            </div>
+             <div class="info2"  *ngSwitchCase="2">
+                 <div class="reg-login-form no-addon">
+                    <form class="form-horizontal" role="form">
+                     <table>
+                         <tr>
+                             <td class="text-right">新手机号码：</td>
+                             <td [innerHtml]="newPhone"></td>
+                         </tr>
+                         <tr>
+                             <td class="text-right">图形验证码：</td>
+                             <td>
+                                 <div class="input-group">
+                                     <input [(ngModel)]="imgCodeNum" type="text" class="form-control font-size-small"
+                                            placeholder="请输入图形验证码" name="imgCode2">
+                                     <span class="unvalid-tip font-size-small" [style.display]="!imgCodeTip ? 'none':'inline'">*{{imgCodeTip}}</span>
+                                 </div>
+                             </td>
+                             <td class="msgCode imgCodeImg">
+                                 <img src="{{imgCodeUrl}}" alt="" class="imgCode" (click)="getMsgVerifyCode()">
+                             </td>
+                         </tr>
+                         <tr>
+                             <td class="text-right">新手机验证码：</td>
+                             <td>
+                                 <div class="input-group">
+                                     <input [(ngModel)]="newSmsCode" type="text" class="form-control font-size-small"
+                                            placeholder="请输入新手机验证码" name="newSmsCode">
+                                     <span class="unvalid-tip font-size-small text-tip"  [style.display]="!smsCodeTip ? 'none':'inline'">*{{smsCodeTip}}</span>
+                                 </div>
+                             </td>
+                             <td class="msgCode">
+                                 <a class="btn btn-md btn-danger font-size-small"
+                                    [class.fail]="remainTime > 0" (click)="sendSmsCode(newPhone)" [innerHtml]="smsText"></a>
+                             </td>
+                         </tr>
+                         <tr>
+                             <td colspan="2"></td>
+                             <td class="text-right" style="padding-left:10px;">
+                                 <a class="btn btn-danger btn-block btn-md font-size-small" (click)="goStepThree()">下一步</a>
+                             </td>
+                         </tr>
+                     </table>
+                 </form>
+                  </div>
+             </div>
+             <!--<div class="info2"  *ngSwitchCase="2">-->
+                 <!--<div class="row">-->
+                     <!--<div class="col-xs-12">-->
+                         <!--<dl class="text-center">-->
+                             <!--<dt>-->
+                           <!--<span class="icon-group icon-xx-lg">-->
+                              <!--<span class="icon icon-status-success"></span>-->
+                           <!--</span>-->
+                             <!--</dt>-->
+                             <!--<dd>-->
+                                 <!--<h4 class="font-size-large text-info bold">邮件发送成功，请到邮箱内进行验证</h4>-->
+                                 <!--<p class="text-muted">（48小时内有效）</p>-->
+                             <!--</dd>-->
+                             <!--<dd >-->
+                                 <!--<a class="btn btn-danger btn-block btn-md font-size-small" [hidden]="true" (click)="goNextStep()">重新发送验证邮件</a>-->
+                                 <!--<a class="font-size-small text-muted">未收到邮件？</a>-->
+                             <!--</dd>-->
+                             <!--<dd style="display:none;">-->
+                                 <!--<a class="btn btn-default btn-block btn-md font-size-small" (click)="goNextStep()">重新发送验证邮件( <span>25</span>)</a>-->
+                                 <!--<a class="font-size-small text-muted">邮件已重新发送！如果仍未收到请检查是否在邮件垃圾箱</a>-->
+                             <!--</dd>-->
+                         <!--</dl>-->
+                     <!--</div>-->
+                 <!--</div>-->
+             <!--</div>-->
+            <div class="info2"  *ngSwitchCase="3">
+               <div class="row">
+                  <div class="col-xs-12">
+                     <dl class="text-center">
+                        <dt>
+                           <span class="icon-group icon-xx-lg">
+                              <span class="icon icon-status-success"></span>
+                           </span>
+                        </dt>
+                        <dd>
+                           <h4 class="font-size-large text-info bold">新手机号码验证成功！</h4>
+                        </dd>
+                        <dd>
+                           <a class="btn btn-danger btn-block btn-md font-size-small" routerLink="/my/safetySetting">返回安全设置</a>
+                        </dd>
+                     </dl>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>星投资-安全透明专业高效的互联网金融投资平台（官网）</title>
+    <meta name="keywords" content="个人理财,企业贷款,个人贷款,投融资,信贷,互联网理财,网络理财,专业理财平台,安全理财平台,高效理财平台,透明理财平台,网络投资理财平台,互联网理财平台">
+    <meta name="description" content="星投资是德信控股集团旗下专业的金融投资平台，目前正逐步推进小额分散、风险低的普惠金融，凭借雄厚的资金和稳固的风控保障为用户提供专业稳健可信赖的金融投资服务。">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <base href="<%= htmlWebpackPlugin.options.baseURL %>">
+    <!--&lt;!&ndash;[if lt IE 9]>-->
+    <!--<script type="text/javascript">window.location.href="<%= htmlWebpackPlugin.options.baseURL %>browser.html";</script>-->
+    <!--<![endif]&ndash;&gt;-->
+
+    <script>
+        function broswserCheck() {
+            if(navigator.appName == "Microsoft Internet Explorer"&&parseInt(navigator.appVersion.split(";")[1].replace(/[ ]/g, "").replace("MSIE",""))<9){
+                window.location.href="https://www.xingtouzi.com/browser.html";
+            }
+        }
+        broswserCheck();
+
+
+        // 判断是否跳转到https
+        function checkHttps(){
+
+            var location = window.location;
+
+            if(location.host == '114.55.163.13' || (location.protocol !== 'https:' && location.host == 'www.xingtouzi.com')){
+                location.href="https://www.xingtouzi.com"+location.pathname+location.search;
+            }
+        }
+        checkHttps();
+    </script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?55953947d2d921123a688b48f13b6117";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <style>
+        @keyframes lds-gear {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            50% {
+                -webkit-transform: rotate(180deg);
+                transform: rotate(180deg);
+            }
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+        @-webkit-keyframes lds-gear {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            50% {
+                -webkit-transform: rotate(180deg);
+                transform: rotate(180deg);
+            }
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        .lds-css{
+            position:fixed;
+            left:50%;top:50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+        .lds-gear > div {
+            -webkit-transform-origin: 100px 100px;
+            transform-origin: 100px 100px;
+            -webkit-animation: lds-gear 1s infinite linear;
+            animation: lds-gear 1s infinite linear;
+            position: relative;
+        }
+        .lds-gear > div div {
+            position: absolute;
+            width: 26px;
+            height: 192px;
+            background: #f08d43;
+            left: 100px;
+            top: 100px;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+        .lds-gear > div div:nth-child(1) {
+            width: 152px;
+            height: 152px;
+            border-radius: 50%;
+        }
+        .lds-gear > div div:nth-child(3) {
+            -webkit-transform: translate(-50%, -50%) rotate(30deg);
+            transform: translate(-50%, -50%) rotate(30deg);
+        }
+        .lds-gear > div div:nth-child(4) {
+            -webkit-transform: translate(-50%, -50%) rotate(60deg);
+            transform: translate(-50%, -50%) rotate(60deg);
+        }
+        .lds-gear > div div:nth-child(5) {
+            -webkit-transform: translate(-50%, -50%) rotate(90deg);
+            transform: translate(-50%, -50%) rotate(90deg);
+        }
+        .lds-gear > div div:nth-child(6) {
+            -webkit-transform: translate(-50%, -50%) rotate(120deg);
+            transform: translate(-50%, -50%) rotate(120deg);
+        }
+        .lds-gear > div div:nth-child(7) {
+            -webkit-transform: translate(-50%, -50%) rotate(150deg);
+            transform: translate(-50%, -50%) rotate(150deg);
+        }
+        .lds-gear > div div:nth-child(8) {
+            width: 80px;
+            height: 80px;
+            background: #fff;
+            border-radius: 50%;
+        }
+        .lds-gear {
+            width: 59px !important;
+            height: 59px !important;
+            -webkit-transform: translate(-29.5px, -29.5px) scale(0.295) translate(29.5px, 29.5px);
+            transform: translate(-29.5px, -29.5px) scale(0.295) translate(29.5px, 29.5px);
+        }
+
+    </style>
+
+</head>
+<body>
+<xtz-app>
+    <div class="lds-css">
+        <div class="lds-gear" style="width:100%;height:100%">
+            <div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</xtz-app>
+</body>
+</html>

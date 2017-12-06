@@ -1,0 +1,87 @@
+<div class="mark-box " >
+    <div class="left-box" [ngClass]="projectLength >= 3 ? 'project-three':projectLength == 2 ? 'project-two':'project-one'">
+        <p class="new-mark-word">星理财</p>
+        <p class="new-day">产品多样</p>
+        <p class="new-month new-day">信息透明</p>
+        <p class="new-month new-day">即投计息</p>
+        <p class="more-to new-day"><a [routerLink]='["/invest/overall",{switch:3}]' class="more-to-a" >查看更多 &gt;</a></p>
+
+        <div class="top-angle"></div>
+    </div>
+    <div class="right-box" *ngIf="projectList == null">
+        <!--<div class="disinvest" ><span>暂无项目</span></div>-->
+        <div class="no-project-content">暂无项目</div>
+    </div>
+    <div class="right-box" *ngIf="projectList" >
+        <div class="top-line">
+            <div class="top-angle"></div>
+        </div>
+        <div class="box-content" *ngFor="let project of  projectList">
+            <div class="one-content float-left">
+                <div class="one-title">
+                    <p class="one-title-con">
+                        <span class="title-left" [innerHtml]="project.title">新手体验包（限投10000元）</span>
+                        <span class="small-word small-word-left-index" [innerHtml]="project.methods">首次投资新用户专享</span>
+                    </p>
+                </div>
+                <div class="one-center">
+                    <div class="center-son width-left-one">
+                        <div class="cent-top font-color-y">
+                            <span class="top-font" [innerHtml]="project.revenue">12</span>
+                            <span class="top-font-c">%</span>
+                        </div>
+                        <p class="supply-word">过去三个月平均</p>
+                        <p class="supply-word">历史年化收益率</p>
+                    </div>
+                    <div class="center-son width-left-two">
+                        <div class="cent-top word-center">
+                            <span class="top-font" [innerHtml]="project.duration">3</span>
+                            <span class="top-font-c">个月</span>
+                        </div>
+                        <p class="word-center supply-word">项目期限</p>
+                    </div>
+                    <div class="center-son width-left-three" >
+                        <div class="cent-top word-center" *ngIf="project.money >= 100000000">
+                            <span class="top-font">{{project.money / 100000000}}</span>
+                            <span class="top-font-c">亿元</span>
+                        </div>
+                        <div class="cent-top word-center" *ngIf="project.money >= 10000 && project.money < 100000000 ">
+                            <span class="top-font">{{project.money / 10000}}</span>
+                            <span class="top-font-c">万元</span>
+                        </div>
+                        <div class="cent-top word-center" *ngIf="project.money >=0 && project.money < 10000">
+                            <span class="top-font">{{project.money}}</span>
+                            <span class="top-font-c">元</span>
+                        </div>
+                        <p class="word-center supply-word">总金额</p>
+                    </div>
+                    <div class="center-son width-progress ">
+                        <div class="cent-top to-bottom progress-height">
+                            <div class="progress process-line">
+                                <!--<div class="progress-bar process-line-bg" role="progressbar" aria-valuenow="90"-->
+                                     <!--aria-valuemin="0" aria-valuemax="100" [style.width]="project.schedule + '%'"></div>-->
+                                <div  class="progress-bar process-line-bg"  role="progressbar" aria-valuenow="90"
+                                     aria-valuemin="0" aria-valuemax="100" [style.width]="project.schedule + '%'" *ngIf="project.projectStatus == 1"></div>
+                                <div  class="progress-bar process-line-bg" role="progressbar" aria-valuenow="90"
+                                     aria-valuemin="0" aria-valuemax="100" [style.width]="100 + '%'" *ngIf="project.projectStatus == 2 || project.projectStatus == 3"></div>
+                            </div>
+                            <!--<p class="word-right font-color-y">{{project.schedule +'%'}}</p>-->
+                            <p  class="word-right font-color-y" *ngIf="project.projectStatus == 1">{{project.schedule +'%'}}</p>
+                            <p  class="word-right font-color-y" *ngIf="project.projectStatus == 2 || project.projectStatus == 3">{{100 +'%'}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="line-center float-left"></div>
+            <div class="two-content float-left">
+                <div class="invest-con-to">
+                    <div class="word-center">
+                        <a class="to-invest word-center" *ngIf="project.projectStatus == 1" [routerLink]="['/invest/detail/'+project.id,{type:3}]">立即投资</a>
+                        <a class="to-invest word-center  fail" *ngIf="project.projectStatus == 2 || project.projectStatus == 3" [routerLink]="['/invest/detail/'+project.id,{type:3}]">已满标</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

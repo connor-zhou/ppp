@@ -1,0 +1,149 @@
+
+<div class="overview">
+    <table class="third-outside">
+        <tr>
+            <td class="one-td">
+                <span class="third-outside-content one">
+                    <span class="portrait">
+                        <span class="image-container">
+                            <img  *ngIf="accountInfo.avatar" [src]="accountInfo.avatar" alt="I'm Broken :(">
+                            <img  *ngIf="!accountInfo.avatar" src="../../../images/avatar.png">
+                        </span>
+                    </span>
+                    <span class="head-right">
+                        <span class="my-name font-size-large" [innerHtml]='accountInfo.nickname'>我的名字</span>
+                        <!--<span class="my-name font-size-large" >sdfsdfsdfsdfsdf我的名字</span>-->
+                        <br>
+                        <span class="display-state">
+                            <a class="icon-href icon-size" routerLink="/my/person">
+                               <span class="icon-group  icon-md">
+                                   <span class="icon icon-profile-mmm"></span>
+                                    <!--<span class="icon-tip font-size-xsmall"></span>-->
+                               </span>
+                            </a>
+                            <a class="icon-href icon-size icon-left" routerLink="/my/bank">
+                               <span class="icon-group  icon-md">
+                                   <span class="icon icon-profile-card"></span>
+                                   <span class="icon-tip font-size-xsmall" *ngIf="!bankList.id">立即绑定银行卡</span>
+                               </span>
+                            </a>
+                        </span>
+                    </span>
+                </span>
+            </td>
+            <td class="two-td">
+                <span class="two">
+                    <span class="content-center-size two-inner">
+                        <span class="icon-group icon-lg  spec  font-size-small">
+                            <span class="icon icon-my-jiaxi"></span>
+                            <span class="icon-txt text-info">
+                                <i class="text-info font-size-large">积分</i><i></i>
+                            </span><br>
+                            <span class="icon-txt">
+                                <i class="text-danger font-size-xlarge" [innerHtml]="accountInfo.integral">0.00</i><i class="font-size-xsmall text-success"></i>
+                            </span>
+                        </span>
+                        <div class="btn-group btns btns-ticket">
+                            <a class="btn btn-sm btn-warning font-size-md border-radius-all" (click)="sign()"  [innerHtml]="accountInfo.isSign == 1 ? '已签到' : '签到'">已签到</a><br><br>
+                            <!--<a class="btn btn-sm btn-warning font-size-md withdraw-btn border-radius-all" routerLink="/my/coupon">兑换</a>-->
+                        </div>
+                          <tip></tip>
+                     </span>
+
+                </span>
+            </td>
+            <td class="three-td">
+                <span class="three">
+                    <span class="content-right-size three-inner">
+                         <span class="icon-group icon-lg  spec  font-size-small">
+                             <span class="icon icon-my-jiaxi"></span>
+                             <span class="icon-txt text-info">
+                                 <i class="text-info font-size-large">可用余额</i><i></i>
+                             </span><br>
+                             <span class="icon-txt">
+                                 <i class="text-warning font-size-xlarge" [innerHtml]="accountInfo.money | mathFloor">1230</i>
+                                 <i class="font-size-xsmall text-warning" [innerHtml]="'.'+(accountInfo.money | fractional:2)">.00</i>
+                                 <i class="font-size-large text-success">元</i>
+                             </span>
+                         </span>
+                         <div class="btn-group btns btns-ticket">
+                            <a class="btn btn-sm btn-warning font-size-md border-radius-all" routerLink="/my/recharge">充值</a><br><br>
+                            <a class="btn btn-sm btn-warning font-size-md withdraw-btn border-radius-all" routerLink="/my/withdraw">提现</a>
+                         </div>
+                    </span>
+
+                </span>
+            </td>
+            <td class="four-td">
+                <span class="four">
+                    <span class="content-right-size four-inner">
+                         <span class="icon-group icon-lg  spec  font-size-small">
+                             <span class="icon icon-my-jiaxi"></span>
+                             <span class="icon-txt text-info">
+                                 <i class="text-info font-size-large">冻结金额</i><i></i>
+                             </span><br>
+                             <span class="icon-txt">
+                                 <i class="text-warning font-size-xlarge" [innerHtml]="accountInfo.capitalFreeze | mathFloor">1230</i>
+                                 <i class="font-size-xsmall text-warning" [innerHtml]="'.'+(accountInfo.capitalFreeze | fractional:2)">.00</i>
+                                 <i class="font-size-large text-success">元</i>
+                             </span>
+                         </span>
+                    </span>
+
+                </span>
+            </td>
+        </tr>
+    </table>
+    <table class="second-outside">
+        <tr>
+            <td class="text-left">
+                <span class="second-left font-size-large" >现金券</span>
+                <!--[innerHtml]="accountInfo.cashTicketsCount"-->
+                <span class="second-center font-size-xlarge" [innerHtml]="accountInfo.cashTicketsCount">6</span>
+                <span class="second-right font-size-xlarge">张</span>
+            </td>
+            <td class="text-center">
+                <span class="second-left font-size-large">提现券</span>
+                <span class="second-center font-size-xlarge" [innerHtml]="accountInfo.withdrawTicketsCount">6</span>
+                <span class="second-right font-size-xlarge">张</span>
+
+
+            </td>
+            <td class="text-right">
+                <span class="second-left font-size-large">加息券</span>
+                <span class="second-center font-size-xlarge" [innerHtml]="accountInfo.rateTicketsCount">6</span>
+                <span class="second-right font-size-xlarge">张</span>
+
+            </td>
+        </tr>
+    </table>
+    <!--<hr>-->
+    <div class="middle-bg"></div>
+    <div class="pay-title">
+        <span class="to-pay font-size-xlarge">回款日历</span>
+    </div>
+    <div class="bottom-box">
+
+        <div class="left">
+            <date-pick  #date></date-pick>
+        </div>
+        <!--<div class="right project-list"  [style.display]="date.selectDayInfo.recordList.length <= 0 ? 'none':'block'">-->
+            <!--<ul>-->
+                <!--<li *ngFor="let list of  date.selectDayInfo.recordList">-->
+                    <!--<h3 [innerHtml]="list.title">星企贷</h3>-->
+                    <!--<p>本金：<span  [innerHtml]="list.money">214545.00</span>元</p>-->
+                    <!--<p>利息：<span  [innerHtml]="list.interest">26546.00</span>元</p>-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    </div>
+    <div class="pay-title">
+        <span class="to-pay font-size-xlarge">账户收益</span>
+    </div>
+    <pie-chart-profit></pie-chart-profit>
+</div>
+
+
+
+
+

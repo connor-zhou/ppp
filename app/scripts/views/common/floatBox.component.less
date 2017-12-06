@@ -1,0 +1,42 @@
+@import "../../../less/variables.less";
+.floatBox{
+  position:fixed;
+  right:0;top:55%;
+  z-index:5000;
+  ul>li{
+    &:last-child>a{
+      border-radius:  0 0 0  5px ;
+    }
+    &:first-child>a{
+      border-top:1px solid #ddd;
+      border-radius: 5px 0 0 0 ;
+    }
+    >a{
+      background:#fff;
+    }
+    &.qrcode-img{
+      position:relative;
+      .qrcode-box{
+        display:none;
+        position:absolute;
+        right:100%;
+        top:-50%;
+        width:98px;height:98px;
+        background:url("@{img-path}/qrcode.jpg") no-repeat center center;
+      }
+      &:hover{
+         .qrcode-box{
+           display:inline-block;
+         }
+       }
+
+    }
+  }
+  ul>li>a{
+    display:inline-block;
+    padding:8.5px 6px;
+    border:1px solid #ddd;
+    border-top:0;
+    border-right:0;
+  }
+}

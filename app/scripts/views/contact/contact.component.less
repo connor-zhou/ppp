@@ -1,0 +1,72 @@
+@import "../../../less/variables.less";
+
+.contact{
+  background:#eee;
+  padding-top:30px;
+  padding-bottom:30px;
+  .container{
+    min-width:1200px;
+    overflow: hidden;
+  }
+  .nav-left{
+    width:18%;
+    float:left;
+    margin:0;
+    border:1px solid @brand-success;
+    background:#fff;
+    padding-top:30px;
+    padding-bottom:30px;
+
+  }
+  .content-right{
+    float:left;
+    width:80%;
+    margin:0;
+    margin-left:2%;
+    padding:30px 30px 40px;
+    background:#fff;
+    border:1px solid @brand-success;
+    .my-sub-title{
+      margin-top:0;
+    }
+    .tab{
+      margin-top:0;
+      margin-bottom:0;
+    }
+    .status {
+      overflow:hidden;
+      > li {
+        float:left;
+        margin:0;
+        &:nth-child(odd){
+          width:51%;
+          padding-right:1%;
+        }
+        &:nth-child(even){
+          width:49%;
+        }
+        .media {
+          background: #fff;
+          padding:0;
+          margin:2rem 0 ;
+        }
+        .media .media-left {
+          > img {
+            width: 145px;
+            height: 145px;
+            padding: 2px;
+            border: 1px solid @brand-success;
+          }
+        }
+        .media .media-body {
+          > .date {
+            width: 5rem;
+            padding: 6px 3px;
+            border: 1px solid @brand-success;
+            margin-bottom: 15px;
+          }
+        }
+      }
+    }
+  }
+}

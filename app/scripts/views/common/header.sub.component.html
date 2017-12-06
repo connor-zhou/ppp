@@ -1,0 +1,6 @@
+<div class="login-header" *ngIf="!hideSubNavbar">
+  <div class="container">
+      <a class="logo" routerLink="/index"><img style="max-width:320px;" src="../../../images/logo.jpg" alt="logo" title="logo"></a>
+      <h4 *ngIf="showSubNavbarTip" class="register-tip font-size-large text-primary"><span  [innerHtml]="showSubNavbarTip != 'register' ? '没有账号？':'已有账号？'">没有账号？ </span><a class="text-warning" [routerLink]="showSubNavbarTip == 'register' ? '/sign/login': '/sign/register'" [innerHtml]="showSubNavbarTip == 'register' ? '去登录':'免费注册'">免费注册</a></h4>
+  </div>
+</div>

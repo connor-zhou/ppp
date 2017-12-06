@@ -1,0 +1,168 @@
+<div class="shop-home-banner ">
+    <img src="../../../images/shop/star-shop-banner.jpg" alt="">
+</div>
+<div class="box starhome-content">
+    <div class="starhome-left">
+        <table class="third-outside">
+            <tr>
+                <td class="one-td">
+                <span class="third-outside-content one">
+                    <span class="portrait">
+                        <span class="image-container">
+                            <img  *ngIf="accountInfo.avatar && isLogin" [src]="accountInfo.avatar" alt="I'm Broken :(">
+                            <img  *ngIf="!accountInfo.avatar && isLogin" src="../../../images/avatar.png">
+                            <img  *ngIf="!isLogin" src="../../../images/avatar.png">
+                        </span>
+                    </span>
+                    <span class="head-right">
+                        <span class="my-name font-size-large" *ngIf="isLogin" [innerHtml]='accountInfo.nickname'>我的名字</span>
+                        <span class="my-name font-size-large" *ngIf="!isLogin">你好！</span>
+                        <br>
+                        <span class="display-state">
+                            <span class="star-left">可用星币</span>
+                            <span class="text-danger " *ngIf="isLogin">{{accountInfo.integral}}</span>
+                            <a class="btn-warning font-size-md border-radius-all btn-sign" *ngIf="!isLogin" routerLink="/sign/login">登录查看</a>
+                        </span>
+                    </span>
+                </span>
+                </td>
+                <td class="two-td">
+                <span class="two">
+                    <a class="img-box hover" routerLink="/shop/detail/0" >
+                        <span class="icon-shop icon-shop-detail"></span>
+                        <!--<img   src="../../../images/avatar.png">-->
+                        <br>
+                        <span>兑换记录</span>
+                     </a>
+                    <span style="width: 50px;display: inline-block"></span>
+                    <a class="img-box hover" routerLink="/shop/detail/1">
+                        <span class="icon-shop icon-shop-change-detail"></span>
+                        <!--<img   src="../../../images/avatar.png">-->
+                        <br>
+                        <span>星币明细</span>
+                     </a>
+                </span>
+                </td>
+                <td class="three-td">
+                <span class="three">
+                    <span class="img-box">
+                        <span class="shop-sign icon-shop-sign"></span>
+                        <!--<img   src="../../../images/avatar.png">-->
+                        <br>
+                        <a class="btn btn-sm btn-warning font-size-md border-radius-all" (click)="sign()"  [innerHtml]="accountInfo.isSign == 1 ? '已签到' : '签到'">已签到</a>
+                     </span>
+                    <tip></tip>
+                </span>
+
+                </td>
+            </tr>
+        </table>
+
+        <div class="shop-coupon">
+            <div class="pay-title">
+                <span class="to-pay font-size-xlarge">优惠券</span>
+            </div>
+            <div class="shop-coupon-content" >
+                <ul class="coupon-show" >
+                    <li *ngFor="let list of couponLists">
+                        <a class="hover" [routerLink]="['/shop/coupon/'+list.id]">
+                            <div class="shop-ticket-box">
+                                <div class="top-box icon-shop-cash " [ngClass]="{'icon-shop-cash': list.type == 0, 'icon-shop-rate': list.type == 1, 'icon-shop-withdraw': list.type == 2}">
+                                    <span class="word-left" [innerHtml]="list.value">
+                                        10
+                                    </span>
+                                    <span class="word-right">
+                                        <span class="right-top-word" [innerHtml]="list.type == 1 ? '%': '￥' "></span><br>
+                                        <span class="right-bottom-word" [innerHtml]="list.type == 0 ? '现金券': list.type == 1 ? '加息券' : '提现券' ">现金券</span>
+                                    </span>
+                                </div>
+                                <div class="bottom-box-color cash-bg" [ngClass]="{'cash-bg': list.type == 0, 'rate-bg': list.type == 1, 'withdraw-bg': list.type == 2}">
+                                    <p class="line-word">
+                                        <span *ngIf="list.type == 0">投资满{{list.money}}元抵{{list.value}}元</span>
+                                        <span *ngIf="list.type == 1">加息上限{{list.money}}元</span>
+                                        <span *ngIf="list.type == 2">可抵用提现手续费{{list.value}}元</span>
+                                        <!--<span >投资券可用投资额</span>-->
+                                    </p>
+                                </div>
+                                <div class="bottom-box">
+                                    <p class="line-word" >
+                                        <span *ngIf="list.type == 0">{{list.value}}元&nbsp;&nbsp;现金券</span>
+                                        <span *ngIf="list.type == 1">{{list.value}}%&nbsp;&nbsp;加息券</span>
+                                        <span *ngIf="list.type == 2">{{list.value}}元&nbsp;&nbsp;提现券</span>
+                                    </p>
+                                    <p class="line-number">
+                                        <span >{{list.price}}星币</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <div class="page-top">
+                    <p class="text-center font-size-md text-success" *ngIf="totalPage <= 0">
+                        <span class="icon-my-nodata"></span><br>
+                        暂无数据
+                    </p>
+                    <pager *ngIf="totalPage > 0"  [refresh]="queryParam.pageNumber == 1 ? true:false"  [totalPage]="totalPage" (changePage)="selectPage($event)" ></pager>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="starhome-right">
+        <div class="question">
+            <div class="pay-title">
+                <span class="to-pay font-size-xlarge">常见问题</span>
+                <a class="more" routerLink="/help/index">更多&gt;</a>
+            </div>
+            <div class="list">
+                <p>
+                    <a routerLink="/help/index">1.星币能做什么？</a></p>
+                <p>
+                    <a routerLink="/help/index">2.如何获取星币？</a></p>
+                <p>
+                    <a routerLink="/help/index">3.星币有效期多久？</a></p>
+            </div>
+            <!--<ul>-->
+                <!--<li >-->
+                    <!--&lt;!&ndash;1.星币能做什么？&ndash;&gt;-->
+                    <!--<a class="more" routerLink="/help/index">1.星币能做什么？</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--&lt;!&ndash;2.如何获取星币？&ndash;&gt;-->
+                    <!--<a class="more" routerLink="/help/index">2.如何获取星币？</a>-->
+
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a class="more" routerLink="/help/index">3.星币有效期多久？</a>-->
+
+                <!--</li>-->
+            <!--</ul>-->
+        </div>
+        <div class="record">
+            <div class="pay-title">
+                <span class="to-pay font-size-xlarge">参与记录</span>
+            </div>
+            <ul >
+                <li *ngFor="let change of exchangeRecords">
+                    <div class="have-exchange">
+                        <div class="content-l fl">
+                            <p class="" [innerHtml]="change.name">名字</p>
+                            <p class="">兑换了</p>
+                            <p>
+                                <span *ngIf="change.type == 0">{{change.value}}元&nbsp;&nbsp;现金券</span>
+                                <span *ngIf="change.type == 1">{{change.value}}%&nbsp;&nbsp;加息券</span>
+                                <span *ngIf="change.type == 2">{{change.value}}元&nbsp;&nbsp;提现券</span>
+                                *{{change.count}}</p>
+                        </div>
+                        <div class="content-r fr">
+                            <img [src]="change.profileWeb" alt="">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+

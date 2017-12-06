@@ -1,0 +1,246 @@
+<div class="mark-box" >
+    <div class="left-box">
+        <p class="new-mark-word">新手标</p>
+        <p class="new-day">按日计息</p>
+        <p class="new-month new-day">按月付息</p>
+        <p class="new-pay-day new-day">到期还款</p>
+        <div class="top-angle"></div>
+    </div>
+    <div class="right-box" *ngIf="novice == null">
+        <!--<div class="disinvest" ><span>暂无项目</span></div>-->
+        <div class="no-project-content">暂无项目</div>
+    </div>
+    <div class="right-box" *ngIf="novice">
+        <div class="top-line">
+            <div class="top-angle"></div>
+        </div>
+        <div class="box-content">
+            <div class="one-content float-left">
+                <div class="one-title">
+                    <p class="one-title-con">
+                        <span class="title-left" [innerHtml]="novice.title">新手体验包（限投10000元）</span>
+                        <span class="small-word small-word-left-index">首次投资新用户专享</span>
+                    </p>
+                </div>
+                <div class="one-center">
+                    <div class="center-son width-left-one">
+                        <div class="cent-top font-color-y">
+                            <span class="top-font" [innerHtml]="novice.revenue">12</span>
+                            <span class="top-font-c">%</span>
+                        </div>
+                        <p class="supply-word">过去三个月平均</p>
+                        <p class="supply-word">历史年化收益率</p>
+                    </div>
+                    <div class="center-son width-left-two">
+                        <div class="cent-top word-center">
+                            <span class="top-font" [innerHtml]="novice.duration">3</span>
+                            <span class="top-font-c">个月</span>
+                        </div>
+                        <p class="word-center supply-word">项目期限</p>
+                    </div>
+
+                    <div class="center-son width-left-three" >
+                        <div class="cent-top word-center" *ngIf="novice.money >= 100000000">
+                            <span class="top-font">{{novice.money / 100000000}}</span>
+                            <span class="top-font-c">亿元</span>
+                        </div>
+                        <div class="cent-top word-center" *ngIf="novice.money >= 10000 && novice.money < 100000000 ">
+                            <span class="top-font">{{novice.money / 10000}}</span>
+                            <span class="top-font-c">万元</span>
+                        </div>
+                        <div class="cent-top word-center" *ngIf="novice.money >=0 && novice.money < 10000">
+                            <span class="top-font">{{novice.money}}</span>
+                            <span class="top-font-c">元</span>
+                        </div>
+                        <p class="word-center supply-word">总金额</p>
+                    </div>
+                    <div class="center-son width-progress ">
+                        <div class="cent-top to-bottom progress-height">
+                            <div class="progress process-line">
+                                <!--<div class="progress-bar process-line-bg" role="progressbar" aria-valuenow="90"-->
+                                     <!--aria-valuemin="0" aria-valuemax="100" [style.width]="novice.schedule + '%'"></div>-->
+                                <div  class="progress-bar process-line-bg" role="progressbar" aria-valuenow="90"
+                                     aria-valuemin="0" aria-valuemax="100" [style.width]="novice.schedule + '%'" *ngIf="novice.projectStatus == 1"></div>
+                                <div  class="progress-bar process-line-bg" role="progressbar" aria-valuenow="90"
+                                     aria-valuemin="0" aria-valuemax="100" [style.width]="100 + '%'" *ngIf="novice.projectStatus == 2 || novice.projectStatus == 3"></div>
+                            </div>
+                            <!--<p class="word-right font-color-y">{{novice.schedule +'%'}}</p>-->
+                            <p  class="word-right font-color-y" *ngIf="novice.projectStatus == 1">{{novice.schedule +'%'}}</p>
+                            <p  class="word-right font-color-y" *ngIf="novice.projectStatus == 2 || novice.projectStatus == 3">{{100 +'%'}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="line-center float-left"></div>
+
+            <div class="two-content float-left">
+                <div class="invest-con-to">
+                    <div class="word-center">
+                        <a class="to-invest word-center" *ngIf="novice.projectStatus == 1" [routerLink]="['/invest/detail/'+novice.id,{type:1}]">立即投资</a>
+                        <a class="to-invest word-center  fail" *ngIf="novice.projectStatus == 2 || novice.projectStatus == 3" [routerLink]="['/invest/detail/'+novice.id,{type:1}]">已满标</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div class="mark-box">-->
+    <!--<div class="left-box">-->
+        <!--<p class="new-mark-word">新手标</p>-->
+        <!--<p class="new-day">按日计息</p>-->
+        <!--<p class="new-month new-day">按月付息</p>-->
+        <!--<p class="new-pay-day new-day">到期还款</p>-->
+        <!--<div class="top-angle"></div>-->
+    <!--</div>-->
+    <!--<div class="right-box">-->
+        <!--<div class="top-line">-->
+            <!--<div class="top-angle"></div>-->
+        <!--</div>-->
+        <!--<div class="box-content">-->
+            <!--<div class="one-content float-left">-->
+                <!--<div class="one-title">-->
+                    <!--<p class="one-title-con">-->
+                        <!--<span class="title-left">新手体验包（限投10000元）</span>-->
+                        <!--<span class="small-word">首次投资新用户专享</span>-->
+                    <!--</p>-->
+                <!--</div>-->
+                <!--<div class="one-center">-->
+                    <!--<div class="center-son width-left">-->
+                        <!--<div class="cent-top">-->
+                            <!--<div class="cent-top-son font-color-y">-->
+                                <!--<span class="top-font">12</span>-->
+                                <!--<span class="top-font-c">%</span>-->
+
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<p >年化收益</p>-->
+                    <!--</div>-->
+                    <!--<div class="center-son width-left">-->
+                        <!--<div class="cent-top word-center">-->
+                            <!--<div class="cent-top-son ">-->
+                                <!--<span class="title-left">3</span>-->
+                                <!--<span class="small-word">个月</span>-->
+
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<p class="word-center supply-word">项目期限</p>-->
+                    <!--</div>-->
+                    <!--<div class="center-son width-left">-->
+                        <!--<div class="cent-top word-center">-->
+                            <!--<div class="cent-top-son ">-->
+                                <!--<span class="title-left">100</span>-->
+                                <!--<span class="small-word">万元</span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<p class="word-center supply-word">总金额</p>-->
+                    <!--</div>-->
+                    <!--<div class="center-son width-progress">-->
+                        <!--<div class="cent-top to-bottom">-->
+                            <!--<div class="cent-top-son">-->
+                                <!--<div class="progress process-line">-->
+                                    <!--<div class="progress-bar process-line-bg" role="progressbar" aria-valuenow="90"-->
+                                    <!--aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<p class="word-right font-color-y">90%</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="line-center float-left">-->
+
+            <!--</div>-->
+            <!--<div class="two-content float-left">-->
+                <!--<div class="invest-con-to">-->
+                    <!--<div class="word-center">-->
+                        <!--<a class="to-invest word-center">立即投资</a>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div class="mark-box">-->
+    <!--<div class="left-box">-->
+        <!--<p class="new-mark-word">新手标</p>-->
+        <!--<p class="new-day">按日计息</p>-->
+        <!--<p class="new-month new-day">按月付息</p>-->
+        <!--<p class="new-pay-day new-day">到期还款</p>-->
+    <!--</div>-->
+    <!--<div class="right-box">-->
+        <!--<div class="top-line">-->
+            <!--<div class="top-angle"></div>-->
+        <!--</div>-->
+        <!--<div class="right-content">-->
+            <!--<div class="container new-hand-right">-->
+                <!--<span class="line-left"></span>-->
+                <!--<p class="new-hand-title word-bottom">-->
+                    <!--<span>新手体验包（限投10000元）</span>-->
+                    <!--<span class="small-word">首次投资新用户专享</span>-->
+                <!--</p>-->
+                <!--<div class="row">-->
+                    <!--<div class="col-md-9">-->
+                        <!--<div class="row">-->
+                            <!--<div class="col-md-3 ">-->
+                                <!--<div class="year-top word-bottom color-danger">-->
+                                    <!--12-->
+                                    <!--<span class="small-word">%</span>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="col-md-3">-->
+                                <!--<div class="year-top word-bottom">-->
+                                    <!--3-->
+                                    <!--<span class="small-word">个月</span>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="col-md-3">-->
+                                <!--<div class="year-top word-bottom">-->
+                                    <!--100-->
+                                    <!--<span class="small-word">万元</span>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="col-md-3 progress process-line">-->
+                                <!--<div class="progress-bar process-line-bg" role="progressbar" aria-valuenow="90"-->
+                                     <!--aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="row">-->
+                            <!--<div class="col-md-3">-->
+                                <!--<p class="year-bottom word-bottom">年化收益</p>-->
+                            <!--</div>-->
+                            <!--<div class="col-md-3">-->
+                                <!--<p class="year-bottom word-bottom">年化收益</p>-->
+                            <!--</div>-->
+                            <!--<div class="col-md-3">-->
+                                <!--<p class="year-bottom word-bottom">年化收益</p>-->
+                            <!--</div>-->
+                            <!--<div class="col-md-3">-->
+                                <!--<div class="year-bottom word-right year-percent word-bottom">90%</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="col-md-3 word-center">-->
+                        <!--<a class="to-invest word-bottom word-center">立即投资</a>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->

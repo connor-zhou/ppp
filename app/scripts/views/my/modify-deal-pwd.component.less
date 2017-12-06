@@ -1,0 +1,36 @@
+@import "../../../less/variables.less";
+
+.modifyLoginPwd{
+  min-width:970px;
+  border:1px solid @brand-success;
+  padding:0px 25px 30px;
+  .content{
+    margin:2.5rem auto;
+    dd{
+      margin:15px auto;
+    }
+    tr{
+      border:0;
+      &:last-child > td{
+        padding-top:2rem;
+      }
+    }
+    tr> td{
+      padding:5px;
+      .pwd-submit{
+        width:8rem;
+      }
+
+      input{
+        width:20rem;
+        line-height:2.5rem;
+        padding-left:10px;
+        border:1px solid @brand-success;
+      }
+      &:first-child{
+        text-align:right;
+        color:@text-success;
+      }
+    }
+  }
+}

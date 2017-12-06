@@ -1,0 +1,558 @@
+@import "../variables.less";
+
+.icon-group { 
+  display: inline-block;
+  text-align: left;
+  position:relative;
+  vertical-align: middle;
+  .icon{
+    background-repeat: no-repeat;
+    display:inline-block;
+    position:absolute;
+    top:0;left:0;
+  }
+  &:hover{
+    .icon-tip{
+      display:inline;
+      z-index:300;
+    }
+  }
+}
+
+
+.icon-txt{
+  padding-left:7px;
+  font-style: normal;
+}
+.icon-sm{
+  padding-left: 24px;
+  height:24px;
+  .icon{
+    width: 24px;
+    height:24px;
+  }
+  .icon-txt{
+    line-height: 24px;
+  }
+}
+.icon-md{
+  padding-left: 38px;
+  height:38px;
+  .icon{
+    width: 38px;
+    height:38px;
+  }
+  .icon-txt{
+    line-height: 38px;
+  }
+  .icon-tip{
+    display:none;
+    position:absolute;
+    top:43px;
+    left:0;
+    white-space: nowrap;
+    background:#FEF7F1;
+    padding:5px 10px;
+    border:1px solid @brand-success;
+    color:@text-muted;
+    &:before{
+      display:inline-block;
+      content:'';
+      position:absolute;
+      top:-11px;left:10px;
+      border:5px solid transparent;
+      border-bottom:5px solid @brand-success;
+    }
+      &:after{
+        display:inline-block;
+        content:'';
+        position:absolute;
+        top:-10px;left:10px;
+        border:5px solid transparent;
+        border-bottom:5px solid #FFF6F1;
+    }
+  }
+}
+.icon-lg{
+  padding-left:54px;
+  height:54px;
+  .icon{
+    width: 54px;
+    height:54px;
+  }
+  .icon-txt{
+    line-height: 54px;
+  }
+
+}
+.icon-x-lg{
+  padding-left: 90px;
+  height:90px;
+  .icon{
+    width: 90px;
+    height:90px;
+  }
+  .icon-txt{
+    line-height: 90px;
+  }
+}
+.icon-xx-lg{
+  padding-left: 114px;
+  height:114px;
+  .icon{
+    width: 114px;
+    height:114px;
+  }
+  .icon-txt{
+    line-height: 114px;
+  }
+}
+
+.spec.icon-xx-lg  .icon-txt{  line-height: 57px;}
+.spec.icon-x-lg  .icon-txt{  line-height: 45px;}
+.spec.icon-lg  .icon-txt{  line-height: 27px;}
+.spec.icon-md  .icon-txt{  line-height: 19px; }
+.spec.icon--sm  .icon-txt{  line-height: 12px; }
+
+//icon color
+.icon-default{
+  +.icon-txt{
+    color: @icon-default-color;
+  }
+}
+.icon-primary{
+  +.icon-txt{
+    color: @icon-primary-color;
+  }
+  
+}
+.icon-warning{
+  +.icon-txt{
+    color: @icon-warning-color;
+  }
+  
+}
+
+
+// 图标集
+//------------------------------------------首页等图标------------------------------------------------
+
+.icon-index-phone{background: url("@{img-path}/icon/icon-index.png@{img-version}") no-repeat -96px -23px ;}
+.icon-index-phone:hover{background: url("@{img-path}/icon/icon-index.png@{img-version}") no-repeat -96px -61px ;}
+.icon-index-wechat{background: url("@{img-path}/icon/icon-index.png@{img-version}") no-repeat -141px -23px ;}
+.icon-index-wechat:hover{background: url("@{img-path}/icon/icon-index.png@{img-version}") no-repeat -141px -61px ;}
+.icon-index-sina{background: url("@{img-path}/icon/icon-index.png@{img-version}") no-repeat -185px -23px ;}
+.icon-index-sina:hover{background: url("@{img-path}/icon/icon-index.png@{img-version}") no-repeat -185px -61px ;}
+.icon-index-dial{background: url("@{img-path}/icon/icon-index.png@{img-version}") no-repeat -19px -23px ;}
+.icon-index-phone-big{background: url("@{img-path}/icon/icon-index.png@{img-version}") no-repeat -343px -285px ;}
+.icon-sign-no{background: url("@{img-path}/icon/icon-index.png@{img-version}") no-repeat -333px -377px ;}
+.icon-sign-yes{background: url("@{img-path}/icon/icon-index.png@{img-version}") no-repeat -388px -377px ;}
+
+.icon-float-kefu{background: url("@{img-path}/icon/icon-index.png@{img-version}") no-repeat -734px -286px ;}
+.icon-float-download{background: url("@{img-path}/icon/icon-index.png@{img-version}") no-repeat -734px -342px ;}
+.icon-float-wechat{background: url("@{img-path}/icon/icon-index.png@{img-version}") no-repeat -734px -396px ;}
+.icon-float-arrowup{background: url("@{img-path}/icon/icon-index.png@{img-version}") no-repeat -734px -450px ;}
+//--safety
+//.icon-safety-pai{background: url("@{img-path}/icon/icon-index.png@{img-version}") no-repeat -27px -146px ;}
+//.icon-safety-diamond{background: url("@{img-path}/icon/icon-index.png@{img-version}") no-repeat -238px -146px ;}
+//.icon-safety-pig{background: url("@{img-path}/icon/icon-index.png@{img-version}") no-repeat -449px -146px ;}
+//.icon-safety-arrow{background: url("@{img-path}/icon/icon-index.png@{img-version}") no-repeat -660px -146px ;}
+
+.icon-safety-bank{background: url("@{img-path}/icon/icon-safety-bank.png@{img-version}") no-repeat center center ;}
+.icon-safety-insurance{background: url("@{img-path}/icon/icon-safety-insurance.png@{img-version}") no-repeat center center ;}
+.icon-safety-fouryear{background: url("@{img-path}/icon/icon-safety-fouryear.png@{img-version}") no-repeat center center ;}
+.icon-safey-effiency{background: url("@{img-path}/icon/icon-safey-effiency.png@{img-version}") no-repeat center center ;}
+//--business
+.icon-business-total{background: url("@{img-path}/icon/icon-index.png@{img-version}") no-repeat -738px -37px ;}
+.icon-business-revenue{background: url("@{img-path}/icon/icon-index.png@{img-version}") no-repeat -638px -38px ;}
+.icon-buisness-days{background: url("@{img-path}/icon/icon-index.png@{img-version}") no-repeat -687px -37px ;}
+
+//--titles
+.icon-title-novice{background: url("@{img-path}/icon/icon-index.png@{img-version}") no-repeat -71px -293px ;}
+.icon-title-recommend{background: url("@{img-path}/icon/icon-index.png@{img-version}") no-repeat -126px -293px ;}
+.icon-title-media{background: url("@{img-path}/icon/icon-index.png@{img-version}") no-repeat -179px -293px ;}
+.icon-title-industry{background: url("@{img-path}/icon/icon-index.png@{img-version}") no-repeat -234px -293px ;}
+.icon-title-notice{background: url("@{img-path}/icon/icon-index.png@{img-version}") no-repeat -23px -293px ;}
+
+//-------------------------------------------登陆注册页-----------------------------------------------
+
+//--sign-reg
+.icon-status-success{background: url("@{img-path}/icon/icon-login-reg.png@{img-version}") no-repeat -11px -4px ;}
+.icon-login-user{background: url("@{img-path}/icon/icon-login-reg.png@{img-version}") no-repeat -12px -129px ;}
+.icon-login-pwd{background: url("@{img-path}/icon/icon-login-reg.png@{img-version}") no-repeat -12px -196px ;}
+.icon-login-mmm{background: url("@{img-path}/icon/icon-login-reg.png@{img-version}") no-repeat -12px -257px ;}
+.icon-login-home{background: url("@{img-path}/icon/icon-login-reg.png@{img-version}") no-repeat -54px -258px ;}
+.icon-login-mark{background: url("@{img-path}/icon/icon-login-reg.png@{img-version}") no-repeat -57px -125px ;}
+
+//--------------------------------------------我的账户-------------------------------------------------
+
+//------------------- external-links ----
+.icon-link-wechat{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -88px -266px  !important;}
+.icon-link-qq{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -174px -265px !important;}
+.icon-link-sina{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -262px -266px !important;}
+.icon-link-qqzone{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -352px -266px  !important;}
+.icon-link-share{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -438px -266px  !important;}
+
+.icon-global-select{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -15px -294px}
+
+//-------------------- zonglan ----------
+.icon-profile-mmm{ background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -15px -14px ;}
+.icon-profile-open-mmm{ background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -16px -56px ;}
+.icon-profile-card{ background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -86px -14px ;}
+.icon-profile-open-card{ background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -86px -56px ;}
+.icon-profile-email{ background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -155px -14px ;}
+.icon-profile-open-email{ background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -155px -56px ;}
+
+.icon-my-overview{ background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -16px -116px ; }
+.icon-my-overview:active{ background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -48px -116px}
+.icon-my-fund{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -16px -152px ;}
+.icon-my-fund:active{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -48px -152px;}
+.icon-my-invest{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -16px -190px ;}
+.icon-my-invest:active{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -48px -190px ;}
+.icon-my-recharge{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -16px -227px ;}
+.icon-my-recharge:active{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -48px -227px ;}
+.icon-my-withdraw{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -16px -264px ;}
+.icon-my-withdraw:active{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -48px -264px ;}
+.icon-my-safetySetting{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -16px -351px ;}
+.icon-my-safetySetting:active{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -48px -351px ;}
+.icon-my-coupon{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -16px -389px ;}
+.icon-my-coupon:active{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -48px -389px ;}
+.icon-my-invitation{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -16px -427px ;}
+.icon-my-invitation:active{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -48px -427px ;}
+//.icon-my-msgCenter{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -16px -463px ;}
+//.icon-my-msgCenter:active{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -48px -463px ;}
+.icon-my-mmm{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -191px -463px ;}
+.icon-my-mmm:active{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -216px -463px ;}
+
+.icon-my-assets{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -218px -10px ;}
+.icon-my-rest{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -289px -10px ;}
+.icon-my-money-will{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -359px -10px ;}
+.icon-my-interest-will{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -429px -10px ;}
+.icon-my-interest-yet{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -499px -10px ;}
+.icon-my-xingbi{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -218px -70px ;}
+.icon-my-daijin{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -289px -70px ;}
+.icon-my-jiaxi{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -359px -70px ;}
+.icon-my-add{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -108px -461px ;}
+.icon-my-garbage{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -80px -462px ;}
+
+.icon-my-signIn{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -76px -114px ;}
+.icon-msgCenter-unselect{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -424px -113px ;}
+.icon-msgCenter-select{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -439px -113px ;}
+.icon-msgCenter-read-mailbox{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -423px -86px ;}
+.icon-msgCenter-unread-mailbox{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -451px -86px ;}
+
+.icon-big-mark{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -81px -353px ;}
+.icon-big-success{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -184px -353px ;}
+.icon-big-fail{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -288px -353px ;}
+
+//--------------- safetySetting --------------
+
+.icon-ss-error-small{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -138px -461px ;}
+.icon-ss-right-small{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -164px -463px ;}
+
+//-------------------- recharge --------------
+
+.icon-recharge-step01{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -468px -435px ;}
+.icon-recharge-step02{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -533px -435px ;}
+
+//------------------  invitation --------------
+
+.icon-invitation-step03{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -251px -454px ;}
+.icon-invitation-step02{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -251px -499px ;}
+.icon-invitation-step01{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -13px -499px ;}
+
+//-------------- project -----------------------
+.icon-project-tip{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -420px -144px ;}
+.icon-source-mobile{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -563px -14px ;}
+.icon-source-pc{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -562px -48px ;}
+.icon-invest-mark{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -555px -85px ;}
+.icon-invest-calculator{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -162px -114px ;}
+.icon-project-2{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -422px -143px ;}
+.icon-project-3{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -514px -143px ;}
+.icon-project-4{background: url("@{img-path}/icon/icon-my.png@{img-version}") no-repeat -514px -231px ;}
+
+//----------------------- browser ---------------
+
+.icon-browser-google{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -15px -484px ;}
+.icon-browser-firefox{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -14px -536px ;}
+.icon-browser-ie{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -78px -536px ;}
+.icon-browser-opera{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -146px -536px ;}
+.icon-browser-safari{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -210px -536px ;}
+.icon-browser-sougou{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -274px -536px ;}
+.icon-browser-360{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -338px -536px ;}
+.icon-browser-qq{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -403px -536px ;}
+.icon-browser-2345{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -469px -536px ;}
+.icon-browser-baidu{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -531px -536px ;}
+
+//------------------ help center -------------------
+
+.icon-help-qq{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -78px -133px ;}
+.icon-help-find-loginPwd{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -8px -348px ;}
+.icon-help-modify-loginPwd{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -83px -348px ;}
+.icon-help-modify-phone{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -158px -348px ;}
+.icon-help-modify-email{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -233px -348px ;}
+.icon-help-bind-card{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -308px -348px ;}
+.icon-help-find-mmmPwd{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -8px -417px ;}
+.icon-help-modify-mmmPwd{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -83px -417px ;}
+.icon-help-download-app{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -158px -417px ;}
+.icon-help-recharge{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -233px -417px ;}
+.icon-help-withdraw{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -308px -417px ;}
+
+//--------------- contact -------------------------
+
+.icon-contact-intro{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -13px -7px ;}
+.icon-contact-latest{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -13px -45px ;}
+.icon-contact-insurance{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -13px -82px ;}
+.icon-contact-media{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -13px -121px ;}
+.icon-contact-news{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -13px -158px ;}
+.icon-contact-us{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -13px -195px ;}
+.icon-contact-platform{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -13px -234px ;}
+.icon-contact-shareholders{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -72px -234px ;}
+
+//************* contact intro **********************
+
+.icon-advantage-01{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -75px -10px ;}
+.icon-advantage-02{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -142px -10px ;}
+.icon-advantage-03{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -208px -10px ;}
+.icon-advantage-04{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -276px -10px ;}
+.icon-advantage-05{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -342px -10px ;}
+
+//************* contact insurance *******************
+
+.icon-insurance-01{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -7px -264px ;}
+.icon-insurance-02{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -90px -264px ;}
+.icon-insurance-03{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -171px -264px ;}
+.icon-insurance-04{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -254px -264px ;}
+.icon-insurance-05{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -336px -264px ;}
+.icon-insurance-06{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -421px -264px ;}
+
+//************ contact us ****************************
+
+.icon-us-service{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -75px -66px ;}
+.icon-us-raise{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -143px -66px ;}
+.icon-us-address{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -208px -66px ;}
+
+//login
+.icon-sign-phone{background: url("@{img-path}/login/icon-login-phone.png@{img-version}") no-repeat left center;}
+.icon-sign-password{background: url("@{img-path}/login/icon-login-password.png@{img-version}") no-repeat left center;}
+.icon-sign-img-code{background: url("@{img-path}/login/icon-login-img-code.png@{img-version}") no-repeat left center;}
+.icon-sign-code{background: url("@{img-path}/login/icon-login-code.png@{img-version}") no-repeat left center;}
+.icon-sign-recommend{background: url("@{img-path}/login/icon-login-recommend.png@{img-version}") no-repeat left center;}
+.icon-sign-app{background: url("@{img-path}/login/icon-login-app.png@{img-version}") no-repeat left center;}
+.icon-sign-wechat{background: url("@{img-path}/login/icon-login-weixin.png@{img-version}") no-repeat left center;}
+
+
+.icon-login-bg{background: url("@{img-path}/login/login-base-map.png@{img-version}") no-repeat left center;}
+.icon-register-bg{background: url("@{img-path}/login/register-base-map.png@{img-version}") no-repeat left center;}
+
+
+
+//my
+//.icon-my-pointer-menu{background: url("@{img-path}/my/icon-my-pointer.png@{img-version}") no-repeat left center;}
+//.icon-my-total{background: url("@{img-path}/my/icon-my-total.png@{img-version}") no-repeat left center;}
+//.icon-my-total:hover{background: url("@{img-path}/my/icon-my-paying.png@{img-version}") no-repeat left center;}
+//.icon-my-money{background: url("@{img-path}/my/icon-my-money.png@{img-version}") no-repeat left center;}
+//.icon-my-money:hover{background: url("@{img-path}/my/icon-my-paying.png@{img-version}") no-repeat left center;}
+//.icon-my-setting{background: url("@{img-path}/my/icon-my-setting.png@{img-version}") no-repeat left center;}
+//.icon-my-setting:hover{background: url("@{img-path}/my/icon-my-paying.png@{img-version}") no-repeat left center;}
+
+.icon-my-paying{background: url("@{img-path}/my/icon-my-paying.png@{img-version}") no-repeat left center;}
+
+.my-menu{
+  .single{
+    .icon-my-total{background: url("@{img-path}/my/icon-my-total.png@{img-version}") no-repeat left center;}
+    .icon-my-menu-coupon{background: url("@{img-path}/my/icon-my-coupon.png@{img-version}") no-repeat left center;}
+    .icon-my-msgCenter{background: url("@{img-path}/my/icon-my-message@2x.png@{img-version}") no-repeat -16px -463px ;}
+
+    &:hover{
+      .icon-my-total{background: url("@{img-path}/my/icon-my-total-active.png@{img-version}") no-repeat left center;}
+      .icon-my-menu-coupon{background: url("@{img-path}/my/icon-my-coupon-active.png@{img-version}") no-repeat left center;}
+      .icon-my-msgCenter{background: url("@{img-path}/my/icon-my-message-white@2x.png@{img-version}") no-repeat -48px -463px ;}
+    }
+  }
+  .many{
+    .icon-my-pointer-menu{background: url("@{img-path}/my/icon-my-pointer.png@{img-version}") no-repeat left center;}
+    .icon-my-money{background: url("@{img-path}/my/icon-my-money.png@{img-version}") no-repeat left center;}
+    .icon-my-setting{background: url("@{img-path}/my/icon-my-setting.png@{img-version}") no-repeat left center;}
+    &:hover{
+      .icon-my-pointer-menu{background: url("@{img-path}/my/icon-my-arrows.png@{img-version}") no-repeat left center;}
+      .icon-my-money{background: url("@{img-path}/my/icon-my-money-active.png@{img-version}") no-repeat left center;}
+      .icon-my-setting{background: url("@{img-path}/my/icon-my-setting-active.png@{img-version}") no-repeat left center;}
+
+    }
+
+  }
+
+  .single-select, .many-select{
+    .icon-my-total{background: url("@{img-path}/my/icon-my-total-active.png@{img-version}") no-repeat left center;}
+    .icon-my-pointer-menu{background: url("@{img-path}/my/icon-my-arrows.png@{img-version}") no-repeat left center;}
+    .icon-my-money{background: url("@{img-path}/my/icon-my-money-active.png@{img-version}") no-repeat left center;}
+    .icon-my-setting{background: url("@{img-path}/my/icon-my-setting-active.png@{img-version}") no-repeat left center;}
+    .icon-my-menu-coupon{background: url("@{img-path}/my/icon-my-coupon-active.png@{img-version}") no-repeat left center;}
+    .icon-my-msgCenter{background: url("@{img-path}/my/icon-my-message-white@2x.png@{img-version}") no-repeat -48px -463px ;}
+  }
+}
+
+//safe setting
+.bg{
+  &.reg{
+    background: url("@{img-path}/reg-bg.png@{img-version}") no-repeat left center;
+    background-size:contain;
+  }
+  &.login{
+    //background: url("@{img-path}/login-bg.png@{img-version}") no-repeat left center;
+    background-size:contain;
+  }
+  &.validate{
+    background: url("@{img-path}/login-bg.png@{img-version}") no-repeat left center;
+    background-size:contain;
+    .phone-tip{
+      font-size:1.5rem;
+    }
+  }
+}
+
+//contact
+.contact-nav{
+  >li>a{
+    display:block;
+    height:40px;
+    width:100%;
+    text-align:center;
+    font-size: @font-size-md;
+    padding-top:8px;
+    padding-left:2px;
+    color: @text-success;
+    &.active,&.active-type{
+      background:#eee;
+      color:@text-info;
+      padding-left:0;
+      margin-left:-1px;
+      border-left:3px solid @text-danger;
+      .icon-contact-intro{background: url("@{img-path}/icon/contact-help.png") no-repeat -41px -7px ;}
+      .icon-contact-latest{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -41px -45px ;}
+      .icon-contact-insurance{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -41px -82px ;}
+      .icon-contact-media{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -41px -121px ;}
+      .icon-contact-news{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -41px -158px ;}
+      .icon-contact-us{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -41px -195px ;}
+      .icon-contact-platform{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -41px -234px ;}
+      .icon-contact-shareholders{background: url("@{img-path}/icon/contact-help.png@{img-version}") no-repeat -99px -234px ;}
+    }
+    .icon-txt{
+      padding-left:0;
+
+    }
+  }
+}
+
+//shareholders
+.pic01{
+  height:275px;
+  background:url("@{img-path}/shareholder02.jpg") no-repeat center center;
+  background-size:cover;
+}
+.pic02{
+  height:891px;
+  background:url("@{img-path}/shareholder03.jpg") no-repeat center center;
+  background-size:cover;
+}
+.pic03{
+  height:950px;
+  background:url("@{img-path}/shareholder04.jpg") no-repeat center center;
+  background-size:cover;
+}
+.pic04{
+  height:1570px;
+  background:url("@{img-path}/shareholder01.jpg") no-repeat center center;
+  background-size:100% 100%;
+}
+
+//insurance
+.insurance{
+  .bg{
+    background:url("@{img-path}/safety.png") no-repeat center center;
+  }
+}
+.icon-my-withdraw-bg{background:url("@{img-path}/my/icon-my-withdraw.png@{img-version}") no-repeat center center;  }
+.icon-my-cash{background:url("@{img-path}/my/icon-my-cash.png@{img-version}") no-repeat center center;  }
+.icon-my-rate{background:url("@{img-path}/my/icon-my-rate.png@{img-version}") no-repeat center center;  }
+.icon-my-tickt-out{background:url("@{img-path}/my/icon-my-tickt-out.png@{img-version}") no-repeat center center;  }
+.icon-my-nodata{
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  margin-top: 60px;
+  margin-bottom: 20px;
+  background:url("@{img-path}/my/icon-my-nodata.png@{img-version}") no-repeat center center;
+  background-size: 100px 100px;
+}
+
+header.navbar-default .navbar-nav > li{
+  &.wechat-qrcode{
+    position:relative;
+    >.img{
+      background: #000 url("@{img-path}/weixin.png") no-repeat center center;
+      background-size:100% 100%;
+    }
+  }
+}
+
+.icon-my-add-head{background:url("@{img-path}/my/icon-my-add-head.png@{img-version}") no-repeat center center;  }
+
+.icon-my-head-bg{background:url("@{img-path}/my/head-bg.png@{img-version}") no-repeat center center;  }
+//invest
+.icon-invest-select{background:url("@{img-path}/invest/icon-invest-select.png@{img-version}") no-repeat center center;  }
+
+
+.icon-partner-arrow-left{background:url("@{img-path}/icon/icon-arrow-left.png@{img-version}") no-repeat left center;  }
+.icon-partner-arrow-right{background:url("@{img-path}/icon/icon-arrow-right.png@{img-version}") no-repeat right center;  }
+
+
+//--银行图标--
+.icon-bank-ecitic{background-image: url("@{img-path}/my/bank/icon_back_ecitic@2x.png@{img-version}");}
+.icon-bank-ccb{background-image: url("@{img-path}/my/bank/icon_back_cbc.png@{img-version}");}
+.icon-bank-cib{background-image: url("@{img-path}/my/bank/icon_back_cib.png@{img-version}");}
+//.icon-bank-gdb{background-image: url("@{img-path}/my/bank/icon_back_gdb.png@{img-version}");}
+.icon-bank-abc{background-image: url("@{img-path}/my/bank/icon_back_abc.png@{img-version}");}
+.icon-bank-boc{background-image: url("@{img-path}/my/bank/icon_back_boc.png@{img-version}");}
+.icon-bank-icbc{background-image: url("@{img-path}/my/bank/icon_back_icbc.png@{img-version}");}
+.icon-bank-cmbc{background-image: url("@{img-path}/my/bank/icon_back_cmbc.png@{img-version}");}
+.icon-bank-cmbchina{background-image: url("@{img-path}/my/bank/icon_back_cmb.png@{img-version}");}
+.icon-bank-ceb{background-image: url("@{img-path}/my/bank/icon_back_ceb.png@{img-version}");}
+.icon-bank-boco{background-image: url("@{img-path}/my/bank/icon_back_bcm.png@{img-version}");}
+.icon-bank-spdb{background-image: url("@{img-path}/my/bank/icon_back_spdb.png@{img-version}");}
+.icon-bank-hx{background-image: url("@{img-path}/my/bank/icon_back_huaxia.png@{img-version}");}
+.icon-bank-cmb{background-image: url("@{img-path}/my/bank/icon_back_cmb@2x.png@{img-version}");}
+.icon-bank-psbc{background-image: url("@{img-path}/my/bank/icon_back_psbc.png@{img-version}");}
+.icon-bank-shanghai{background-image: url("@{img-path}/my/bank/icon_back_shanghai.png@{img-version}");}
+.icon-bank-srcr{background-image: url("@{img-path}/my/bank/icon_back_srcr.png@{img-version}");}
+.icon-bank-bccb{background-image: url("@{img-path}/my/bank/icon_back_bccb@2x.png@{img-version}");}
+//.icon-bank-ecitic{background-image: url("@{img-path}/my/bank/icon_back_ecitic@2x.png@{img-version}");}
+//.icon-bank-ccb{background-image: url("@{img-path}/my/bank/icon_back_cbc@2x.png@{img-version}");}
+//.icon-bank-cib{background-image: url("@{img-path}/my/bank/icon_back_cib@2x.png@{img-version}");}
+//.icon-bank-gdb{background-image: url("@{img-path}/my/bank/icon_back_gdb@2x.png@{img-version}");}
+//.icon-bank-abc{background-image: url("@{img-path}/my/bank/icon_back_abc@2x.png@{img-version}");}
+//.icon-bank-boc{background-image: url("@{img-path}/my/bank/icon_back_boc@2x.png@{img-version}");}
+//.icon-bank-icbc{background-image: url("@{img-path}/my/bank/icon_back_icbc@2x.png@{img-version}");}
+//.icon-bank-cmbc{background-image: url("@{img-path}/my/bank/icon_back_cmbc@2x.png@{img-version}");}
+//.icon-bank-cmbchina{background-image: url("@{img-path}/my/bank/icon_back_cmb@2x.png@{img-version}");}
+//.icon-bank-ceb{background-image: url("@{img-path}/my/bank/icon_back_ceb@2x.png@{img-version}");}
+//.icon-bank-boco{background-image: url("@{img-path}/my/bank/icon_back_bcm@2x.png@{img-version}");}
+//.icon-bank-spdb{background-image: url("@{img-path}/my/bank/icon_back_spdb@2x.png@{img-version}");}
+//.icon-bank-hx{background-image: url("@{img-path}/my/bank/icon_back_huaxia@2x.png@{img-version}");}
+//.icon-bank-cmb{background-image: url("@{img-path}/my/bank/icon_back_cmb@2x.png@{img-version}");}
+//.icon-bank-psbc{background-image: url("@{img-path}/my/bank/icon_back_psbc@2x.png@{img-version}");}
+//.icon-bank-shanghai{background-image: url("@{img-path}/my/bank/icon_back_shanghai@2x.png@{img-version}");}
+//.icon-bank-srcr{background-image: url("@{img-path}/my/bank/icon_back_srcr@2x.png@{img-version}");}
+//.icon-bank-bccb{background-image: url("@{img-path}/my/bank/icon_back_bccb@2x.png@{img-version}");}
+
+
+//shop
+.icon-shop-withdraw{background:url("@{img-path}/shop/icon-shop-withdraw.png@{img-version}") no-repeat center center;  }
+.icon-shop-cash{background:url("@{img-path}/shop/icon-shop-cash.png@{img-version}") no-repeat center center;  }
+.icon-shop-rate{background:url("@{img-path}/shop/icon-shop-rate.png@{img-version}") no-repeat center center;  }
+.icon-shop-banner{background:url("@{img-path}/shop/star-shop-banner.jpg@{img-version}") no-repeat center center;  }
+.icon-shop-success{background:url("@{img-path}/shop/icon-shop-success.png@{img-version}") no-repeat center center;  }
+.icon-shop-detail{background:url("@{img-path}/shop/icon-shop-detail.png@{img-version}") no-repeat center center;  }
+.icon-shop-sign{background:url("@{img-path}/shop/icon-shop-sign.png@{img-version}") no-repeat center center;  }
+.icon-shop-change-detail{background:url("@{img-path}/shop/icon-shop-change-detail.png@{img-version}") no-repeat center center;  }

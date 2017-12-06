@@ -1,0 +1,6 @@
+{
+  "desiredCapabilities":{
+    "browserName": "chrome"
+  },
+  "baseUrl":"http://localhost:8080"
+}

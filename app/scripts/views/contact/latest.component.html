@@ -1,0 +1,40 @@
+<div class="latest">
+    <!--<div class="tab">-->
+        <!--<a class="tab-item  cursor-pointer active"  >最新公告</a>-->
+    <!--</div>-->
+    <div class="my-sub-title font-size-large text-info">
+        <span>最新公告</span>
+    </div>
+    <ul class="info" >
+        <li *ngFor="let article of articleList">
+            <a [href]="'/contact/article/'+queryParam.type+'/'+article.id" target="_blank">
+                <span class="title word-over-hidden title-width">{{article.title}}</span>
+                <span class="timeline num">{{article.timeline}}</span>
+                <!--| date:'y-MM-dd HH:mm:ss'-->
+            </a>
+        </li>
+    </ul>
+    <div class="page-top">
+        <pager   [totalPage]="totalPage" (changePage)="selectPage($event)" ></pager>
+    </div>
+    <!--<ul class="status" *ngIf="switch == 1">-->
+        <!--<li *ngFor="let article of articleList">-->
+            <!--<div class="media">-->
+                <!--<a class="media-left" [routerLink]="['/contact/article',type, article.msgsId]" target="_blank">-->
+                    <!--<img [src]="article.photo" [alt]="article.title" />-->
+                <!--</a>-->
+                <!--<div class="media-body  font-size-small">-->
+                    <!--<div class="date text-center">-->
+                        <!--<p class="text-info"><span>{{article.date|date:'MM'}}</span>/<span>{{article.date|date:'dd'}}</span></p>-->
+                        <!--<p class="text-muted">{{article.date|date:'y'}}</p>-->
+                    <!--</div>-->
+                    <!--<h4 class="media-heading font-size-md">-->
+                        <!--<a  class="text-info" [routerLink]="['/contact/article',type, article.msgsId]" target="_blank">{{article.title}}</a>-->
+                    <!--</h4>-->
+                    <!--<p class="text-muted" [innerHtml]="article.content"></p>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</li>-->
+    <!--</ul>-->
+    <!--<pager-prev-next [prevPageEnable]="prevPageEnable" [nextPageEnable]="nextPageEnable" (changePage)="setPageNumber($event)"></pager-prev-next>-->
+</div>

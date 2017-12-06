@@ -1,0 +1,72 @@
+@import "../variables.less";
+
+.btn{
+  &.btn-lg{
+	  font-size:@font-size-xlarge;
+	  line-height:1;
+	  padding:14px 16px;
+  }
+
+	&.btn-block.btn-md{
+		font-size:@font-size-md;
+		line-height:1;
+		padding:13px 16px;
+	}
+
+	&:active,
+	&.active {
+		opacity: 1;
+		outline: 0;
+		background-image: none;
+		box-shadow:none;
+	}
+
+	&:focus,
+	&:active:focus,
+	&:active:focus,
+	&:focus,
+	&:active.focus,
+	&:active.focus{
+		outline: 0;
+		outline-offset:0
+	}
+}
+
+.btn-default:hover,.btn-default:active:hover {
+	color:@btn-default-color;
+	background-color:@btn-default-bg;
+	border-color: @btn-default-border;
+}
+.btn-primary:hover,.btn-primary:active:hover {
+	color:@btn-primary-color;
+	background-color:@btn-primary-bg;
+	border-color: @btn-primary-border;
+}
+// Success appears as green
+.btn-success:hover,.btn-success:active:hover {
+	color:@btn-success-color;
+	background-color:@btn-success-bg;
+	border-color: @btn-success-border;
+}
+// Info appears as blue-green
+.btn-info:hover,.btn-info:active:hover {
+	color:@btn-info-color;
+	background-color:@btn-info-bg;
+	border-color: @btn-info-border;
+}
+// Warning appears as orange
+.btn-warning:hover,.btn-warning:active:hover {
+	color:@btn-warning-color;
+	background-color:@btn-warning-bg;
+	border-color: @btn-warning-border;
+}
+// Danger and error appear as red
+.btn-danger:hover,.btn-danger:active:hover {
+	color:@btn-danger-color;
+	background-color:@btn-danger-bg;
+	border-color: @btn-danger-border;
+}
+
+
+
+

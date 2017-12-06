@@ -1,0 +1,35 @@
+{
+  "name": "web-xtz",
+  "description": "this is a framework for web-xtz",
+  "main": "gulpfile.js",
+  "authors": [
+    "LLL<leiliangliangok@163.com>"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "web"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "classlist": "",
+    "jquery-ui": "^1.12.1",
+    "jquery-ui-datepicker-smooth":"1.1.0"
+  },
+  "devDependencies": {
+    "font-awesome": "4",
+    "bootstrap": "3",
+    "fastclick": "1",
+    "overthrow": "0.7",
+    "less": "",
+    "lodash": "",
+    "jquery-deserialize": "https://github.com/edgarjs/jquery-deserialize.git",
+    "ua-parser-js": "https://github.com/faisalman/ua-parser-js.git"
+  }
+}

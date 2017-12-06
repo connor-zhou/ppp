@@ -1,0 +1,47 @@
+<div class="invitation font-size-small">
+   <div class="my-sub-title font-size-large text-info">
+      <span>邀请好友奖现金</span>
+      <a class="fr" target="_blank" routerLink="/help/index">查看详细奖励规则</a>
+   </div>
+   <share></share>
+   <ul class="link-step">
+      <li>
+         <div class="step01"></div>
+      </li>
+      <li>
+         <div class="step02"></div>
+      </li>
+      <li>
+         <div class="step03"></div>
+      </li>
+   </ul>
+   <div class="total">
+      <p class="text-info font-size-md">奖励总计</p>
+      <p class="text-muted">现金 <span class="text-danger" [innerHtml]="moneyCount | number:'1.0-2'"></span>元&nbsp;&nbsp;
+          代金券<span class="text-danger" [innerHtml]="awardCount | number:'1.0-2'"></span>元</p>
+   </div>
+   <div class="total">
+      <p class="text-info font-size-md">邀请统计</p>
+      <p class="text-muted">注册 <span class="text-danger" [innerHtml]="registerCount"></span>人&nbsp;&nbsp;
+         开通资金托管账户<span class="text-danger" [innerHtml]="nameAuthCount"></span>人&nbsp;&nbsp;
+         投资<span class="text-danger" [innerHtml]="investCount"></span>人</p>
+   </div>
+   <div class="detail">
+      <p class="text-info font-size-md">邀请详情</p>
+      <table class="table content" *ngIf="recordList.length > 0">
+         <tr class="text-muted">
+            <th>用户名</th>
+            <th>账号</th>
+            <th>状态</th>
+            <th>注册时间</th>
+         </tr>
+         <tr class="lucky" *ngFor="let record of recordList">
+            <td [innerHtml]="record.uname"></td>
+            <td [innerHtml]="record.account"></td>
+            <td [innerHtml]="record.statusName"></td>
+            <td [innerHtml]="record.regTime"></td>
+         </tr>
+      </table>
+      <p *ngIf="recordList.length <= 0">暂无邀请好友</p>
+   </div>
+</div>

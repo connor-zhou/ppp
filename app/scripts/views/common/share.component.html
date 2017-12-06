@@ -1,0 +1,28 @@
+<ul class="bdsharebuttonbox link-icon"  data-tag="invitation" >
+    <li>
+        <a  class="link-img icon-link-wechat hover"></a>
+        <div class="icon-hover">
+            <dl class="text-center">
+                <dt>
+                    <img src="../../../images/weixin.png" alt="">
+                </dt>
+                <dd>微信扫一扫，点击右上角</dd>
+                <dd>"发送给朋友"</dd>
+                <dd>或“分享到朋友圈”</dd>
+            </dl>
+        </div>
+    </li>
+    <li>
+        <a class="link-img icon-link-qq"  [href]="shareUrls[0]" target="_blank"></a>
+    </li>
+    <li>
+        <a class="link-img icon-link-sina"  [href]="shareUrls[1]"  target="_blank"></a>
+    </li>
+    <li>
+        <a class="link-img icon-link-qqzone"   [href]="shareUrls[2]"  target="_blank"></a>
+    </li>
+    <li>
+        <a class="link-img icon-link-share hover" (click)="copy()"></a>
+    </li>
+    <img id="shareImg" style="display:none" src="../../../images/share/share.jpg" alt="">
+</ul>

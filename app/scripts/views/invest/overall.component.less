@@ -1,0 +1,160 @@
+@import "../../../less/variables.less";
+.overall .overall-content {
+    background-color:inherit;
+    .line-overall{
+        border-bottom: 1px solid @brand-success;
+        margin-bottom: 20px;
+    }
+    .busy > .row{
+        min-height: 90px;
+        >div{
+            padding-top:26px;
+        }
+    }
+    .tab{
+        background-color:#fff;
+        margin-bottom:0;
+        margin-top:0;
+    }
+
+
+    .borrow-line{
+        overflow: hidden;
+        padding: 20px 0;
+        font-size: 14px;
+        line-height: 30px;
+        background-color:#fff;
+        .pay-left{
+            float: left;
+            margin-left:30px;
+        }
+        .pay-right{
+            float: right;
+        }
+        .deadline{
+            margin-right: 14px;
+            color: #666666;
+        }
+        .all-borrow{
+            margin-right: 24px;
+            cursor: pointer;
+        }
+        .all-mon{
+            margin-right: 26px;
+            cursor: pointer;
+        }
+        .select-style{
+            padding: 4px 10px;
+            border-radius: 4px;
+        }
+
+
+
+        .selectword{
+            color: @brand-warning;
+        }
+
+    }
+
+
+    .project-item-group{
+        margin-top:12px;
+        min-height:190px;
+        background-color:#fff;
+        font-size:@font-size-md;
+        .project-title{
+            line-height:80px;
+            padding:0 30px;
+            border-bottom:1px dashed @brand-success;
+            font-size:20px;
+            font-weight:bold;
+            color:@text-info;
+            >span{
+                vertical-align: middle;
+            }
+            .title-icon{
+                font-size: 16px;
+                /* display: inline-block; */
+                /* vertical-align: text-bottom; */
+                border: 1px solid #ff5400;
+                color: #ff5400;
+                padding: 4px 12px;
+                border-radius: 4px;
+                margin-left: 10px;
+                font-weight: normal;
+            }
+        }
+        .project-detail{
+            overflow: hidden;
+            padding-top:15px;
+            >.item{
+                width:20%;
+                float:left;
+                text-align:center;
+                .rate-box{
+                    display:inline-block;
+                    padding-left: 30px;
+                    text-align: center;
+                    .rate-content{
+                        color:@text-warning;
+                    }
+                }
+                &.detail-rate{
+                    text-align:left;
+                }
+                .rate-content,>.duration-content,>.money-content{
+                    color:@text-info;
+                    font-size:40px;
+                    >small{
+                        font-size:@font-size-xlarge;
+                    }
+                }
+
+                .remark{
+                    color:@text-success;
+                    font-size:@font-size-md;
+                    word-wrap: break-word;
+                }
+                &.detail-schedule {
+                    .schedule-remark{
+                        text-align:right;
+                        color:@text-warning;
+                        width:160px;
+                        margin:0 auto;
+                    }
+                    >.content{
+                        padding-top:40px;
+                        .progress{
+                            margin:0 auto 7px;
+                            width:160px;
+                        }
+
+                    }
+                }
+
+                &.detail-invest{
+                    .btn.btn-md{
+                        width:154px;
+                        height:40px;
+                        margin-top:32px;
+                        margin-right:-16px;
+                        font-size:@font-size-xlarge;
+                    }
+                    .btn-success{
+                        background:#969696;
+                        border:1px solid #969696;
+                    }
+                }
+            }
+        }
+    }
+
+    .noData{
+        margin-bottom:60px;
+    }
+
+}
+.overall .page-top{
+    margin-top:60px;
+    margin-bottom:48px;
+}

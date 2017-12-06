@@ -1,0 +1,133 @@
+@import "../../../less/variables.less";
+.pay-title{
+  margin-bottom: 0px;
+}
+.safetySetting{
+  min-width:970px;
+  //border:1px solid @brand-success;
+  padding:15px 25px;
+  .login-password{
+    .form-content{
+      width: 378px;
+      .line-left{
+        width: 100px;
+      }
+      .right-box{
+        width: 273px;
+        .line-input{
+          width: 100%;
+        }
+      }
+    }
+
+  }
+  .change-email{
+
+    .form-content{
+      width: 378px;
+      .line-left{
+        width: 100px;
+      }
+      .right-box{
+        width: 273px;
+        .line-input{
+          width: 175px;
+        }
+        .error-tip{
+          right: 103px;
+        }
+
+      }
+      .email-code-style{
+        margin-top: 10px;
+        .line-input{
+          width: 100%;
+        }
+        .error-tip{
+          right: 6px;
+        }
+      }
+    }
+  }
+  .btn-next-step{
+    margin-top: 30px;
+  }
+  .title{
+    padding-bottom:3rem;
+    margin-bottom:2rem;
+    border-bottom:1px solid @brand-success;
+    .progress{
+      margin-top:0.85rem;
+      .progress-danger{
+        background-color: @text-warning;
+      }
+
+    }
+    .title-progres{
+      padding-left:120px;
+      position:relative;
+      margin:10px auto;
+      height:2.5rem;
+      line-height:2.5rem;
+      overflow:hidden;
+      border:1px solid transparent;
+      .text{
+        position:absolute;
+        left:0;top:0;
+      }
+    }
+  }
+  .pass{
+    background:#fff;
+    border:1px solid @text-warning;
+    color:@text-warning;
+  }
+  .fail{
+    background:#fff;
+    border:1px solid @brand-success;
+    color:@text-muted;
+  }
+  .content{
+    .text-green{
+      color:#45B630;
+    }
+    .row{
+      margin-bottom:7px;
+    }
+    .row > div{
+      >span:not(.icon-group){
+        line-height:36px;
+      }
+      .icon-group{
+        margin-top:6px;
+      }
+    }
+  }
+  .username-box{
+    margin:15px auto;
+    border:1px solid @brand-success;
+    padding:15px 10px;
+    .username-btn{
+      padding-top:10px;
+      >.btn{width:6rem;}
+    }
+    td{
+      padding:5px;
+      >input{
+        line-height:2.5rem;
+        width:20rem;
+      }
+    }
+  }
+  .setting-warning{
+    dd{
+      margin:10px 0;
+      >.btn{
+        width:6rem;
+      }
+      >p{
+        margin:10px auto;
+      }
+    }
+  }
+}

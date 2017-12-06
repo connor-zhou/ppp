@@ -1,0 +1,250 @@
+<div class="pay-title">
+    <span class="to-pay font-size-xlarge">银行卡信息</span>
+</div>
+
+<div class="withdraw bank-list font-size-md" >
+    <!--<!--icon-bank-{{bank.abbr.toLowerCase()}}-->
+    <div  *ngIf="bankCardList.length > 0">
+        <div class="bank-box-person" *ngFor="let bank of bankCardList">
+            <!--[class.selected]="bankCard.id == selectedBankCardNo"-->
+            <div class="content">
+                <!--<p class="jieji text-right"  >借记卡</p>-->
+                <p>
+                    <span class="bank-image">
+                       <span class="icon-group icon-sm  spec">
+                          <span class="icon icon-bank-{{bank.bankAbbr.toLowerCase()}}"></span>
+                          <span class="icon-txt">
+                             <i [innerHtml]="bank.bankName"></i>
+                          </span>
+                           <!--<span class="icon-txt">-->
+                           <!--<i [innerHtml]="bank.bankAbbr"></i>-->
+                           <!--</span>-->
+                       </span>
+                    </span>
+                    <span class="bank-type">储蓄卡</span>
+                </p>
+                <p>
+                    <span class="bank-number">
+                        <span class="icon-txt ">
+                            <i [innerHtml]="bank.cardNo"></i>
+                        </span>
+
+                    </span>
+                </p>
+                <p class="text-right">
+                    <span class="icon-group icon-sm">
+                        <!--(click)="removingCardId = bankCard.id;modalType = 'remove'"-->
+                        <span  class="icon icon-my-garbage cursor-pointer" data-toggle="modal" data-target="#card-add-remove" ></span>
+                    </span>
+                </p>
+
+            </div>
+        </div>
+    </div>
+    <!--*ngIf="!bankCardList"-->
+
+    <!--<form #f (ngSubmit)="submit()" [action]="actionUrl"  id="mmm-form-recharge" method="post">-->
+        <!--<div class="bank-box" (click)="f.submit()">-->
+            <!--<div class="content add hover">-->
+                <!--<p class="text-center">-->
+               <!--<span class="icon-group icon-sm">-->
+                  <!--<span class="icon icon-my-add"></span>-->
+                  <!--<span class="icon-txt">添加银行卡</span>-->
+               <!--</span>-->
+                <!--</p>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</form>-->
+
+    <!--<a *ngIf="bankCardList.length <= 0" target="_blank" [routerLink]="['/my/platform']" [queryParams]="{type:'bank'}">-->
+        <div class="bank-box-person " *ngIf="bankCardList.length <= 0" (click)="toRequestUrl()" [ngClass]="{'disabled': !isTo}">
+            <div class="content add hover">
+                <p class="text-center">
+               <span class="icon-group icon-sm">
+                  <span class="icon icon-my-add"></span>
+                  <span class="icon-txt text-info">添加银行卡</span>
+               </span>
+                </p>
+            </div>
+            <p class="bind">您尚未绑定银行卡</p>
+        </div>
+
+    <!--</a>-->
+    <tip></tip>
+    <form class="hide-html"    [action]="actionUrl"   id="request-form" method="post" >
+        <input type="hidden" *ngFor="let key of dataRes.keys" [name]="key" [value]="dataRes.maps[key]">
+        <a class="btn btn-md   btn-height font-size-large btn-back" >返回修改</a>
+        <input type="submit"  id="autoSubmit"  class="btn btn-md  text-white btn-height font-size-large btn-go" value="前往充值"  />
+    </form>
+
+    <div class="modal fade tip-alert" id="card-add-remove" tabindex="-1" role="dialog" aria-labelledby="cardAddRemoveLabel" aria-hidden="true" data-keyboard="false">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body  font-size-md text-center">
+                    <dl class="body-dl" *ngIf="modalType != 'add'">
+                        <dt>
+                             <span class="icon-group icon-x-lg ">
+                                <span class="icon  icon-big-mark"></span>
+                             </span>
+                        </dt>
+                        <dd>
+                            <h3 class="text-info">提示！</h3>
+                            <p class="text-tip tip-warning">确定删除银行卡？</p>
+                        </dd>
+                        <dd>
+                            <a class="btn btn-md btn-cancel font-size-md " data-dismiss="modal">取消</a>
+                            <a class="btn btn-md btn-affirm font-size-md" data-dismiss="modal" (click)="toUnbindBankcard()">确定</a>
+                        </dd>
+                    </dl>
+                    <dl class="body-dl" *ngIf="modalType == 'add'">
+                        <dt>
+                             <span class="icon-group icon-x-lg ">
+                                <span class="icon  icon-big-success"></span>
+                             </span>
+                        </dt>
+                        <dd>
+                            <h3 class="text-info">添加银行卡成功！</h3>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade tip-alert" id="mmm-warning-recharge" tabindex="-1" role="dialog" aria-labelledby="mmmWarningLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body  font-size-md text-center">
+                    <dl class="body-dl">
+                        <dt>
+                             <span class="icon-group icon-x-lg ">
+                                <span class="icon  icon-big-mark"></span>
+                             </span>
+                        </dt>
+                        <dd>
+                            <h3 class="text-info">提示！</h3>
+                            <p class="text-tip tip-warning">您还未绑定资金托管平台，请绑定后进行操作</p>
+                        </dd>
+                        <dd>
+                            <a class="btn btn-md btn-affirm font-size-md" data-dismiss="modal" routerLink="/my/registerBf">立即绑定</a>
+                            <a class="btn btn-md btn-cancel font-size-md" data-dismiss="modal" routerLink="/my/overview">返回账户首页</a>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<div class="bank font-size-md">-->
+    <!--&lt;!&ndash;<div class="my-sub-title font-size-large text-info">&ndash;&gt;-->
+    <!--&lt;!&ndash;<span>消息中心</span>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--<div class="bank-box" >-->
+        <!--<div class="content add hover">-->
+            <!--<p class="text-center">-->
+               <!--<span class="icon-group icon-sm">-->
+                  <!--<span class="icon icon-my-add"></span>-->
+                  <!--<span class="icon-txt">添加银行卡</span>-->
+               <!--</span>-->
+            <!--</p>-->
+
+        <!--</div>-->
+        <!--<div class="text-success font-size-md bank-tip">您尚未绑定银行卡</div>-->
+    <!--</div>-->
+
+<!--</div>-->
+
+<!--<div class="withdraw font-size-small" >-->
+    <!--<div class="my-sub-title font-size-large text-info">-->
+        <!--<span>提现</span>-->
+        <!--<a class="fr text-danger font-size-small" routerLink="/my/fund">提现记录</a>-->
+    <!--</div>-->
+    <!--<h4 class="font-size-small text-info">选择银行卡</h4>-->
+    <!--<div class="row text-muted">-->
+        <!--<div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let bankCard of bankCardList">-->
+            <!--<div class="content hover" [class.selected]="bankCard.id == selectedBankCardNo">-->
+                <!--<p class="jieji text-right"  (click)="switch = 0;selectedBankCardNo = bankCard.id;requestWithdrawUrl(money?money.value:0)">借记卡</p>-->
+                <!--<p (click)="switch = 0;selectedBankCardNo = bankCard.id;requestWithdrawUrl(money?money.value:0)" >-->
+                    <!--<span class="icon-group icon-lg  spec">-->
+                        <!--<span class="icon icon-index-phone-big"></span>-->
+                        <!--<span class="icon-txt">-->
+                            <!--<i [innerHtml]="bankCard.bankName"></i>-->
+                        <!--</span><br>-->
+                        <!--<span class="icon-txt">-->
+                            <!--<i [innerHtml]="bankCard.cardNo"></i>-->
+                        <!--</span>-->
+                    <!--</span>-->
+                <!--</p>-->
+                <!--<p class="text-right">-->
+                    <!--<span class="icon-group icon-sm">-->
+                        <!--<span class="icon icon-my-garbage" data-toggle="modal" data-target="#card-add-remove" (click)="removingCardId = bankCard.id;modalType = 'remove'"></span>-->
+                    <!--</span>-->
+                <!--</p>-->
+                <!--<p class="mask">-->
+                <!--<span class="icon-group icon-lg">-->
+                    <!--<span class="icon icon-global-select"></span>-->
+                <!--</span>-->
+                <!--</p>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-xs-12 col-sm-6 col-md-4" *ngSwitchCase= "0" (click)="switch = 1;getBankList();getProvinceList()">-->
+            <!--<div class="content add hover">-->
+                <!--<p class="text-center">-->
+                <!--<span class="icon-group icon-sm">-->
+                <!--<span class="icon icon-my-add"></span>-->
+                <!--<span class="icon-txt">添加银行卡</span>-->
+                <!--</span>-->
+                <!--</p>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<h4  class="font-size-small text-info" *ngSwitchCase="1">添加银行卡</h4>-->
+    <!--<div class="card-add" *ngSwitchCase="1">-->
+        <!--<table class="text-muted">-->
+            <!--<tr>-->
+                <!--<td>持卡人姓名：</td>-->
+                <!--<td class="text-info" [innerHtml]="userInfo.realName">*朱莉</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td>银行：</td>-->
+                <!--<td class="text-info">-->
+                    <!--<select [(ngModel)]="newCard.bankId">-->
+                        <!--<option value="0">请选择银行</option>-->
+                        <!--<option *ngFor="let bank of bankList" [value]="bank.id" [innerHtml]="bank.name"></option>-->
+                    <!--</select>-->
+                <!--</td>-->
+                <!--<td><span class="text-tip" [style.display]="!tip.bank ? 'none':'inline'" [innerHtml]="tip.bank"></span></td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td>银行卡号：</td>-->
+                <!--<td class="text-info"><input type="text" placeholder="请输入银行卡号" [(ngModel)]="newCard.cardNo"></td>-->
+                <!--<td><span class="text-tip" [style.display]="!tip.card ? 'none':'inline'">*请输入正确的银行卡号</span></td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td>开户城市：</td>-->
+                <!--<td class="province-city text-info">-->
+                    <!--<select (change)="getCityList($event.target.value)" [(ngModel)]="newCard.provinceCode">-->
+                        <!--<option value="0">请选择省份</option>-->
+                        <!--<option  *ngFor="let province of provinceList" [value]="province.code" [innerHtml]="province.name"></option>-->
+                    <!--</select>-->
+                    <!--<select [(ngModel)]="newCard.cityCode">-->
+                        <!--<option value="0">请选择城市</option>-->
+                        <!--<option  *ngFor="let city of selectedProvinceCityList" [value]="city.code" [innerHtml]="city.name">北京</option>-->
+                    <!--</select>-->
+                <!--</td>-->
+                <!--<td><span class="text-tip" [style.display]="!tip.city ? 'none':'inline'" [innerHtml]="tip.city"></span><span class="text-tip" [style.display]="!tip.province ? 'none':'inline'" [innerHtml]="tip.province"></span></td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td>开户行：</td>-->
+                <!--<td class="text-info"><input type="text" placeholder="请输入开户支行" [(ngModel)]="newCard.branchBankName"></td>-->
+                <!--<td><span class="text-tip" [style.display]="!tip.branch ? 'none':'inline'" [innerHtml]="tip.branch"></span></td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td></td>-->
+                <!--<td class="cancel-confirm">-->
+                    <!--<a class="btn btn-md btn-default font-size-small"  (click)="switch = 0">取消</a>-->
+                    <!--<a class="btn btn-md btn-danger font-size-small"  [class.disabled]="checkNewCardFull()"  (click)="addBankCard(newCard)">确认</a>-->
+                <!--</td>-->
+            <!--</tr>-->
+        <!--</table>-->
+    <!--</div>-->
+<!--</div>-->

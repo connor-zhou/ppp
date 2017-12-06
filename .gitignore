@@ -1,0 +1,14 @@
+npm-debug.log
+node_modules/
+bower_components/
+dist/
+aot
+app/css/
+app/**/*.js
+app/**/*.js.map
+.idea/
+activity/
+app/index.html
+typings/
+config/*.build.*
+static/

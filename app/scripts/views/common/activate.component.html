@@ -1,0 +1,14 @@
+<div class="activate-banner" *ngIf="isShow && hasLogin && (isActivate || moneyOldSystem >0)">
+    <div class="container">
+        <p class="fl" *ngIf="isActivate">为保护您账户资金安全，请激活并设置您的交易密码。星投资不会保存您设置的交易密码，请您妥善保存。</p>
+        <p class="fl" *ngIf="!isActivate">为保护您账户资金安全，请立即将您的全部余额转至新的上海银行资金托管平台。</p>
+        <div class="fr">
+            <span (click)="isShow = false ">不再提示</span>
+            <a class="btn btn-md btn-danger" *ngIf="isActivate" [class.disabled]="isLogin" [innerHtml]="isLogin ? '正在激活...':'立即激活'" (click)="activate()">立即激活</a>
+            <a class="btn btn-md btn-danger" *ngIf="!isActivate" [class.disabled]="isLogin" [innerHtml]="isLogin ? '正在转账...':'立即转账'" (click)="transfer()">立即转账</a>
+        </div>
+    </div>
+</div>
+<form [action]="form.url" method="post" id="toActivateForm"  *ngIf="isShow &&  hasLogin && (isActivate || moneyOldSystem >0)">
+    <input type="hidden" *ngFor="let key of form.keys" [name]="key" [value]="form.maps[key]">
+</form>

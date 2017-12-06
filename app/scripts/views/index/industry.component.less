@@ -1,0 +1,36 @@
+@import "../../../less/variables.less";
+
+.industry {
+  width: 100%;
+  padding: 50px 0;
+  .content {
+    margin-top: 30px;
+    >div{
+      margin-top:2rem;
+    }
+    .table {
+      margin: 0;
+    }
+    .date {
+      background: #eee;
+      width: 68px;
+      height:80px;
+    }
+    .date > p {
+      &:nth-child(2) {
+        font-size: 30px;
+        line-height: 40px;
+      }
+      &:first-child {
+        line-height: 20px;
+        background: @brand-warning;
+      }
+    }
+    .info {
+      padding-left: 15px;
+      > p:first-child {
+        margin-bottom: 17px;
+      }
+    }
+  }
+}

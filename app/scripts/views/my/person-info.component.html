@@ -1,0 +1,224 @@
+
+
+<div class="pay-title">
+    <span class="to-pay font-size-xlarge">个人信息</span>
+</div>
+<div class="safetySetting font-size-md">
+    <div class="head-img-box icon-my-head-bg">
+        <div class="head-img">
+            <span class="circleBox">
+                <img class="circle-img" *ngIf="!selectedImg && userInfo.avatar" [src]="userInfo.avatar" alt="头像">
+                <img class="circle-img" *ngIf="!userInfo.avatar && !selectedImg" src="../../../images/avatar.png" alt="头像">
+                <img  class="circle-img" *ngIf="selectedImg" [src]="selectedImg" alt="头像">
+
+            </span>
+            <span class="add-head-img icon-my-add-head cursor-pointer" onclick="document.getElementById('selectedFile').click();">
+                <input class="file" id="selectedFile" style="display: none;" type="file" accept="image/*" hidden  #input (change)="getFile(input.files)">
+            </span>
+        </div>
+    </div>
+    <div class="content">
+        <div class="font-size-md text-all">
+            <span class="text-info text-bold col-one">昵称</span>
+            <span class=" col-two">
+                <span  *ngIf="!securitySetting.nickname">-</span>
+                <span *ngIf="securitySetting.nickname" [innerHtml]="userInfo.nickname"></span>
+            </span>
+            <span class="col-three">
+                <span class="text-muted" *ngIf="securitySetting.nickname">已设置</span>
+                <span class="text-muted" *ngIf="!securitySetting.nickname">未设置昵称</span>
+            </span>
+            <span class="icon-group icon-sm  col-four">
+                <span class="icon" [class.icon-ss-right-small]="securitySetting.nickname"
+                      [class.icon-ss-error-small]="!securitySetting.nickname"></span>
+                <span class="icon-txt text-tip"
+                      [class.text-green]="securitySetting.nickname"
+                      [class.text-tip]="!securitySetting.nickname"
+                      [innerHtml]="securitySetting.nickname?'已设置':'未设置'"></span>
+            </span>
+            <span class="col-five">
+                <a *ngIf="securitySetting.nickname && switch == 1" class="text-warning cursor-pointer" (click)="switch = 0">修改</a>
+                <a *ngIf="!securitySetting.nickname && switch == 1" class="text-warning cursor-pointer"
+                   (click)="switch = 0">设置</a>
+                <a *ngIf="switch == 0" class="text-warning cursor-pointer" (click)="clearNick(1)">取消</a>
+            </span>
+        </div>
+        <div class="user-nickname" *ngIf="switch == 0" >
+
+            <div class="form-content font-size-large">
+                <div class="form-line font-size-large line-bottom ">
+                    <span class="line-left ">昵称设置：</span>
+                        <span class="right-box">
+                            <!--(ngModelChange)="requestRechargeUrl($event)"-->
+                            <input type="text" class="line-right  line-input input-style " [(ngModel)]="newUname" (click)="clearErr()" placeholder="请输入您要设置的昵称" name="nickname">
+                        <!--<span class="error-tip" *ngIf="setUnameErr">{{setUnameErrMsg}}</span>-->
+                            <!--[style.display]="setUnameErr ? 'none':'inline'"-->
+                    </span>
+                    <span class="text-tip" [innerHtml]="setUnameErrMsg" *ngIf="setUnameErr">*该用户名已被使用</span>
+                </div>
+                <a class="btn  btn-block text-white btn-height font-size-large btn-next-step"  (click)="saveNickname()">下一步</a>
+
+            </div>
+        </div>
+        <div class="font-size-md text-all">
+            <span class="text-info text-bold col-one">电话号码</span>
+
+            <span class=" col-two">
+                <span *ngIf="securitySetting.mobile" [innerHtml]="userInfo.mobile"></span>
+            </span>
+
+            <span class="col-three">
+                <span class="text-muted" *ngIf="securitySetting.mobile">已设置</span>
+                <!--<span class="text-risk" *ngIf="!securitySetting.mobile">尚未开通第三方资金托管，暂时无法显示</span>-->
+            </span>
+            <span class="icon-group icon-sm  col-four">
+                <span class="icon" [class.icon-ss-right-small]="securitySetting.mobile"
+                      [class.icon-ss-error-small]="!securitySetting.mobile"></span>
+                <span class="icon-txt text-tip"
+                      [class.text-green]="securitySetting.mobile"
+                      [class.text-tip]="!securitySetting.mobile"
+                      [innerHtml]="securitySetting.mobile?'已认证':'未认证'"></span>
+            </span>
+            <span class="col-five">
+                <a *ngIf="securitySetting.mobile" class="text-warning"></a>
+                <a *ngIf="!securitySetting.mobile" class="text-warning"
+                   routerLink="/my/registerBf">立即认证</a>
+            </span>
+        </div>
+        <div class="font-size-md text-all">
+            <span class="text-info text-bold col-one">姓名</span>
+
+            <span class=" col-two">
+                <span  *ngIf="!securitySetting.realname">-</span>
+                <span *ngIf="securitySetting.realname" [innerHtml]="userInfo.realname"></span>
+            </span>
+
+            <span class="col-three">
+                <span class="text-muted" *ngIf="securitySetting.realname">已设置</span>
+                <span class="text-risk" *ngIf="!securitySetting.realname">尚未开通第三方资金托管，暂时无法显示</span>
+            </span>
+            <span class="icon-group icon-sm  col-four">
+                <span class="icon" [class.icon-ss-right-small]="securitySetting.realname"
+                      [class.icon-ss-error-small]="!securitySetting.realname"></span>
+                <span class="icon-txt text-tip"
+                      [class.text-green]="securitySetting.realname"
+                      [class.text-tip]="!securitySetting.realname"
+                      [innerHtml]="securitySetting.realname?'已认证':'未认证'"></span>
+            </span>
+            <span class="col-five">
+                <a *ngIf="securitySetting.realname" class="text-warning"></a>
+                <a *ngIf="!securitySetting.realname" class="text-warning"
+                   routerLink="/my/registerBf">立即认证</a>
+            </span>
+        </div>
+        <div class="font-size-md text-all">
+            <span class="text-info text-bold col-one">身份证号</span>
+
+            <span class=" col-two">
+                <span  *ngIf="!securitySetting.chinaId">-</span>
+                <span *ngIf="securitySetting.chinaId" [innerHtml]="userInfo.chinaId"></span>
+            </span>
+
+            <span class="col-three">
+                <span class="text-muted" *ngIf="securitySetting.chinaId">已设置</span>
+                <span class="text-risk" *ngIf="!securitySetting.chinaId">尚未开通第三方资金托管，暂时无法显示</span>
+            </span>
+            <span class="icon-group icon-sm  col-four">
+                <span class="icon" [class.icon-ss-right-small]="securitySetting.chinaId"
+                      [class.icon-ss-error-small]="!securitySetting.chinaId"></span>
+                <span class="icon-txt text-tip"
+                      [class.text-green]="securitySetting.chinaId"
+                      [class.text-tip]="!securitySetting.chinaId"
+                      [innerHtml]="securitySetting.chinaId?'已认证':'未认证'"></span>
+            </span>
+            <span class="col-five">
+                <a *ngIf="securitySetting.chinaId" class="text-warning"></a>
+                <a *ngIf="!securitySetting.chinaId" class="text-warning"
+                   routerLink="/my/registerBf">立即认证</a>
+            </span>
+        </div>
+        <div class="font-size-md text-all">
+            <span class="text-info text-bold col-one">第三方账户</span>
+
+            <span class=" col-two">
+                <span  *ngIf="userInfo.isOpenBf == 0">-</span>
+                <span *ngIf="userInfo.isOpenBf != 0" >-</span>
+            </span>
+
+            <span class="col-three">
+                <span class="text-muted" *ngIf="userInfo.isOpenBf != 0">开通第三方资金托管账户，提升资金安全</span>
+                <span class="text-risk" *ngIf="userInfo.isOpenBf == 0">尚未开通第三方资金托管，暂时无法显示</span>
+            </span>
+            <span class="icon-group icon-sm  col-four">
+                <span class="icon" [class.icon-ss-right-small]="securitySetting.isOpenBf"
+                      [class.icon-ss-error-small]="!securitySetting.isOpenBf"></span>
+                <span class="icon-txt text-tip"
+                      [class.text-green]="securitySetting.isOpenBf"
+                      [class.text-tip]="!securitySetting.isOpenBf"
+                      [innerHtml]="userInfo.isOpenBf == 0?'未认证':'已认证'"></span>
+            </span>
+            <span class="col-five">
+                <a *ngIf="userInfo.isOpenBf != 0" class="text-warning"></a>
+                <a *ngIf="userInfo.isOpenBf == 0" class="text-warning"
+                   routerLink="/my/registerBf">立即认证</a>
+            </span>
+        </div>
+        <div class="font-size-md text-all">
+            <span class="text-info text-bold col-one">风险评估</span>
+
+            <span class=" col-two">
+                <span  *ngIf="userInfo.isRiskAssess == 0">尚未评估</span>
+                <span *ngIf="userInfo.isRiskAssess == 1" [innerHtml]="userInfo.riskAssessResult"></span>
+            </span>
+
+            <span class="col-three">
+                <span class="text-risk" *ngIf="userInfo.isRiskAssess == 0">根据风险评估，帮助您选择合适的项目</span>
+                <span class="text-muted" *ngIf="userInfo.isRiskAssess == 1">根据风险评估，帮助您选择合适的项目</span>
+            </span>
+            <span class="icon-group icon-sm  col-four">
+                <span class="icon" [class.icon-ss-right-small]="securitySetting.isRiskAssess"
+                      [class.icon-ss-error-small]="!securitySetting.isRiskAssess"></span>
+                <span class="icon-txt text-tip"
+                      [class.text-green]="securitySetting.isRiskAssess"
+                      [class.text-tip]="!securitySetting.isRiskAssess"
+                      [innerHtml]="securitySetting.isRiskAssess?'已评估':'未评估'"></span>
+            </span>
+            <span class="col-five">
+                <a  class="text-warning" routerLink="/help/riskAssess">立即评估</a>
+            </span>
+        </div>
+
+
+    </div>
+    <div class="modal fade" id="setting-warning" tabindex="-1" role="dialog" aria-labelledby="settingWarningLabel" aria-hidden="true">
+        <div class="modal-dialog setting-success modal-sm">
+            <div class="modal-content">
+                <div class="modal-body  font-size-small text-center">
+                    <dl class="body-dl setting-warning">
+                        <dt *ngIf="false">
+                     <span class="icon-group icon-xx-lg">
+                        <span class="icon  icon-status-success"></span>
+                     </span>
+                        </dt>
+                        <dt>
+                     <span class="icon-group icon-x-lg">
+                        <span class="icon  icon-big-mark"></span>
+                     </span>
+                        </dt>
+                        <dd *ngIf="false">
+                            <p class="text-info font-size-large">用户名设定成功！</p>
+                        </dd>
+                        <dd >
+                            <h3 class="text-info">提示！</h3>
+                            <p class="text-muted">用户名仅能设定一次且不能修改，确定使用该用户名？</p>
+                        </dd>
+                        <dd >
+                            <a class="btn btn-md btn-default font-size-small fail" data-dismiss="modal">取消</a>
+                            <a class="btn btn-md btn-warning font-size-small" data-dismiss="modal" (click)="saveNickname()">确定</a>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

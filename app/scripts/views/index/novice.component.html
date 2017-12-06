@@ -1,0 +1,57 @@
+<div class="novice" *ngIf="novice">
+    <div class="box">
+        <div class="content-box">
+            <div class="row">
+                <div class="col-xs-6 text-left">
+                    <span class="icon-group icon-md ">
+                        <i class="icon icon-title-novice"></i>
+                        <span class="icon-txt font-size-xxlarge text-info">新手专享</span>
+                    </span>
+                </div>
+                <div class="col-xs-6 text-right">
+                    <a [routerLink]='["/invest/overall",{switch:1}]'  class="text-primary font-size-small view-more" >查看更多 &gt;</a>
+                </div>
+            </div>
+            <div class="row project" *ngIf="novice"  [class.shuangdan-bg]="novice.isShuangdan">
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                    <p class="text-info font-size-large over-ignore">{{novice.title}}</p>
+                    <div class="content-box project-info-1">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-4">
+                                <span class="font-size-small color777">年化收益：</span><span class="num text-danger font-size-40">{{novice.revenue}}<small>%</small></span>
+                            </div>
+                            <div class="col-xs-6 col-sm-4">
+                                <span class="font-size-small  color777">项目期限：</span><span class="num font-size-40 text-info">{{novice.duration}}</span><span class="text-info font-size-large">{{novice.durationUnit}}</span>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 switch-01">
+                                <a [routerLink]="['/invest/detail',novice.id]" class="btn btn-md btn-danger btn-block font-size-large">立即投资</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" [style.width]="novice.schedule + '%'">
+                                    </div>
+                                </div>
+                                <div class="progress-info font-size-small">
+                                    <span class="left color777">投资余额：<span>{{novice.canInvestMoney | number:'1.2-2'}}</span>元</span>
+                                    <span class="right fr text-danger">{{novice.schedule}}%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row switch-02">
+                            <a [routerLink]="['/invest/detail',novice.id]" class="btn btn-md btn-danger btn-block font-size-large">立即投资</a>
+                        </div>
+                    </div>
+                    <div></div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-3 text-right">
+                    <a href="http://www.xingtouzi.com/upload/activity/novice/" target="_blank"><img src="../../../images/new.png"></a>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-3 text-right">
+                    <a href="https://www.xingtouzi.com/activity/invitation/index" target="_blank"><img src="../../../images/invitation.png"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

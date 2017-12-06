@@ -1,0 +1,86 @@
+@import "../../../less/variables.less";
+
+.setEmail{
+  min-width:970px;
+  border:1px solid @brand-success;
+  padding:0px 25px 30px;
+  .sub-content{
+    position:relative;
+    height:500px;
+    .fail{
+      padding-top:0;
+      padding-bottom:0;
+      height:3rem;
+      line-height:3rem;
+      background:#fff;
+      border:1px solid @brand-success;
+    }
+    .reg-login-form{
+      padding:0;
+      margin-left:-15px;
+    }
+    .reg-login-form .form-control{
+      height:3rem;
+    }
+    .reg-login-form .unvalid-tip{
+      bottom:-2.17rem;
+    }
+    td{
+      vertical-align: top;
+      line-height:3rem;
+      padding:5px 0;
+      &.msgCode{
+        padding-left:10px;
+
+      }
+
+    }
+    .find-box .step-bar > div{
+      background:#E8E8E8;
+      .step-tip{
+        color:@text-muted;
+      }
+      .step-num{
+        background:#E8E8E8;
+        >p{
+          color:@text-muted;
+        }
+      }
+    }
+    .find-box .step-bar > div.active {
+      background-clip: content-box;
+      background-color: #FF5400;
+      .step-num{
+        background:@brand-danger;
+        >p{
+          color:#fff;
+        }
+      }
+      .step-tip{
+        color:@text-info;
+      }
+    }
+    .step-content{
+      margin:7rem auto 15px;
+    }
+    .info2{
+      dd{
+        margin:20px auto;
+        >h4{
+          margin-bottom:10px;
+        }
+        .btn{
+          width:15rem;
+          margin:0 auto 3px;
+          &.btn-default{
+            background:#969696;
+            color:#fff;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+

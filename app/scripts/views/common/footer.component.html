@@ -1,0 +1,82 @@
+<footer  *ngIf="!hideNavbar">
+    <div class="container" >
+        <div class="row service-info">
+            <div class="col-xs-12 col-sm-12 col-md-4">
+                <ul class="in-links">
+                    <li class="item">
+                        <h6><a  class="text-white">关于我们</a></h6>
+                        <ul class="item-ul">
+                            <li><a routerLink="/contact/intro" target="_blank">公司简介</a></li>
+                            <li><a routerLink="/contact/platform" target="_blank">平台介绍</a></li>
+                            <li><a routerLink="/contact/us" target="_blank">联系我们</a></li>
+                        </ul>
+                    </li>
+                    <li class="item">
+                        <h6><a class="text-white">帮助中心</a></h6>
+                        <ul class="item-ul">
+                            <!--<li><a routerLink="/help/index" target="_blank">新手指引</a></li>-->
+                            <!--<li><a routerLink="/help/index" target="_blank">自助服务</a></li>-->
+                            <li><a routerLink="/help/index" target="_blank">常见问题</a></li>
+                        </ul>
+                    </li>
+                    <li class="item">
+                        <h6><a class="text-white">网站地图</a></h6>
+                        <ul class="item-ul">
+                            <li><a routerLink="/invest/overall" target="_blank">我要投资</a></li>
+                            <!--<li><a [href]="bbsUrl" target="_blank">理财社区</a></li>-->
+                            <li><a routerLink="/my" target="_blank">我的账户</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4 kefu">
+                <div class="box text-center">
+                    <p class="text-white font-size-small">客服电话人工服务时间：<span class="num">9:00-17:00</span></p>
+                    <p class="num text-danger font-size-xxlarge dial">
+                         <span class="icon-group icon-lg">
+                            <span class="icon icon-index-phone-big"></span>
+                            <span class="icon-txt text-warning" [innerHtml]="Config.appConfig.tel">400 823 9800</span>
+                        </span>
+                    </p>
+                    <p class="font-size-small text-primary">客服邮箱：<span class="num">kefu@xingtouzi.com</span></p>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4 qrcode-box">
+                <div class="qrcode">
+                    <dl>
+                        <dt><img src="../../../images/app.jpg" alt="二维码"></dt>
+                        <dd class="text-center font-size-small">移动客户端下载</dd>
+                    </dl>
+                    <dl>
+                        <dt><img src="../../../images/weixin.png" alt="二维码"></dt>
+                        <dd class="text-center font-size-small">星投资官方微信</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <hr class="hr">
+        <ul class="ex-links text-primary font-size-small">
+            <li><a>友情链接：</a></li>
+            <li  *ngFor="let link of links"><a [href]="link.link" target="_blank">{{link.title}}</a></li>
+            <li>
+                <!-- 上海工商 -->
+                <a target="_blank" href="https://www.sgs.gov.cn/lz/licenseLink.do?method=licenceView&entyId=dov73ne26zbqpyzysi44jvysg2tgqynuhf">
+                    <img src="../../../images/icon.png" border=0 />
+                </a>
+
+            </li>
+            <li>
+                <!-- 安全联盟认证标志 -->
+                <a target="_blank" href="https://v.pinpaibao.com.cn/cert/site/?site=www.xingtouzi.com&at=business ">
+                    <img src="../../../images/safe.png" border=0 />
+                </a>
+            </li>
+        </ul>
+    </div>
+    <section>
+        <div class="container text-primary">
+            <p class="text-center">版权所有 © 上海星湖金融信息服务有限公司 沪ICP备13047990号-1</p>
+            <p class="text-center">Copyright Shanghai Xinghu Financial Information Service Co.,Ltd. ALL Rights Reserved</p>
+        </div>
+    </section>
+</footer>

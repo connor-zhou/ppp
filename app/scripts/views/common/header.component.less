@@ -1,0 +1,115 @@
+@import "../../../less/variables.less";
+
+header {
+    width: 100%;
+    background: #000;
+    color: #ADADAD;
+    font-size: @font-size-md;
+    line-height: 40px;
+
+    &.navbar{
+        min-height:40px;
+        border-radius: 0;
+    }
+    &.navbar-default {
+        background: #000;
+        border: 0;
+        margin: 0;
+    }
+    &.navbar-default .navbar-nav > li:not(.line) > a:hover{
+        text-decoration: underline;
+    }
+    .navbar-brand{
+        line-height:40px;
+        padding-top:0;
+        padding-bottom:0;
+        height:40px;
+        .icon-group{
+            margin-top:-2px;
+        }
+    }
+    &.navbar-default .navbar-nav > li{
+        &.wechat-qrcode{
+            position:relative;
+            >.img{
+                display:none;
+                position:absolute;
+                top:42px; right:0;
+                width:133px;height:133px;
+                z-index:300;
+                >.jiantou{
+                    right:25px;
+                    left:auto;
+                    border-bottom: 5px solid #fff;
+                }
+            }
+            &:hover >.img{
+                display:inline-block;
+            }
+        }
+        >a{
+            &:hover{
+                cursor:pointer;
+            }
+        }
+        .unreadMsg{
+            display:inline-block;
+            background:@text-warning;
+            text-align:center;
+            line-height: 15px;
+            margin-top:10.5px;
+            border-radius: 9.5px;
+            padding: 2px 5px;
+            margin-left:10px;
+            &:hover{
+                text-decoration: none !important;
+            }
+        }
+    }
+    .navbar-nav > li > a{
+        padding-top:0;
+        padding-bottom:0;
+        line-height:40px;
+    }
+
+}
+
+nav {
+    width: 100%;
+    min-height: 85px;
+    font-size: 1.4rem;
+    color: #777777;
+    &.navbar-default {
+        background: #fff;
+        border: 0;
+        margin: 0;
+        .navbar-nav > li > a:focus {
+            color: @text-warning;
+        }
+    }
+
+    .navbar-brand {
+        padding: 17.5px 15px;
+    }
+    .links {
+        margin: 0;
+    }
+    .links > li {
+        text-align: center;
+        //height:85px;
+        > a {
+            display: inline-block;
+            width: 100%;
+            padding: 0 20px;
+            height: 85px;
+            line-height: 85px;
+            &:focus {
+                color: @text-warning;;
+            }
+            &.active {
+                border-bottom: 2px solid @text-warning;;
+                color: @text-warning;;
+            }
+        }
+    }
+}

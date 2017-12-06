@@ -1,0 +1,50 @@
+// loading
+.loading{
+  margin:15px auto;
+  text-align:center;
+}
+.loading-text{
+  margin-top:5px;
+  font-size:12px;
+  color:#606060;
+  text-align:center;
+}
+.loading-spinner {
+  position: relative;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+
+  div {
+    position: absolute;
+    left: 44.5%;
+    top: 37%;
+    width: 10%;
+    height: 26%;
+    background: #666;
+    border-radius: 50px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, .2);
+    opacity: 0;
+    animation: busy-spinner-anim 1s linear infinite;
+  }
+
+  .generate-bars(@n, @i: 1) when (@i =< @n) {
+    .bar@{i} {
+      transform: rotate(unit(360 / 12 * (@i - 1), deg)) translate(0, -142%);
+      animation-delay: unit(-1 + 1 / 12 * (@i - 1), s);
+    }
+    .generate-bars(@n, (@i + 1));
+  }
+
+  .generate-bars(12);
+}
+
+@keyframes busy-spinner-anim {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.25;
+  }
+}

@@ -1,0 +1,72 @@
+<div class="my-menu">
+    <p >
+        <a routerLink="overview" class="collapse-title font-size-large cursor-pointer title-width single"  routerLinkActive="single-select">
+            <span class="icon title-icon-left icon-my-total"></span>
+            <span class="icon-text icon-text-left">账户总览</span>
+        </a>
+    </p>
+    <div >
+        <p>
+            <a  class="collapse-title font-size-large cursor-pointer title-width many" [ngClass]="rBf.isActive || r.isActive || w.isActive || f.isActive? 'many-select' : ''"   data-toggle="collapse" data-target="#one" >
+                <span class="icon title-icon-left icon-my-money "></span>
+                <span class="icon-text icon-text-left">资金管理</span>
+                <span class="icon icon-postion icon-my-pointer-menu"></span>
+            </a>
+        </p>
+        <div  id="one" class="collapse colloapse-content" [ngClass]="rBf.isActive || r.isActive || w.isActive  || f.isActive ? 'in' : ''">
+            <a routerLink="registerBf" class="icon-text-second cursor-pointer"  #rBf="routerLinkActive" routerLinkActive="active" [style.display]="isActivate  || userInfo.isOpenBf == 0 ? 'block' : 'none'" [innerHtml]="isActivate ? '激活交易账户':'托管平台注册'">托管平台注册</a>
+            <a routerLink="recharge" class="icon-text-second cursor-pointer"  #r="routerLinkActive" routerLinkActive="active">充值</a>
+            <a routerLink="withdraw" class="icon-text-second cursor-pointer"  #w="routerLinkActive" routerLinkActive="active">提现</a>
+            <a routerLink="fund" class="icon-text-second cursor-pointer"  #f="routerLinkActive" routerLinkActive="active">交易记录</a>
+        </div>
+
+    </div>
+
+    <div >
+        <p>
+            <a  class="collapse-title font-size-large cursor-pointer title-width many" [ngClass]="rInvest.isActive ? 'many-select' : ''" data-toggle="collapse" data-target="#two" >
+                <span class="icon title-icon-left icon-my-money"></span>
+                <span class="icon-text icon-text-left">我的投资</span>
+                <span class="icon icon-postion icon-my-pointer-menu"></span>
+            </a>
+        </p>
+        <div   id="two" class="collapse colloapse-content" [ngClass]="rInvest.isActive ? 'in' : ''">
+            <a routerLink="invest" class="icon-text-second cursor-pointer" #rInvest="routerLinkActive"  routerLinkActive="active">定期理财</a>
+        </div>
+
+    </div>
+    <div  >
+        <p>
+            <a  class="collapse-title font-size-large cursor-pointer title-width many" [ngClass]=" rPerson.isActive  || rbank.isActive  || rsafe.isActive? 'many-select' : ''" data-toggle="collapse" data-target="#three"  >
+                <span class="icon title-icon-left icon-my-setting"></span>
+                <span class="icon-text icon-text-left">账户设置</span>
+                <span class="icon icon-postion icon-my-pointer-menu"></span>
+            </a>
+        </p>
+        <div  id="three" class="collapse colloapse-content " [ngClass]=" rPerson.isActive  || rbank.isActive  || rsafe.isActive ? 'in' : ''">
+            <a routerLink="person" class="icon-text-second cursor-pointer" #rPerson="routerLinkActive"  routerLinkActive="active">个人信息</a>
+            <!--<a routerLink="msgCenter" class="icon-text-second cursor-pointer" #rmsg="routerLinkActive" routerLinkActive="active">消息中心</a>-->
+            <a routerLink="bank" class="icon-text-second cursor-pointer" #rbank="routerLinkActive"  routerLinkActive="active">银行卡信息</a>
+            <a routerLink="safetySetting" class="icon-text-second cursor-pointer" #rsafe="routerLinkActive"  routerLinkActive="active">安全设置</a>
+        </div>
+
+    </div>
+
+    <p >
+        <a routerLink="coupon" class="collapse-title font-size-large cursor-pointer title-width single"   routerLinkActive="single-select">
+            <span class="icon title-icon-left icon-my-menu-coupon"></span>
+            <span class="icon-text icon-text-left">我的卡券</span>
+        </a>
+    </p>
+    <p>
+        <a routerLink="msgCenter" class="collapse-title font-size-large cursor-pointer title-width single" routerLinkActive="single-select">
+            <span class="icon title-icon-left icon-my-msgCenter"></span>
+            <span class="icon-text icon-text-left">消息中心</span>
+            <!--<span class="icon-group icon-sm">-->
+                <!--<span class="icon icon-my-msgCenter"></span>-->
+                <!--<span class="icon-txt">消息中心</span>-->
+            <!--</span>-->
+        </a>
+    </p>
+
+</div>

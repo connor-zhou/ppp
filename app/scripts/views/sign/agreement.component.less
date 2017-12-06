@@ -1,0 +1,36 @@
+@import "../../../less/variables.less";
+
+.terms, .agreement{
+  >.container{
+    max-width:1000px;
+  }
+  .item-head{
+    text-align:center;
+    font-size:@font-size-xlarge;
+    margin:20px auto;
+  }
+  p{
+    font-size:@font-size-md;
+    text-indent:2rem;
+    line-height:2rem;
+    color: @text-success;
+    &.p-8{
+      text-indent:0;
+      margin-top:20px;
+    }
+    &.p-8-sub{
+      text-indent:4rem;
+    }
+  }
+  .item-sub-head{
+    font-size:@font-size-md;
+    background:#eee;
+    line-height:32px;
+    padding-left:8px;
+    margin:15px auto;
+    border-left:3px solid @text-danger;
+    &:first-child{
+      margin-top:30px;
+    }
+  }
+}

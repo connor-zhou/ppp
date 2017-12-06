@@ -1,0 +1,42 @@
+@import "../../../less/variables.less";
+
+.contactUs{
+  .icon-lg{
+    padding-left: 60px;
+    height: 60px;
+    .icon{
+      width:60px;height:60px;
+    }
+  }
+  .content-box{
+    padding-left:60px;
+    margin-bottom:2.5rem;
+    position:relative;
+    .icon-group{
+      position:absolute;
+      left:0;
+      top:0;
+    }
+    >h3{
+      line-height:54px;
+      font-size:@font-size-md;
+      color:@text-info;
+    }
+    >p{
+      margin-bottom:7px;
+      font-size:@font-size-md;
+      color:@text-success;
+    }
+    .qrcode{
+      overflow:hidden;
+      >li{
+        float:left;
+        margin-right:2rem;
+        font-size:@font-size-md;
+      }
+    }
+    a{
+      color: @text-success;
+    }
+  }
+}

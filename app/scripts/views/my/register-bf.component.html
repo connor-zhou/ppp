@@ -1,0 +1,63 @@
+<div class="register-bf">
+    <div >
+        <div class="pay-title">
+            <span class="to-pay font-size-xlarge">上海银行托管平台注册</span>
+        </div>
+        <div class="form-content font-size-large">
+            <div class="form-line font-size-large line-bottom ">
+                <span class="line-left ">真实姓名：</span>
+                <span class="right-box">
+                    <!--(ngModelChange)="requestRechargeUrl($event)"-->
+                    <input type="text" class="line-right  line-input input-style "
+                           [(ngModel)] = "userInfo.realname"
+                           (focus)="clearTip('realname')"
+                           placeholder="请输入姓名">
+                    <span class="error-tip" *ngIf="errTip.realnameTip">{{errTip.realnameTip}}</span>
+                </span>
+            </div>
+            <div class="form-line font-size-large line-bottom ">
+                <span class="line-left ">身份证号：</span>
+                <span class="right-box">
+                    <!--(ngModelChange)="requestRechargeUrl($event)"-->
+                    <input type="text" class="line-right  line-input input-style "
+                           [(ngModel)] = "userInfo.chinaId"
+                           (focus)="clearTip('chinaId')"
+                           placeholder="请输入身份证号码">
+                    <span class="error-tip" *ngIf="errTip.chinaIdTip">{{errTip.chinaIdTip}}</span>
+                </span>
+            </div>
+            <!--<a class="btn  btn-block text-white  btn-first-bg btn-height font-size-large disabled"  *ngIf="!onlineMoney || onlineMoney < 100 "  >下一步</a>-->
+            <a class="btn  btn-block text-white btn-height font-size-large btn-next-step" (click)="toRequestUrl()" [ngClass]="{'disabled': !isTo}" *ngIf="userInfo.isOpenBf == 0">下一步</a>
+            <a class="btn  btn-block text-white btn-height font-size-large btn-next-step disabled" *ngIf="userInfo.isOpenBf == 1">下一步</a>
+            <tip></tip>
+            <form class="hide-html"    [action]="actionUrl"  id="request-form" method="post" >
+                <input type="hidden" *ngFor="let key of dataRes.keys" [name]="key" [value]="dataRes.maps[key]">
+                <a class="btn btn-md   btn-height font-size-large btn-back" >返回修改</a>
+                <input type="submit"  id="autoSubmit"  class="btn btn-md  text-white btn-height font-size-large btn-go" value="前往充值"  />
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade tip-alert" id="warning-activate" tabindex="-1" role="dialog" aria-labelledby="warningWithdrawBank" aria-hidden="false" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body  font-size-md text-center">
+                <dl class="body-dl">
+                    <dt>
+                     <span class="icon-group icon-x-lg img-bottom">
+                        <span class="icon  icon-big-mark"></span>
+                     </span>
+                    </dt>
+                    <dd>
+                        <h3 class="text-info">提示！</h3>
+                        <p class="text-tip tip-warning">为保护您账户资金安全，请激活并设置您的交易密码。星投资不会保存您设置的交易密码，请您妥善保存。</p>
+                    </dd>
+                    <dd>
+                        <a class="btn btn-md btn-affirm font-size-md" data-dismiss="modal" routerLink="/my/platform" [queryParams]="{type:'activate'}">立即激活</a>
+                        <a class="btn btn-md btn-cancel font-size-md" data-dismiss="modal" routerLink="/my/overview">返回账户首页</a>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

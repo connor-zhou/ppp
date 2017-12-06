@@ -1,0 +1,151 @@
+
+@import "../../../less/variables.less";
+
+.sign{
+  background-color: @login-bg;
+  position: relative;
+  height: calc(100%);
+  min-height: 590px;
+  &.login-bg{
+    background-size: contain;
+    background-position: center;
+  }
+  .sign-bg-left{
+    width: 1200px;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    .bg-left-box{
+      height: 100%;
+      background-size: contain;
+      background-position: center center;
+      .left-img{
+        position: absolute;
+        left: 100px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: -1;
+      }
+      .left-bg{
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+  }
+  .box-content-width{
+    width: 420px;
+    margin-left: 720px;
+  }
+  .icon-phone{
+    background: url("@{img-path}/login/1_03.png@{img-version}") no-repeat left center;
+    background-size:contain;
+  }
+  .sign-bg{
+
+      .box-content{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .icon-bg-color{
+        background-color: @icon-bg-color;
+      }
+
+      .register-group-margin{
+        margin-top: 30px;
+        margin-bottom: 45px;
+      }
+      .content-bottom{
+        .password-select{
+            margin-top: 16px;
+        }
+        .input-check{
+          width: 18px;
+          height: 18px;
+          margin: 0px;
+          cursor:pointer;
+        }
+        .input-check-r{
+          line-height: 18px;
+          color: @text-success;
+          vertical-align: top;
+        }
+        .forget-password{
+          color: @text-warning;
+        }
+      }
+  }
+  .register-spacial-log{
+    position: absolute;
+    left: 110px;
+    bottom: 20px;
+    div{
+      width: 502px;
+      height: 578px;
+    }
+  }
+  .login-bg-line{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+//.sign{
+//
+//  background: @login-bg;
+//  padding-top: 100px;
+//  padding-bottom: 175px;
+//  .sign-bg{
+//    .box-content-width{
+//      width: 420px;
+//      margin-left: 720px;
+//    }
+//    .fl{
+//      float: left;
+//    }
+//    .fr{
+//      float: right;
+//    }
+//    .icon-phone{
+//      background: url("@{img-path}/login/icon-login-phone.png") no-repeat left center;
+//      background-size:contain;
+//    }
+//    .icon-password{
+//
+//      background: url("@{img-path}/reg-bg.png") no-repeat left center;
+//      background-size:contain;
+//    }
+//    .box-content{
+//      background: @btn-danger-color;
+//      padding-left:35px;
+//      padding-right: 35px;
+//      .content-title{
+//        height: 79px;
+//        padding-top: 30px;
+//        border-bottom: 1px solid @brand-primary;
+//        .title-height{
+//          height: 28px;
+//          .title-left{
+//            color: @text-info;
+//          }
+//          .title-right{
+//            padding-top: 10px;
+//            color: @text-success;
+//          }
+//        }
+//      }
+//      .content-auto{
+//        margin: 0 auto;
+//        width: 350px;
+//      }
+//    }
+//  }
+//
+//
+//}

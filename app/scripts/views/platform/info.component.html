@@ -1,0 +1,97 @@
+<div class="platform">
+    <div class="container platform-info">
+        <div class="text-left">
+             <span class="info-one margin-r" >
+                    <span class="info-one-left">累计交易总额</span>
+                    <span class="info-one-right" ><span>{{platformInfo.totalMoneySum | number:"1.2-2"}}&nbsp;元</span></span>
+                </span>
+             <span class="info-one ">
+                     <span class="info-one-left">累计交易笔数</span>
+                      <span class="info-one-right">
+                        <span>{{platformInfo.tradeNumberSum}}&nbsp;笔</span>
+                     </span>
+                </span>
+        </div>
+        <div class="text-left">
+             <span class="info-one margin-r" >
+                    <span class="info-one-left">借贷余额</span>
+                    <span class="info-one-right" ><span>{{platformInfo.repayMoneyWill | number:"1.2-2"}}&nbsp;元</span></span>
+                </span>
+            <span class="info-one ">
+                     <span class="info-one-left">累计借款人数</span>
+                      <span class="info-one-right">
+                        <span>{{platformInfo.borrowerNumberSum}}&nbsp;人</span>
+                     </span>
+                </span>
+        </div>
+
+        <div class="text-left">
+             <span class="info-one margin-r" >
+                    <span class="info-one-left">累计出借人数</span>
+                    <span class="info-one-right" ><span>{{platformInfo.loanerNumberSum}}&nbsp;人</span></span>
+                </span>
+            <span class="info-one ">
+                     <span class="info-one-left">当前借款人数</span>
+                      <span class="info-one-right">
+                        <span>{{platformInfo.borrowerNumber}}&nbsp;人</span>
+                     </span>
+             </span>
+        </div>
+        <div class="text-left">
+             <span class="info-one margin-r" >
+                    <span class="info-one-left">当前出借人数</span>
+                    <span class="info-one-right" ><span>{{platformInfo.loanerNumber}}&nbsp;人</span></span>
+                </span>
+            <span class="info-one ">
+                     <span class="info-one-left">前十大借款人待还金额占比</span>
+                      <span class="info-one-right">
+                        <span>{{platformInfo.top10MoneyRate}}</span>
+                     </span>
+             </span>
+        </div>
+        <div class="text-left">
+             <span class="info-one margin-r" >
+                    <span class="info-one-left">最大单一借款人待还金额占比</span>
+                    <span class="info-one-right" ><span>{{platformInfo.top1MoneyRate}}</span></span>
+                </span>
+            <span class="info-one ">
+                     <span class="info-one-left">逾期金额</span>
+                      <span class="info-one-right">
+                        <span>{{platformInfo.overtimeMoney | number:"1.2-2"}}&nbsp;元</span>
+                     </span>
+             </span>
+        </div>
+        <div class="text-left">
+             <span class="info-one margin-r" >
+                    <span class="info-one-left">逾期笔数</span>
+                    <span class="info-one-right" ><span>{{platformInfo.overtimeNumber}}&nbsp;笔</span></span>
+                </span>
+            <span class="info-one " >
+                    <span class="info-one-left">逾期90天以上笔数</span>
+                    <span class="info-one-right" ><span>{{platformInfo.overtime90Number}}&nbsp;笔</span></span>
+                </span>
+        </div>
+        <div class="text-left">
+            <span class="info-one margin-r">
+                     <span class="info-one-left">逾期90天以上金额</span>
+                      <span class="info-one-right">
+                        <span>{{platformInfo.overtime90Money | number:"1.2-2"}}&nbsp;元</span>
+                     </span>
+             </span>
+            <span class="info-one " >
+                    <span class="info-one-left">代偿金额</span>
+                    <span class="info-one-right" ><span>{{platformInfo.helpRepayMoney | number:"1.2-2"}}&nbsp;元</span></span>
+                </span>
+        </div>
+        <div class="text-left">
+            <span class="info-one margin-r">
+                     <span class="info-one-left">代偿笔数</span>
+                      <span class="info-one-right">
+                        <span>{{platformInfo.helpRepayNumber}}&nbsp;笔</span>
+                     </span>
+             </span>
+        </div>
+
+    </div>
+</div>
+<tip></tip>

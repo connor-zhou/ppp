@@ -1,0 +1,120 @@
+@import "../../../less/variables.less";
+footer {
+    width: 100%;
+    padding-top: 74px;
+    background: #303030;
+    color: #959595;
+    > .container {
+        max-width: @box-width;
+    }
+    > section {
+        background: #3C3C3C;
+        height:auto !important;
+    }
+
+    .kefu {
+        position: relative;
+        > .box {
+            width: 100%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            .dial:before{
+                content:'';
+                display:inline-block;
+                vertical-align: middle;
+            }
+            .dial{
+                .icon-group{
+                    vertical-align: middle;
+                    line-height:54px;
+                }
+            }
+            > p {
+                margin: 0;
+                &:nth-child(2) {
+                    line-height: 80px;
+                }
+            }
+        }
+    }
+
+    .hr {
+        border-top: 1px solid @index-color;
+        margin: 40px 0 0 0;
+    }
+    .qrcode {
+        overflow: hidden;
+        > dl {
+            width: 100px;
+            float: right;
+            > dt {
+                height: 100px;
+            }
+            &:first-child {
+                margin-left: 70px;
+            }
+        }
+    }
+    .service-info {
+        margin-bottom: 15px;
+        > div {
+            border-right: 1px solid @index-color;
+            height: 120px;
+            &:last-child {
+                border: 0;
+            }
+        }
+        .qrcode-box .qrcode{
+            img{
+                width:100%;
+            }
+        }
+    }
+    .in-links {
+        overflow: hidden;
+        margin: 0;
+        > .item {
+            float: left;
+            margin-right: 50px;
+            text-align: center;
+            &:last-child {
+                margin-right: 0;
+            }
+            > h6 {
+                margin: 0 0 30px 0;
+                font-size: @font-size-small;
+            }
+        }
+        .item-ul {
+            margin: 0;
+            color: @text-primary;
+            font-size: @font-size-xsmall;
+            > li {
+                line-height: 26px;
+            }
+        }
+
+    }
+    .ex-links {
+        > li {
+            float: left;
+            line-height: 85px;
+            margin-right: 15px;
+            &:last-child {
+                margin: 0;
+            }
+        }
+    }
+    > section {
+        font-size: @font-size-xsmall;
+        height: 60px;
+        > .container {
+            max-width: @box-width;
+        }
+        padding: 10px 0;
+    }
+}

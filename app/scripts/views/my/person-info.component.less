@@ -1,0 +1,146 @@
+
+
+  @import "../../../less/variables.less";
+.pay-title{
+  margin-bottom: 0px;
+}
+.safetySetting{
+  min-width:970px;
+  //border:1px solid @brand-success;
+  padding:15px 25px;
+  .head-img-box{
+    height: 150px;
+    //background-color: #b2a1bd;
+    width: 100%;
+    text-align: center;
+    padding-top: 30px;
+    background-size: cover;
+  }
+  .head-img{
+    display: inline-block;
+    width: 150px;
+    height: 90px;
+    position: relative;
+    .circleBox{
+      height: 90px;
+      width: 90px;
+      display: inline-block;
+      border:6px solid #d4c4d0;
+      -webkit-border-radius:50%;
+      -moz-border-radius:50%;
+      border-radius:50%;
+      overflow: hidden;
+      text-align: center;
+      vertical-align: middle;
+    }
+    .circle-img{
+      border-radius: 50% !important;
+      width: 100%;
+      height:100%;
+      line-height: 78px;
+    }
+    .add-head-img{
+      display: inline-block;
+      width: 22px;
+      height:22px;
+      position: relative;
+      margin-left: 30px;
+      .file{
+        width:100%;
+        height:100%;
+        position:absolute;
+        top:0;
+        left:0;
+        border:0;
+        background-color:transparent;
+        opacity: 0;
+        -ms-filter: 'alpha(opacity=0)';
+        visible:hidden;
+        cursor: pointer;
+      }
+    }
+
+  }
+  .title{
+    padding-bottom:3rem;
+    margin-bottom:2rem;
+    border-bottom:1px solid @brand-success;
+    .progress{
+      margin-top:0.85rem;
+      .progress-danger{
+        background-color: @text-warning;
+      }
+
+    }
+    .title-progres{
+      padding-left:120px;
+      position:relative;
+      margin:10px auto;
+      height:2.5rem;
+      line-height:2.5rem;
+      overflow:hidden;
+      border:1px solid transparent;
+      .text{
+        position:absolute;
+        left:0;top:0;
+      }
+    }
+  }
+  .pass{
+    background:#fff;
+    border:1px solid @text-warning;
+    color:@text-warning;
+  }
+  .fail{
+    background:#fff;
+    border:1px solid @brand-success;
+    color:@text-muted;
+  }
+
+
+    .text-green{
+      color:#45B630;
+    }
+    .row{
+      margin-bottom:7px;
+    }
+    .row > div{
+      >span:not(.icon-group){
+        line-height:36px;
+      }
+      .icon-group{
+        margin-top:6px;
+      }
+    }
+  .username-box{
+    margin:15px auto;
+    border:1px solid @brand-success;
+    padding:15px 10px;
+    .username-btn{
+      padding-top:10px;
+      >.btn{width:6rem;}
+    }
+    td{
+      padding:5px;
+      >input{
+        line-height:2.5rem;
+        width:20rem;
+      }
+    }
+  }
+  .setting-warning{
+    dd{
+      margin:10px 0;
+      >.btn{
+        width:6rem;
+      }
+      >p{
+        margin:10px auto;
+      }
+    }
+  }
+}
+
+
+
+

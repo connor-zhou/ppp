@@ -1,0 +1,39 @@
+{
+  "apiBaseUrl": "http://218.244.141.170:8080/api/investor",
+  "contractUrl": "http://xinghu.xinyuanzichan.com/service/contract/",
+  "contractTestUrl": "http://xinghu.xinyuanzichan.com/service/contract_test/",
+  "borrowHref":"http://xinghu.xinyuanzichan.com/service/contract_loan/",
+  "transferHref":"http://xinghu.xinyuanzichan.com/service/contract_transfer/",
+  "appRootUrl": "http://192.168.1.155:8880",
+  "appRoot": "",
+  "baseURL": "/",
+  "enableProdMode": false,
+  "version": "1.0.0",
+  "deployServer": {
+    "host": "",
+    "port": "",
+    "user": "",
+    "privatekey": "",
+    "path": ""
+  },
+  "wechatShare": {
+    "title": "皇上，户部尚书有要事启奏！",
+    "desc": "星投资注册就送50元，还有15%高收益项目可享，如此绝佳理财良机我们不能错过~",
+    "imgUrl": "/images/app/event/wechatShare/logo.jpg"
+  },
+  "channel": {
+    "wechat": "ydB47hKm5e6axkrnc032XnPvgblyfeI5",
+    "ios": "199eac53-ae8b-4c36-a083-71a8802a211c",
+    "android": "d0ae3819-9b9a-46d7-9467-7a0d6ea0e0b0"
+  },
+  "hjxc": {
+    "grantTicket": "http://139.196.5.141:8082/fd_ext/a/channel/interface/grantTicket",
+    "queryTicketInfosByMobile": "http://139.196.5.141:8082/fd_ext/a/channel/interface/queryTicketInfosByMobile",
+    "channelCode": "hjdsh",
+    "agreeCode": "fdext1207"
+  },
+  "wechat": {
+    "debug": false
+  },
+  "tel":"400-823-9800"
+}

@@ -1,0 +1,90 @@
+@import "../../../less/variables.less";
+
+.invest{
+  padding-left:25px;
+  padding-right:25px;
+  .shouyi{
+    border-bottom:1px solid @brand-success;
+    >div{
+      margin-top:30px;
+      margin-bottom:30px;
+    }
+  }
+  .hetong>.btn{
+    background:#fff;
+    margin-top:3px;
+    display: block;
+  }
+  .modal-dialog{
+    margin-top:180px;
+    .modal-header{
+      border:0;
+      text-align:center;
+      .modal-title{
+        margin-top:20px;
+      }
+    }
+    .modal-content{
+      border-radius: 2px;
+    }
+    .modal-body{
+      .title{
+        border:1px solid transparent;
+        overflow:hidden;
+        margin:0 auto 10px;
+      }
+      .table-title{
+        background:#eee;
+        >th{
+          border-bottom:0;
+          font-weight: normal;
+        }
+        + tr >td{
+          border-top:0;
+        }
+      }
+    }
+  }
+  .content{
+    table{
+      tr{
+        th{
+          border-left: none;
+          font-weight: normal;
+        }
+        td{
+          span{
+            line-height: 30px;
+          }
+        }
+
+      }
+    }
+  }
+  .bottom-line{
+    border-bottom: 1px solid @brand-primary;
+  }
+  .active {
+    border-bottom: 2px solid @text-warning;
+    color: @text-warning !important;
+    line-height: 30px;
+    display: inline-block;
+  }
+  .to-invest{
+    color: @text-warning;
+    line-height: 30px;
+  }
+  .modal{
+    .info-invest{
+      h1{
+        span{
+          display: block;
+        }
+      }
+    }
+  }
+  .top-info{
+    width: 314px;
+    float: left;
+  }
+}

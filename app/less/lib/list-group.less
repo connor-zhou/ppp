@@ -1,0 +1,59 @@
+@import "../variables.less";
+
+
+.menu{
+	.list-group-item {
+		position:relative;
+		border-top: 1px solid @list-group-default-border;
+		border-bottom: 1px solid @list-group-default-border;
+		border-left:0;
+		border-right:0;
+		margin-bottom: -1px;
+
+		>.menuarrow{
+				position: absolute;
+				top: 0;
+				right: 10px;
+				bottom: 0;
+				margin: auto 0;
+			    display: inline-block;
+			    width: 14px;
+			    height: 16px;
+			    font: @font-size-base/1 FontAwesome;
+			    font-size: @font-size-base;
+			    text-rendering: auto;
+			    -webkit-font-smoothing: antialiased;
+
+			    &:before{
+			    	color: @list-group-primary-color;
+					font-family: 'Glyphicons Halflings';
+					font-size: @font-size-base;
+			    }
+			    &.menuarrow-right{
+			    	&:before{
+				    	content: "\e258";
+				    }
+			    }
+			    &.menuarrow-down{
+					&:before {
+				    	content: "\e259";
+					}
+				}
+		}
+		>.menu-text-right{
+			position: absolute;
+			top: 0;
+			right: 30px;
+			bottom: 0;
+			margin: auto 0;
+		    display: inline-block;
+		    width: auto;
+		    height: 16px;
+		    font: @font-size-base/1 Arial,FontAwesome;
+		    font-size: inherit;
+		    color: @text-primary;;
+		    text-rendering: auto;
+		    -webkit-font-smoothing: antialiased;
+		}
+	}
+}

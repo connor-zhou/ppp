@@ -1,0 +1,110 @@
+<div class="setEmail font-size-small">
+   <div class="my-sub-title font-size-large text-info">
+      <span>绑定邮箱</span>
+   </div>
+   <div class="sub-content">
+      <div class="find-box" [ngSwitch]="stepNo">
+         <div class="row step-bar text-white">
+            <div class="col-xs-4 col-md-4 col-lg-4 active">
+               <div class="step-num">
+                  <p class="num font-size-xxlarge">1</p>
+               </div>
+               <p class="step-tip">填写邮箱</p>
+            </div>
+            <div class="col-xs-4 col-md-4 col-lg-4" [ngClass]="{active:stepNo >= 2}">
+               <div class="step-num">
+                  <p class="num font-size-xxlarge">2</p>
+               </div>
+               <p class="step-tip">绑定邮箱</p>
+            </div>
+            <div  class="col-xs-4 col-md-4 col-lg-4" [ngClass]="{active:stepNo === 3}">
+               <div class="step-num">
+                  <p class="num font-size-xxlarge">3</p>
+               </div>
+               <p class="step-tip">绑定成功</p>
+            </div>
+         </div>
+         <div class="step-content">
+            <div class="info"  *ngSwitchCase="1">
+               <div class="reg-login-form no-addon">
+                  <form class="form-horizontal" role="form">
+                     <table>
+                        <tr>
+                           <td class="text-right">手机验证码：</td>
+                           <td>
+                              <div class="input-group">
+                                 <input type="text" class="form-control font-size-small" placeholder="请输入手机验证码">
+                                 <span class="unvalid-tip font-size-small">*这是提示哟</span>
+                              </div>
+                           </td>
+                           <td class="msgCode">
+                              <a class="btn btn-md btn-default font-size-small fail">获取短信验证码</a>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td class="text-right">邮箱：</td>
+                           <td colspan="2">
+                              <div class="input-group">
+                                 <input type="text" class="form-control font-size-small" placeholder="请输入邮箱地址">
+                                 <span class="unvalid-tip font-size-small">*这是提示哟</span>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td colspan="2"></td>
+                           <td class="text-right">
+                              <a class="btn btn-danger btn-block btn-md font-size-small" (click)="goNextStep()">发送验证邮件</a>
+                           </td>
+                        </tr>
+                     </table>
+                  </form>
+               </div>
+            </div>
+            <div class="info2"  *ngSwitchCase="2">
+               <div class="row">
+                  <div class="col-xs-12">
+                     <dl class="text-center">
+                        <dt>
+                           <span class="icon-group icon-xx-lg">
+                              <span class="icon icon-status-success"></span>
+                           </span>
+                        </dt>
+                        <dd>
+                           <h4 class="font-size-large text-info">邮件发送成功，请到邮箱内进行验证</h4>
+                           <p class="text-muted">（48小时内有效）</p>
+                        </dd>
+                        <dd  style="display:none;">
+                           <a class="btn btn-danger btn-block btn-md font-size-small" [hidden]="true" (click)="goNextStep()">重新发送验证邮件</a>
+                           <a class="font-size-small text-muted">未收到邮件？</a>
+                        </dd>
+                        <dd>
+                           <a class="btn btn-default btn-block btn-md font-size-small" (click)="goNextStep()">重新发送验证邮件( <span>25</span>)</a>
+                           <a class="font-size-small text-muted">邮件已重新发送！如果仍未收到请检查是否在邮件垃圾箱</a>
+                        </dd>
+                     </dl>
+                  </div>
+               </div>
+            </div>
+            <div class="info2"  *ngSwitchCase="3">
+               <div class="row">
+                  <div class="col-xs-12">
+                     <dl class="text-center">
+                        <dt>
+                           <span class="icon-group icon-xx-lg">
+                              <span class="icon  icon-status-success"></span>
+                           </span>
+                        </dt>
+                        <dd>
+                           <h4 class="font-size-large text-info">邮箱绑定成功！</h4>
+                        </dd>
+                        <dd>
+                           <a class="btn btn-danger btn-block btn-md font-size-small" routerLink="/my/safetySetting">返回安全设置</a>
+                        </dd>
+                     </dl>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

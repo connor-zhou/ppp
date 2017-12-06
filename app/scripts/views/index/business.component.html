@@ -1,0 +1,26 @@
+<div class="business" *ngIf="businessData">
+    <div class="box">
+    <div class="container font-size-large">
+        <div class="row text-center">
+            <div class="col-xs-12 col-sm-6 col-md-4 text-left">
+                <span class="icon-group icon-md">
+	                <span class="icon icon-business-total"></span>
+	                <span class="icon-txt text-info">累计成交额：<i class="num text-warning">{{businessData.moneySum}}</i> 元</span>
+                </span>
+            </div>
+            <div class="col-xs-12  col-sm-6 col-md-4">
+                <span class="icon-group icon-md">
+	                <i class="icon  icon-business-revenue"></i>
+	                <span class="icon-txt  text-info">累计收益额：<i class="num text-warning">{{businessData.profitSum}}</i> 元</span>
+                </span>
+            </div>
+            <div class="col-xs-12  col-sm-6 col-md-4 text-right">
+                <span class="icon-group icon-md">
+	                <i class="icon icon-buisness-days"></i>
+	                <span class="icon-txt  text-info">已安全运营：<i class="num text-warning">{{businessData.days}}</i> 天</span>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

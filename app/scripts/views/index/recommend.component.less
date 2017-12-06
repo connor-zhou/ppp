@@ -1,0 +1,59 @@
+@import "../../../less/variables.less";
+
+.recommend {
+    background-color:#fff;
+    &.box-bg{
+        padding:0 0 44px 0;
+    }
+    .title{
+        line-height:28px;
+        h2{
+            font-size:28px;
+            border-left:3px solid @brand-warning;
+            padding-left:10px;
+        }
+    }
+    .content{
+        margin-top:25px;
+        font-size:@font-size-large;
+        color:@text-success;
+        th,td{
+            border-top:0;
+            vertical-align: middle;
+        }
+        th{
+            height:60px;
+            font-weight: normal;
+        }
+        td{
+            height:100px;
+            border-bottom:1px solid #d0d0d0;
+            .btn-md{
+                padding:0;
+                width:120px;
+                line-height:42px;
+                font-size:@font-size-large;
+                text-align:center;
+                color:@text-warning;
+                background-color:#fff;
+                border:1px solid @brand-warning;
+            }
+            &.rate{
+                color:@text-warning;
+                font-size:24px;
+                >small{
+                    font-size:16px;
+                }
+            }
+            .btn-disabled{
+                background-color:#969696;
+                color:#fff;
+                border:1px solid #fff;
+            }
+        }
+        .table{
+            margin:0;
+        }
+
+    }
+}

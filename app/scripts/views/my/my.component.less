@@ -1,0 +1,39 @@
+@import "../../../less/variables.less";
+
+.my-component{
+  background-color: @box-group-bg;
+  padding-top: 18px;
+  padding-bottom: 40px;
+
+  .my-content{
+    overflow: hidden;
+    width: 1200px;
+    .l-width{
+      width: 220px;
+    }
+    .r-width{
+      width: 965px;
+      min-height: 610px;
+      border:1px solid @brand-success;
+    }
+    .my-left{
+      background-color: @stemp-box-bg;
+
+    }
+    .my-right{
+      background-color: @stemp-box-bg;
+    }
+  }
+}
+
+#ui-datepicker-div.ui-datepicker{
+  width:auto;
+}
+#ui-datepicker-div.ui-datepicker .ui-datepicker-header{
+  width:100%;
+  left:0;
+}
+#ui-datepicker-div.ui-datepicker .ui-datepicker-calendar td>a{
+  cursor:pointer;
+}
+

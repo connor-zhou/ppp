@@ -1,0 +1,36 @@
+<div class="industry">
+    <div class="box">
+        <div class="container">
+            <div class="row title">
+                <div class="col-xs-6 text-left">
+                     <span class="icon-group icon-md ">
+                        <i class="icon icon-title-industry"></i>
+                        <span class="icon-txt font-size-xxlarge text-info ">行业动态</span>
+                    </span>
+                </div>
+                <div class="col-xs-6 text-right">
+                    <a routerLink="/contact/industry"  class="text-primary font-size-small view-more">查看更多 &gt;</a>
+                </div>
+            </div>
+            <div class="row content">
+                <div class="col-sm-6 col-xs-12" *ngFor="let article of articleList">
+                    <div class="table">
+                        <div class="table-row">
+                            <div class="table-cell text-center date">
+                                <p class="font-size-xsmall text-white">{{article.date|date:'y'}}</p>
+                                <p class="text-danger">{{article.date|date:'dd'}}</p>
+                                <p class="font-size-xsmall text-warning">{{article.date|date:'MM'}}</p>
+                            </div>
+                            <div class="table-cell info">
+                                <p class="text-info font-size-md">
+                                    <a [routerLink]="['/contact/article',1,article.msgsId]">{{article.title}}</a></p>
+                                <p class="text-success font-size-small"><span>{{article.content}}</span>
+                                    <a [routerLink]="['/contact/article',1,article.msgsId]" class="text-danger">[更多]</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

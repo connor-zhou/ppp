@@ -1,0 +1,178 @@
+@import "../../../less/variables.less";
+
+.bank{
+  padding:0px 30px 30px;
+  .block{
+    display: block;
+  }
+  .bank-box{
+    width:200px;
+    margin: 15px auto;
+
+  }
+
+  .content{
+    border:1px solid @brand-success;
+    padding:3px 15px;
+    min-height: 10rem;
+    position:relative;
+    .mask{
+      display:none;
+      position:absolute;
+      left:0;top:0;
+      width:100%;height:100%;
+      margin:0;
+      background-color:rgba(0,0,0,0.7);
+      cursor:default;
+      >.icon-group{
+        position:absolute;
+        top:50%;left:50%;
+        -webkit-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+        -o-transform: translate(-50%,-50%);
+        transform: translate(-50%,-50%);
+      }
+    }
+    &.add{
+      position:relative;
+      .icon{
+        height:26px;width:26px;
+      }
+      >p{
+        position:absolute;
+        top:50%;left:50%;
+        -webkit-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+        -o-transform:translate(-50%,-50%) ;
+        transform:translate(-50%,-50%) ;
+      }
+    }
+    &.selected > .mask{
+      display:block;
+    }
+  }
+  .bank-tip{
+    margin-top: 30px;
+    text-align: center;
+  }
+
+}
+.bank-box-person{
+  .content{
+    margin:auto;
+  }
+}
+//.card-add{
+//  padding-left: 25px;
+//}
+
+
+
+//.withdraw{
+//  //border:1px solid @brand-success;
+//  padding:0 25px 30px;
+//  overflow: hidden;
+//  .left-padding{
+//    display:inline-block;
+//    width:75px;
+//  }
+//  h4{
+//    line-height:2.5rem;
+//    background:#eee;
+//    padding-left:7px;
+//    margin:2.5rem auto 1.5rem;
+//  }
+//  .content{
+//    margin-top:15px;
+//    border:1px solid @brand-success;
+//    padding:3px 15px;
+//    min-height: 10rem;
+//    position:relative;
+//    .mask{
+//      display:none;
+//      position:absolute;
+//      left:0;top:0;
+//      width:100%;height:100%;
+//      margin:0;
+//      background-color:rgba(0,0,0,0.7);
+//      cursor:default;
+//      >.icon-group{
+//        position:absolute;
+//        top:50%;left:50%;
+//        -webkit-transform: translate(-50%,-50%);
+//        -ms-transform: translate(-50%,-50%);
+//        -o-transform: translate(-50%,-50%);
+//        transform: translate(-50%,-50%);
+//      }
+//    }
+//    &.add{
+//      position:relative;
+//      .icon{
+//        height:26px;width:26px;
+//      }
+//      >p{
+//        position:absolute;
+//        top:50%;left:50%;
+//        -webkit-transform: translate(-50%,-50%);
+//        -ms-transform: translate(-50%,-50%);
+//        -o-transform:translate(-50%,-50%) ;
+//        transform:translate(-50%,-50%) ;
+//      }
+//    }
+//    &.selected > .mask{
+//      display:block;
+//    }
+//  }
+//  .row {
+//    margin:0;
+//  }
+//  .jieji{
+//    line-height:2rem;
+//  }
+//  .tixian-info{
+//    td{
+//      padding:5px;
+//    }
+//  }
+//  .card-add{
+//    td{
+//      padding:5px;
+//      &:first-child{
+//        text-align:right;
+//      }
+//      >input,>select{
+//        line-height:3rem;
+//        width:20rem;
+//        height:3rem;
+//        padding-left:10px;
+//        border:1px solid @brand-success;
+//      }
+//    }
+//    .province-city{
+//      select{
+//        width:9.8rem;
+//      }
+//    }
+//    .cancel-confirm{
+//      padding-top:2.5rem;
+//      text-align:right;
+//      .btn{
+//        width:6rem;
+//        &.btn-default{
+//          background:#fff;
+//          border:1px solid @brand-success;
+//          color:@text-info;
+//        }
+//      }
+//
+//    }
+//  }
+//  .body-dl{
+//    dd{
+//      margin:15px auto;
+//      >a.fail{
+//        background:#fff;
+//      }
+//    }
+//  }
+//}

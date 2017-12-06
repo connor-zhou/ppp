@@ -1,0 +1,94 @@
+<div class="sign">
+    <div class="sign-bg box">
+        <div class="box-content box-content-width">
+            <div class="content-title">
+                <div class="title-height">
+                    <p class="title-left fl font-size-xxlarge" *ngIf="stepNo == 1">找回密码</p>
+
+                    <!--第二步：设置密码-->
+                    <p class="title-left fl font-size-xxlarge" *ngIf="stepNo == 2">设置密码</p>
+                    <p class="title-left fl font-size-xxlarge" *ngIf="stepNo == 3">密码重置成功</p>
+                </div>
+            </div>
+            <!--第一步：输入验证码-->
+            <div class="content-auto" *ngIf="stepNo == 1">
+                <div class="content-middle">
+                    <div class="input-list-group register-group-margin">
+                        <!--第一步：输入验证码-->
+                        <div class="input-group "  [ngClass]="{'error-addon':tip.mobile}">
+                                <span class="input-group-addon  icon-addon ">
+                                    <i class="icon icon-bg-size icon-sign-phone " ></i>
+                                </span>
+                            <input type="text" class="form-control"   [(ngModel)]="data.mobile"   (focus)="clearTip('mobile')" placeholder="请输入手机号码" name="mobile">
+                            <span class="input-group-addon error-box" *ngIf="tip.mobile"><i>{{tip.mobile}}</i></span>
+                        </div>
+                    </div>
+                </div>
+                <a class="btn btn-lg btn-block btn-warning " (click)="switchStep(2)">下一步</a>
+            </div>
+
+            <!--第二步：手机验证码-->
+            <div class="content-auto" *ngIf="stepNo == 2"  [ngClass]="{disabledform: isLogin}">
+                <div class="content-middle">
+                    <div class="input-list-group register-group-margin">
+                        <div class="input-group"  [ngClass]="{'error-addon':tip.imageCode}" >
+                                <span class="input-group-addon icon-addon">
+                                    <i class="icon icon-bg-size icon-sign-img-code"></i>
+                                </span>
+                            <input type="text" class="form-control" [(ngModel)]="data.imageCode"  [disabled]="smsCodeInfo.remainTime > 0"  (focus)="clearTip('imageCode')" placeholder="请输入图片验证码"  name="imageCode">
+                            <span class="input-group-addon error-box" *ngIf="tip.imageCode"><i>{{tip.imageCode}}</i></span>
+                            <span class="input-group-addon cursor-pointer" (click)="getImageCode()">
+                                    <span class="code-img">
+                                        <img  src="{{imgCodeUrl}}" alt="">
+                                    </span>
+                                </span>
+                        </div>
+                        <div class="input-group"  [ngClass]="{'error-addon':tip.smsCode}">
+                                <span class="input-group-addon icon-addon">
+                                    <i class="icon icon-bg-size icon-sign-password"></i>
+                                </span>
+                            <input type="text" class="form-control" [(ngModel)]="data.smsCode"  (focus)="clearTip('smsCode')"  placeholder="请输入短信验证码" [(ngModel)]="smsCode" name="smscode">
+                            <span class="input-group-addon error-box" *ngIf="tip.smsCode"><i>{{tip.smsCode}}</i></span>
+                            <span class="input-group-addon text-info cursor-pointer" (click)="sendSmsCode()">
+                                    <span class="phone-code" [ngClass]="{'text-success':smsCodeInfo.remainTime > 0}">{{smsCodeInfo.text}}</span>
+                                </span>
+                        </div>
+                        <div class="input-group"   [ngClass]="{'error-addon':tip.pwd}">
+                                <span class="input-group-addon icon-addon">
+                                    <i class="icon icon-bg-size icon-sign-password"></i>
+                                </span>
+                            <input type="password" class="form-control" [(ngModel)]="data.pwd"  (focus)="clearTip('pwd')" placeholder="请输入8-15位大小写字母和数字的密码" name="pwd">
+                            <span class="input-group-addon error-box" *ngIf="tip.pwd"><i>{{tip.pwd}}</i></span>
+                        </div>
+                        <div class="input-group"  [ngClass]="{'error-addon':tip.pwdAgain}">
+                            <span class="input-group-addon icon-addon">
+                               <i class="icon icon-bg-size icon-sign-password"></i>
+                            </span>
+                            <input type="password" class="form-control" [(ngModel)]="data.pwdAgain"  (focus)="clearTip('pwdAgain')" placeholder="请再次输入新密码" name="pwdAgain">
+                            <span class="input-group-addon error-box" *ngIf="tip.pwdAgain"><i>{{tip.pwdAgain}}</i></span>
+                        </div>
+                    </div>
+                </div>
+                <tip></tip>
+                <a class="btn btn-lg btn-block btn-warning" [ngClass]="{'disabled':isLogin}" [innerHtml]="!isLogin?'下一步':'正在重置密码...'" (click)="resetPassword()">下一步</a>
+            </div>
+            <div class="content-auto" *ngIf="stepNo == 3">
+                <div class="content-middle">
+                    <!--<div class="content finish"  >-->
+                        <!--<div class="finish-box box-middle">-->
+                            <dl class="text-center">
+                                <dt>
+                                    <span class="icon-group icon-xx-lg">
+                                        <span class="icon icon-status-success"></span>
+                                    </span>
+                                </dt>
+                                <!--<dd class="status font-size-xlarge text-info">成功</dd>-->
+                                <dd class="info font-size-md text-success">已自动登录，<span  class="text-warning" [innerHtml]="timeCount+'秒'"></span>后将跳至<a  routerLink="/invest/overall" class="text-warning">投资页面</a></dd>
+                            </dl>
+                        <!--</div>-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

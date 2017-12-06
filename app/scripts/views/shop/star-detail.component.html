@@ -1,0 +1,104 @@
+<div class="box stardetail-content">
+    <div class="star-left">
+        <div class="shop-detail">
+            <div class="tab left-padding">
+                <a class="tab-item tab-color cursor-pointer" [ngClass]="{active:switch == 0}" (click)="switch=0;statusSwitch=0;getChange(switch,1)">兑换记录</a>
+                <a class="tab-item tab-color cursor-pointer" [ngClass]="{active:switch == 1}" (click)="switch=1;statusSwitch=0;getChange(switch,1)">星币明细</a>
+
+            </div>
+            <ul class="sub-tab left-padding" *ngIf="switch == 0">
+                <li><a class="btn btn-md" [class.active]="statusSwitch==0"
+                       (click)="statusSwitch=0;getChange(switch,1)" >所有订单</a></li>
+                <li><a class="btn btn-md" [class.active]="statusSwitch==1"
+                       (click)="statusSwitch=1;getChange(switch,1)">近1个月订单</a></li>
+                <li ><a class="btn btn-md" [class.active]="statusSwitch==2"
+                        (click)="statusSwitch=2;getChange(switch,1)" >近3个月订单</a></li>
+
+            </ul>
+            <ul class="sub-tab left-padding" *ngIf="switch == 1">
+                <li><a class="btn btn-md" [class.active]="statusSwitch==0"
+                       (click)="statusSwitch=0;getChange(switch,1)">全部</a></li>
+                <li><a class="btn btn-md" [class.active]="statusSwitch==1"
+                       (click)="statusSwitch=1;getChange(switch,1)">获得</a></li>
+                <li ><a class="btn btn-md" [class.active]="statusSwitch==2"
+                        (click)="statusSwitch=2;getChange(switch,1)" >消费</a></li>
+
+            </ul>
+            <div class="content left-padding right-padding" *ngIf="switch == 0">
+                <table class="table table-hover text-info font-size-md">
+                    <tr class="text-success">
+                        <th>名称</th>
+                        <th>星币单价</th>
+                        <th>兑换数量</th>
+                        <th>星币总价</th>
+                        <th>下单时间</th>
+                        <th>订单编号</th>
+                        <th>订单状态</th>
+                        <!--<th>操作</th>-->
+                    </tr>
+                    <tr class="lucky text-success bottom-line" *ngFor="let change of myChange">
+
+                        <td><span [innerHtml]="change.title"></span></td>
+                        <td><span [innerHtml]="change.price"></span></td>
+                        <td><span [innerHtml]="change.count">36000</span></td>
+                        <td><span [innerHtml]="change.totalPrice">36000</span></td>
+                        <td><span [innerHtml]="change.timeline |date:'y-MM-dd h:mm:ss' ">36000</span></td>
+                        <td><span [innerHtml]="change.no">36000</span></td>
+                        <td><span [innerHtml]="change.statusText">36000</span></td>
+                        <!--<td class="pointer pointer-middle text-warning" ><span >详情</span></td>-->
+                    </tr>
+                </table>
+            </div>
+            <div class="content left-padding right-padding" *ngIf="switch == 1">
+                <table class="table table-hover text-info font-size-md">
+                    <tr class="text-success detail-head">
+                        <th>时间</th>
+                        <th>操作</th>
+                        <th>星币变化</th>
+                    </tr>
+                    <tr class="lucky text-success bottom-line detail-content" *ngFor="let log of myLogs">
+
+                        <td><span [innerHtml]="log.timeline |date:'y-MM-dd   h:mm:ss' ">2017-11-09</span></td>
+                        <td><span [innerHtml]="log.operation">签到</span></td>
+                        <td class="pointer pointer-middle text-warning" ><span [innerHtml]="log.remark">还款计划</span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="page-top">
+                <p class="text-center font-size-md text-success" *ngIf="totalPage <= 0">
+                    <span class="icon-my-nodata"></span><br>
+                    暂无数据
+                </p>
+                <pager *ngIf="totalPage > 0" [refresh]="queryParam.pageNumber == 1 ? true:false"  [totalPage]="totalPage" (changePage)="selectPage($event)" ></pager>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="star-right">
+        <div class="record">
+            <div class="pay-title">
+                <span class="to-pay font-size-xlarge">参与记录</span>
+            </div>
+            <ul>
+                <li *ngFor="let change of exchangeRecords">
+                    <div class="have-exchange">
+                        <div class="content-l fl">
+                            <p class="" [innerHtml]="change.name">名字</p>
+                            <p class="">兑换了</p>
+                            <p>
+                                <span *ngIf="change.type == 0">{{change.value}}元&nbsp;&nbsp;现金券</span>
+                                <span *ngIf="change.type == 1">{{change.value}}%&nbsp;&nbsp;加息券</span>
+                                <span *ngIf="change.type == 2">{{change.value}}元&nbsp;&nbsp;提现券</span>
+                                *{{change.count}}</p>
+                        </div>
+                        <div class="content-r fr">
+                            <img [src]="change.profileWeb" alt="">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>

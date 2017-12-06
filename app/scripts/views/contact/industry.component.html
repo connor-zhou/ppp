@@ -1,0 +1,23 @@
+<div class="industryNews">
+    <div class="media-report">
+        <div class="my-sub-title font-size-large text-info">
+            <span>行业动态</span>
+        </div>
+        <ul class="status">
+            <li *ngFor="let article of articleList">
+                <div class="media">
+                    <a class="media-left" [routerLink]="['/contact/article',queryParam.type, article.id]" target="_blank">
+                        <img [src]="article.profile" [alt]="article.title">
+                    </a>
+                    <a class="media-body  font-size-md"  [routerLink]="['/contact/article',queryParam.type, article.id]" target="_blank">
+                        <h4 class="media-heading" ><span class="text-info font-size-xlarge">{{article.title}}</span>&nbsp;<span class="text-primary font-size-md">{{set(article.timeline,1)+'.'+set(article.timeline,2)+'.'+set(article.timeline,3)}}</span></h4>
+                        <p class="line-two-intro" [innerHtml]="subString(article.intro)"></p>
+                    </a>
+                </div>
+            </li>
+        </ul>
+        <div class="page-top">
+            <pager   [totalPage]="totalPage" (changePage)="selectPage($event)" ></pager>
+        </div>
+    </div>
+</div>

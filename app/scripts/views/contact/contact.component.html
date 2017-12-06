@@ -1,0 +1,76 @@
+<div class="contact">
+    <div class="container">
+        <div class="nav-left">
+            <ul class="contact-nav ">
+                <li>
+                    <a routerLink="/contact/intro" routerLinkActive="active">
+                        <span class="icon-group icon-sm">
+                            <span class="icon icon-contact-intro"></span>
+                            <span class="icon-txt">公司简介</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/contact/latest" routerLinkActive="active" [class.active-type]="articleType==0 || articleType==3">
+                        <span class="icon-group icon-sm">
+                            <span class="icon icon-contact-latest"></span>
+                            <span class="icon-txt">最新动态</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/contact/insurance" routerLinkActive="active">
+                        <span class="icon-group icon-sm">
+                            <span class="icon icon-contact-insurance"></span>
+                            <span class="icon-txt">安全保障</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/contact/media" routerLinkActive="active" [class.active-type]="articleType==2">
+                        <span class="icon-group icon-sm">
+                            <span class="icon icon-contact-media"></span>
+                            <span class="icon-txt">媒体报道</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/contact/industry" routerLinkActive="active" [class.active-type]="articleType==1">
+                        <span class="icon-group icon-sm">
+                            <span class="icon icon-contact-news"></span>
+                            <span class="icon-txt">行业动态</span>
+                        </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a routerLink="/contact/us" routerLinkActive="active">
+                        <span class="icon-group icon-sm">
+                            <span class="icon icon-contact-us"></span>
+                            <span class="icon-txt">联系我们</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/contact/platform" routerLinkActive="active">
+                        <span class="icon-group icon-sm">
+                            <span class="icon icon-contact-platform"></span>
+                            <span class="icon-txt">平台介绍</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/contact/shareholders" routerLinkActive="active">
+                        <span class="icon-group icon-sm">
+                            <span class="icon icon-contact-shareholders"></span>
+                            <span class="icon-txt">股东介绍</span>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="content-right">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

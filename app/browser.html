@@ -1,0 +1,304 @@
+    <!doctype html>
+<html>
+<head>
+    <title>星投资</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <base href="/">
+    <!--&lt;!&ndash;[if gte IE 9]>-->
+    <!--&lt;!&ndash;<script type="text/javascript">window.location.href="/";</script>&ndash;&gt;-->
+    <!--<![endif]&ndash;&gt;-->
+    <script type="text/javascript">
+        function broswserCheck() {
+            if(navigator.appName == "Microsoft Internet Explorer"&&parseInt(navigator.appVersion.split(";")[1].replace(/[ ]/g, "").replace("MSIE",""))<9){
+                return false;
+            }else{
+                return true;
+            }
+        }
+        if(broswserCheck()){
+            window.location.href="https://www.xingtouzi.com";
+        }
+    </script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?55953947d2d921123a688b48f13b6117";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+    <style>
+        i{
+            font-style:normal;
+        }
+        body,html{
+            padding:0;
+            margin:0;
+        }
+        ul,ol{
+            list-style-type: none;
+            padding:0;
+        }
+        h1,h2,h3,h4,h5,h6,p,div{
+            margin:0;
+        }
+        a,a:hover,a:visited,a:active,a:focus{
+            text-decoration: none;
+        }
+        img{
+            border:0 solid transparent;
+        }
+        .activity-header{
+            height:95px;
+            background:#FFF;
+            width:100%;
+            overflow: hidden;
+        }
+        .backToIndex{
+            float:right;
+            width: 338px;
+            height:50px;
+            line-height:50px;
+        }
+        .big-text{
+            font-size:20px;
+            color:#121212;
+        }
+        .logo {
+            float:left;
+        }
+        .logo img{
+
+        }
+        .indexLink{
+            border:1px solid #d0d0d0;
+            color:#777;
+            font-size:14px;
+            padding:7px 15px;
+            margin-left:25px;
+            position:relative;
+            top:-2px;
+        }
+        .icon-text{
+            padding-left:40px;
+            position:relative;
+        }
+        .icon-text .icon{
+            position:absolute;
+            left:0px;
+            top:-12px;
+            display:inline-block;
+            width:38px;height:38px;
+        }
+        .icon-text .icon.dial{
+            background: url('images/icon/icon-index.png') no-repeat -19px -23px ;
+        }
+        .icon-text .icon.home{
+            background: url('images/icon/icon-login-reg.png') no-repeat -58px -255px ;
+        }
+        .icon-text .icon.text{
+            line-height:38px;
+        }
+
+        .box{ width:1200px;
+            height: 50px;
+            overflow: hidden;
+            position:relative;
+            margin:22.5px auto 0;
+        }
+        .warning{
+            padding:30px 0 200px;
+            border-top:1px solid #d0d0d0;
+            border-bottom:1px solid #d0d0d0;
+        }
+        .warning .ul-warning .sorry{
+            margin:30px 0;
+        }
+        .warning .ul-warning .sorry > h3{
+            margin-bottom:10px;
+            font-size:16px;
+        }
+        .warning .ul-warning .d-tip{
+            margin:90px 0 25px;
+        }
+        .warning .ul-warning .qrcode{overflow:hidden}
+
+        .warning .ul-warning .qrcode>.qrcode-box>div{display:inline-block;margin-right:0;float:left}
+        .warning .ul-warning .qrcode>.qrcode-box>div.last{margin-left:30px}
+
+        .icon-group {
+            display: inline-block;
+            text-align: left;
+            position:relative;
+            vertical-align: middle;}
+        .icon-group .icon{
+            background-repeat: no-repeat;
+            display:inline-block;
+            position:absolute;
+            top:0;left:0;
+        }
+        .icon-lg{
+            padding-left: 54px;
+            height:54px;}
+        .icon-lg .icon{
+            width: 54px;
+            height:54px;
+        }
+
+        .icon-x-lg{
+            padding-left:90px;
+            height:90px;}
+        .icon-x-lg .icon{
+            width: 90px;
+            height:90px;
+        }
+
+        .icon-browser-google{background: url("images/icon/contact-help.png") no-repeat -15px -484px ;}
+        .icon-browser-firefox{background: url("images/icon/contact-help.png") no-repeat -14px -536px ;}
+        .icon-browser-ie{background: url("images/icon/contact-help.png") no-repeat -78px -536px ;}
+        .icon-browser-opera{background: url("images/icon/contact-help.png") no-repeat -146px -536px ;}
+        .icon-browser-safari{background: url("images/icon/contact-help.png") no-repeat -210px -536px ;}
+        .icon-browser-sougou{background: url("images/icon/contact-help.png") no-repeat -274px -536px ;}
+        .icon-browser-360{background: url("images/icon/contact-help.png") no-repeat -338px -536px ;}
+        .icon-browser-qq{background: url("images/icon/contact-help.png") no-repeat -403px -536px ;}
+        .icon-browser-2345{background: url("images/icon/contact-help.png") no-repeat -469px -536px ;}
+        .icon-browser-baidu{background: url("images/icon/contact-help.png") no-repeat -531px -536px ;}
+        .icon-big-mark{background: url("images/icon/icon-my.png") no-repeat -81px -353px ;}
+        .text-center{text-align:center}
+        .login-footer{
+            min-height:64px;
+            background:#fff;
+            padding-top:15px;
+            color:#777;
+            font-size:12px;
+        }
+        .text-muted{
+            color:#777;
+        }
+        .text-info{
+            color:#121212;
+        }
+        .qrcode>.qrcode-box>div> img{
+            width:98px;
+        }
+        .qrcode-box{
+            margin:0 auto;
+            width:240px;
+            height:100%;
+            overflow:hidden;
+        }
+    </style>
+    <!--[if lte IE 7]>
+    <style>
+        .icon-text .icon{
+            top:-6px;
+        }
+    </style>
+    <![endif]-->
+
+</head>
+<body>
+    <div class="activity-header">
+        <div class="box">
+            <a class="logo" href="/index"><img src="images/logo.jpg" alt=""></a>
+            <div class="backToIndex">
+                <span class="icon-text"><i class="icon dial"></i><i class="text big-text">400-823-9800</i></span>
+                <a class="indexLink" href="/index">
+                    <span class="icon-text"><i class="icon home"></i><i class="text">回到首页</i></span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="warning font-size-small">
+        <ul class="ul-warning text-center">
+            <li>
+            <span class="icon-group icon-x-lg">
+                <span class="icon icon-big-mark"></span>
+            </span>
+            </li>
+            <li class="sorry">
+                <h3 class="text-info">非常抱歉！您当前的浏览器版本过低，存在安全风险！</h3>
+                <p class="text-muted">建议您升级浏览器，点击图标即可下载</p>
+            </li>
+            <li>
+                <a href="https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=0&rsv_idx=1&tn=baidu&wd=google%20browser&rsv_pq=c8ccfd1300013196&rsv_t=b250jW5XwAKHTMbtnUwLk8jT%2BgWYgaTXGsHa28BKP5tA65ohjUsvyLI6KJc&rqlang=cn&rsv_enter=1&rsv_sug3=2&rsv_n=2&rsv_sug1=1&rsv_sug7=100&rsv_sug2=0&inputT=487&rsv_sug4=488"  target="_blank"  title="谷歌浏览器">
+                <span class="icon-group icon-lg">
+                    <span class="icon icon-browser-google"></span>
+                </span>
+                </a>
+                <a href="http://www.firefox.com.cn/" target="_blank"  title="火狐浏览器">
+                <span class="icon-group icon-lg">
+                    <span class="icon icon-browser-firefox"></span>
+                </span>
+                </a>
+                <a href="https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd=IE11&oq=ie&rsv_pq=b3d8839c00013693&rsv_t=6ae7hjXzWQO%2FqRuLtoXOLEmSUwAHlA2CBdXaRCogY1uayjhqLnAwlJe1L%2FE&rqlang=cn&rsv_enter=1&inputT=2458&rsv_sug3=14&rsv_sug1=13&rsv_sug7=100&rsv_sug2=0&rsv_sug4=2458"  target="_blank" title="IE浏览器">
+                <span class="icon-group icon-lg">
+                    <span class="icon icon-browser-ie"></span>
+                </span>
+                </a>
+                <a href="https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd=opera&oq=I%26gt%3B11&rsv_pq=ceb40b29000100b0&rsv_t=2cfd05he3XLu%2Bj1l4833MDgJM4cZBl8ogB8FruElzHPbF97wF0mjCjjSwms&rqlang=cn&rsv_enter=1&inputT=2458&rsv_sug3=16&rsv_sug1=15&rsv_sug7=100&bs=IE11" target="_blank"  title="opera">
+                <span class="icon-group icon-lg">
+                    <span class="icon icon-browser-opera"></span>
+                </span>
+                </a>
+                <a href="https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd=safari&oq=opera&rsv_pq=e13f8f3700011b5d&rsv_t=b763N5e3pulyNV2FUpYotIrvJVSDzn0N5HpwqP692KkCXnoGaxpcPBBlrxA&rqlang=cn&rsv_enter=1&inputT=1142&rsv_sug3=23&rsv_sug1=22&rsv_sug7=100&bs=opera"  target="_blank" title="safari">
+                <span class="icon-group icon-lg">
+                    <span class="icon icon-browser-safari"></span>
+                </span>
+                </a>
+                <a href="http://ie.sogou.com/"  target="_blank"  title="搜狗浏览器">
+                <span class="icon-group icon-lg">
+                    <span class="icon icon-browser-sougou"></span>
+                </span>
+                </a>
+                <a href="http://se.360.cn/"  target="_blank" title="360浏览器">
+                <span class="icon-group icon-lg">
+                    <span class="icon icon-browser-360"></span>
+                </span>
+                </a>
+                <a href="http://browser.qq.com/?adtag=SEM1" target="_blank"  title="QQ浏览器">
+                <span class="icon-group icon-lg">
+                    <span class="icon icon-browser-qq"></span>
+                </span>
+                </a>
+                <a href="http://ie.2345.com/"  target="_blank" title="2345浏览器">
+                <span class="icon-group icon-lg">
+                    <span class="icon icon-browser-2345"></span>
+                </span>
+                </a>
+                <a href="https://liulanqi.baidu.com/?sid=10004089" target="_blank" title="百度浏览器">
+                <span class="icon-group icon-lg">
+                    <span class="icon icon-browser-baidu"></span>
+                </span>
+                </a>
+            </li>
+            <li class="d-tip text-muted"><p>您也可以扫描二维码下载APP</p></li>
+            <li class="qrcode">
+                <div class="qrcode-box">
+                    <div>
+                        <img src="images/app.png" alt="">
+                        <p class="text-info">iphone版下载</p>
+                    </div>
+                    <div class="last">
+                        <img src="images/app.png" alt="">
+                        <p class="text-info">android版下载</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="login-footer">
+        <div class="box  text-center">
+            <p>版权所有 © 上海星湖金融信息服务有限公司 沪ICP备13047990号-1</p>
+            <p>Copyright Shanghai Xinghu Financial Information Service Co.,Ltd. ALL Rights Reserved</p>
+        </div>
+    </div>
+</body>
+</html>

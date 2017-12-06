@@ -1,0 +1,42 @@
+@import "../variables.less";
+@import "/bootstrap/less/mixins/border-radius";
+@import "./mixins/tips";
+// Tips
+// --------------------------------------------------
+
+// Base class
+.tip {
+  position: relative;
+  z-index: @zindex-tip;
+  display: block;
+  max-width: @tip-max-width;
+  padding: 0.2rem 0.1rem;  
+  text-align: center;
+  font-size: @font-size-base;
+  border:1px solid transparent;
+
+  &.bottom-left {
+    top: 0;
+    right: 0;
+    .border-top-radius(1rem);
+  	border-bottom-right-radius:@tip-border-radius;
+  	border-bottom-left-radius:0;
+  }
+  &.bottom-right {
+    top: 0;
+    left: 0;
+    .border-top-radius(1rem);
+  	border-bottom-right-radius:0;
+  	border-bottom-left-radius:@tip-border-radius;
+  }
+
+  &.tip-default {
+    .tip-variant(@tip-default-color; @tip-default-bg; @tip-default-border);
+  }
+  &.tip-primary {
+    .tip-variant(@tip-primary-color; @tip-primary-bg; @tip-primary-border);
+  }
+  &.tip-reverse {
+    .tip-variant(@tip-reverse-color; @tip-reverse-bg; @tip-reverse-border);
+  }
+}

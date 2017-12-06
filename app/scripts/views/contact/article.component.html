@@ -1,0 +1,5 @@
+<div *ngIf="article"   class="article">
+    <h1>{{article.title}}</h1>
+    <p class="text-center text-success">{{getLocalTime(article.timeline)}}</p>
+    <div [innerHtml]="article.html" class="article-content"></div>
+</div>

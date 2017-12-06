@@ -1,0 +1,30 @@
+
+
+
+<div class="register">
+    <div class="box bg login">
+        <div class="reg-box">
+            <div class="title">
+                <p class="font-size-xxlarge text-info">实名认证开通托管账户</p>
+            </div>
+            <div class="pay-tip">
+                <span class="icon-group icon-sm">
+                    <span class="icon  icon-login-mmm"></span>
+                    <span class="icon-txt font-size-md text-info">以下填写的身份信息将作为保护您账户安全的唯一认证身份信息</span>
+                </span>
+            </div>
+            <div class="reg-login-form no-addon">
+                <form class="form-horizontal" role="form">
+                    <div class="input-group bottom-height">
+                        <input type="text" class="form-control font-size-small" [(ngModel)]="realName" [ngModelOptions]="{standalone: true}" placeholder="请输入姓名">
+                    </div>
+                    <div class="input-group bottom-height">
+                        <input type="text" class="form-control  font-size-small" [(ngModel)]="chinaId" [ngModelOptions]="{standalone: true}" placeholder="请输入身份证号码">
+                        <span class="unvalid-tip font-size-small" *ngIf="tip">*{{tip}}</span>
+                    </div>
+                    <a class="btn btn-danger btn-block btn-md font-size-large confirm" (click)="openMmm()" >确认开通</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

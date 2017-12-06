@@ -1,0 +1,7 @@
+<div class="carousel-multiple">
+    <div class="carousel-content" (mouseenter)="pause()" (mouseleave)="play()">
+        <a class="item" [class.active]="activeIndex == i"  (mouseenter)="hover(i,img)" *ngFor="let img of imgList;let i = index"><img style="width:100%;" [src]="img" alt=""></a>
+    </div>
+    <span class="arrow arrow-left"  (click)="goPrev()"><i *ngIf="max > 0" class="icon-partner-arrow-left"></i></span>
+    <span class="arrow arrow-right"  (click)="goNext()"><i *ngIf="max > 0" class="icon-partner-arrow-right"></i></span>
+</div>

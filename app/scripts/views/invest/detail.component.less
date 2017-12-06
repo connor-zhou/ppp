@@ -1,0 +1,735 @@
+@import "../../../less/variables.less";
+
+
+.projectDetail{
+    padding-top: 18px;
+    .detail-info{
+        overflow:hidden;
+        background:#fff;
+        border:1px solid @brand-primary;
+        margin-bottom:0;
+        >li{
+            float:left;
+        }
+        >.info{
+            width:760px;
+            border-right:1px solid @brand-primary;
+            .project{
+
+                .revenue,.limit,.rongzi,.minInvest{
+                    width: 25%;
+                    margin:0;
+                    float:left;
+                    text-align:left;
+                    dl{
+                        display:inline-block;
+                        text-align:center;
+                        margin:0;
+                        dt{
+                            font-weight:normal;
+                            >span{
+                                font-size:40px;
+                            }
+                            >small{
+                                font-size:@font-size-xlarge;
+                            }
+                        }
+
+                        dd{
+                            color:@text-success;
+                            font-size:@font-size-md;
+                        }
+                    }
+
+                }
+
+                .more-detail-item{
+                    padding:35px 10px 26px 30px;
+                    border-top:1px solid @brand-primary;
+                    .item{
+                        display:inline-block;
+                        margin:0;
+                        width:33%;
+                        font-size:14px;
+                        vertical-align: top;
+                        >span{
+                            line-height:@font-size-xxlarge;
+                        }
+                        >span:first-child{
+                            color:@text-primary;
+                        }
+                        >span:last-child{
+                            color:@text-info;
+                        }
+                        &.schedule{
+                            vertical-align: middle;
+                            .progress{
+                                width:90px;
+                                display:inline-block;
+                                margin:0;
+                            }
+
+                            >span:last-child{
+                                color:@text-warning;
+                            }
+                        }
+                    }
+                }
+                .title {
+                    position:relative;
+                    > h3{
+                        height:60px;
+                        padding:20px 10px 0 30px;
+                        border-bottom:1px solid @brand-primary;
+                        font-size:20px;
+                    }
+                    .project-tip{
+                        position:absolute;
+                        right:0;
+                        top:0;
+                        display:inline-block;
+                        height:78px;width:78px;
+                    }
+                }
+                .content{
+                    overflow:hidden;
+                    padding:35px 10px 38px 30px;
+                    .schedule{
+                        float:left;
+                        width:100%;
+                        padding:15px;
+                        .progress{
+                            margin-bottom:0.5rem;
+                        }
+                        .progress-text{
+                            overflow:hidden;
+                            >.money{
+                                float:left;
+                            }
+                            >.shuzi{
+                                float:right;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+        >.extra{
+            padding-left: 50px;
+            padding-right:50px;
+            width:438px;
+            font-size:@font-size-md;
+            color:@text-info;
+            .remain-money{
+                //height: 60px;
+                line-height: 60px;
+                .recharge-icon{
+                    color:@text-warning;
+                    border:1px solid @brand-warning;
+                    border-radius: 4px;
+                    padding:5px 2px;
+                    margin-left:20px;
+                    font-size:@font-size-md;
+                }
+            }
+            .profit-calc{
+                //height:150px;
+                padding-top:20px;
+                .invest-money{
+                    width:284px;
+                    line-height:38px;
+                    height: 38px;
+                    border:1px solid @brand-success;
+                    border-radius: 2px;
+                    margin-right:5px;
+                }
+                .profit{
+                    line-height:34px;
+                }
+                .couponSelect{
+                    margin-top: 30px;
+                    >p{
+                        position:relative;
+                        .coupon-tip{
+                            position:absolute;
+                            bottom:-2rem;left:0;
+                            padding:0 7px;
+                            background:#FFF6F1;
+                            color:@text-muted;
+                            border:1px solid @brand-warning;
+                            white-space: nowrap;
+                        }
+                    }
+                    .select-a{
+                        display:inline-block;
+                        height:2rem;
+                        line-height:2rem;
+                        border:1px solid @brand-warning;
+                        border-radius: 1rem;
+                        padding:0 10px;
+                        margin-left:10px;
+                        &:hover{
+                            cursor:pointer;
+                        }
+                        &.fail{
+                            border:1px solid @brand-primary;
+                            color:@text-primary !important;
+                        }
+                    }
+                    >p{
+                        &:first-child{
+                            float:left;
+                        }
+                        &:last-child{
+                            float:right;
+                        }
+                    }
+                }
+
+            }
+            .btn{
+                margin-top:35px;
+                border-radius: 2px;
+            }
+
+            .end{
+                &.paddingTop{
+                    padding-top:20px;
+                }
+
+                >dl{
+                    dd{
+                        h3{
+                            font-size:20px;
+                            margin-bottom:10px;
+                        }
+                    }
+                }
+                &.no-login{
+                    padding-top: 50px;
+                    dt{
+                        margin-bottom: 25px;
+                    }
+                    .word-small{
+                        margin-top: 13px;
+                    }
+                }
+            }
+
+        }
+    }
+    .tab-zone{
+        margin-top:18px;
+        margin-bottom:12px;
+        background:#fff;
+        border:1px solid @brand-primary;
+        .tab{
+            margin-left:18px;
+            .tab-item{
+                height: 60px;
+                line-height: 60px;
+                font-size:20px;
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+        }
+        .tab-margin{
+        }
+        .media-list{
+            overflow:hidden;
+            background:#fff;
+            .media-body{
+                vertical-align: middle;
+                .num{
+                    font-size:5rem;
+                    text-decoration: underline;
+                }
+                >h4{
+                    margin:10px 0;
+                }
+            }
+            >li{
+                float:left;
+                width:30%;
+                padding:0;
+                margin:0;
+                background:#fff;
+                margin-top:2rem;
+                &:nth-child(3n+1){ clear:left;  }
+                &:not(:nth-child(3n)){
+                    margin-right:5%;
+                }
+                dl{
+                    dd{
+                        img{
+                            width:100%;
+                        }
+                        &.title{
+                            >h3{
+                                margin-top:10px;
+                                font-size:@font-size-md;
+                                color:@text-info;
+                            }
+                            >p{
+                                display:inline-block;
+                                width:2rem;
+                                border-bottom:1px solid @text-danger;
+                                margin-bottom:4px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .intro{
+            margin-bottom:30px;
+        }
+        .tab-content{
+            padding-left: 30px;
+            padding-right: 30px;
+            .content{
+                //margin-top:20px;
+                .table{
+                    > tbody > tr > th{
+                        border-top:0;
+                    }
+                    tr:not(:first-child){
+                        border-bottom:1px solid @brand-primary;
+
+                    }
+
+                    >tbody >tr>td{
+                        padding: 6px;
+                        vertical-align: middle;
+                    }
+                }
+                .warning-tip{
+                    background:#FFF6F1;
+                    padding-top:10px;
+                    padding-bottom:10px;
+                    margin-left:-15px;
+                    margin-right:-15px;
+                }
+            }
+            .question{
+                margin-bottom:2rem;
+                position:relative;
+                padding-left:3.5rem;
+                padding-top:2rem;
+                .num{
+                    position:absolute;
+                    top:0;left:0;
+                    font-size:3rem;
+                }
+                .title{
+                    margin-bottom:10px;
+                }
+            }
+        }
+    }
+
+    .borrow-person{
+        .register-info{
+            overflow: hidden;
+            margin:2rem 0;
+            margin-right: -20px;
+            li>{
+                float:left;
+                margin-right:20px;
+                margin-top: 20px;
+                text-align:center;
+                &:hover{
+                    cursor:pointer;
+                    >img{
+                        border:1px solid @text-danger;
+                    }
+                    >p{
+                        color:@text-info;
+                    }
+                }
+                >img{
+                    width:193px;
+                    height:160px;
+                }
+                >p{
+                    margin-top:7px;
+                    color:@text-muted;
+                    font-size:@font-size-small;
+                }
+            }
+        }
+        .borrow-info{
+            background-color: #fff;
+            padding-top:10px;
+            margin-bottom: 8px;
+            font-size:14px;
+            color:@text-primary;
+            line-height:24px;
+
+            >h1{
+                font-size:20px;
+                color:@text-info;
+            }
+            >h3{
+                margin-top:15px;
+                margin-bottom:5px;
+                font-size:16px;
+                color:@text-info;
+            }
+
+
+            .info-approve{
+                overflow: hidden;
+                span{
+                    display: inline-block;
+                    float: left;
+                    font-size: 1.4rem;
+                    line-height: 30px;
+                    width: 33%;
+                }
+            }
+            .info-img{
+                font-size: 0;
+                margin-right: -2%;
+                img{
+
+                    width: 18%;
+                    height: 150px;
+                    margin-right: 2%;
+                }
+            }
+
+        }
+        .info-all{
+            overflow: hidden;
+
+            .float-info-left{
+                width: 49.8%;
+                float: left;
+                .info-of-basic{
+                    overflow: hidden;
+                    .basic-left{
+                        float: left;
+                        width: 50%;
+                        .name-box{
+                            line-height: 30px;
+                            .name-left{
+                                width: 5.2rem;
+                                text-align: right;
+                                display: inline-block;
+                                font-size: 1.4rem;
+                                color: @text-muted;
+                            }
+                            .name-right{
+                                color: black;
+                                font-size: 1.4rem;
+                            }
+                        }
+                    }
+                }
+            }
+            .float-info-right{
+                float: right;
+                width: 49.8%;
+            }
+        }
+    }
+    .project-intro{
+        background:#fff;
+        min-height:185px;
+        h4{
+            margin:2rem 0;
+        }
+        .intro-tip{
+            line-height:10rem;
+        }
+        .project-pics{
+            overflow: hidden;
+            margin-bottom:30px;
+
+            >li {
+                float:left;
+                width:240px;
+                min-height:160px;
+                margin-top:20px;
+                margin-left:30px;
+                text-align:center;
+                dl{
+                    width:100%;height:100%;
+                    dt{
+                        margin-bottom:20px;
+                        img{
+                            padding:2px;
+                            border:1px solid @brand-primary;
+                        }
+                    }
+                    dd{
+                        margin-top:20px;
+                    }
+                }
+
+                &:hover{
+                    dd{color:@text-info;}
+                    img{
+                        border:1px solid @brand-danger;
+                    }
+                }
+            }
+        }
+    }
+    #coupon-modal-03{
+        .modal-sm{
+            width:auto;
+            .big-pic{
+                position:relative;
+                display:inline-block;
+                height:auto;
+                &:hover{
+                    cursor:pointer;
+                }
+                img{
+                    width:100%;
+                }
+                >span{
+                    display:inline-block;
+                    position:absolute;
+                    width:26px;height:26px;
+                    border-radius: 50%;
+                    background:#fff;
+                    line-height:26px;
+                    text-align:center;
+                    color:@text-muted;
+                    top:-10px;right:-10px;
+                    &:hover{
+                        cursor:pointer;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+
+.projectDetail{
+    .info-one >span{
+        word-break:break-all;
+    }
+    .invest-records{
+        font-size:@font-size-md;
+        //padding-top:20px;
+        //>h2{
+        //    color: @text-success;
+        //    line-height:64px;
+        //    font-size:@font-size-md;
+        //    >span{
+        //        margin-right:30px;
+        //        i{color:@text-warning;}
+        //    }
+        //
+        //}
+        .page{
+            margin:45px 0 25px;
+        }
+    }
+    .safe-all{
+        padding-bottom:30px !important;
+        .safe-icon,.safe-icon-two,.safe-icon-three,.safe-icon-four{
+            display: inline-block;
+            width:120px;
+            height:120px;
+        }
+
+        .item{
+            width:49.8%;
+            display:inline-block;
+            padding-top:40px;
+            font-size:@font-size-md;
+            color:@text-primary;
+            >h2{
+                margin:27px 0 10px;
+                font-size:20px;
+                color:@text-info;
+            }
+            &.item-odd{
+                padding-right:30px;
+            }
+            &.item-even{
+                padding-left:30px;
+            }
+        }
+
+        .safe-con{
+            font-size: @font-size-large;
+            line-height: 26px;
+            color: #666666;
+        }
+
+        .register-info{
+            overflow: hidden;
+            margin:2rem 0;
+            li>{
+                float:left;
+                margin-right:20px;
+                text-align:center;
+                &:hover{
+                    cursor:pointer;
+                    >img{
+                        border:1px solid @text-danger;
+                    }
+                    >p{
+                        color:@text-info;
+                    }
+                }
+                >img{
+                    width:220px;
+                    height:160px;
+                }
+                >p{
+                    margin-top:7px;
+                    color:@text-muted;
+                    font-size:@font-size-small;
+                }
+            }
+        }
+        .file-multiple{
+            margin:0 auto;
+            width:880px;
+            padding-bottom:30px;
+            .file{
+                text-align:center;
+                width:790px;
+                height:450px;
+                margin-left:40px;
+                margin-bottom:10px;
+                border:1px solid @brand-primary;
+                line-height:448px;
+                >img{
+                    max-width:100%;
+                    max-height:100%;
+                }
+            }
+        }
+    }
+    .risk-info{
+        //padding-top:40px;
+        padding-bottom:40px;
+        h2{
+            font-size:16px;
+            color:@text-info;
+            margin-top:15px;
+            margin-bottom:5px;
+        }
+        p{
+            font-size:14px;
+            color:@text-success;
+        }
+        .risk-title{
+            font-size: @font-size-large;
+            color: @text-info;
+            margin-top:25px;
+            margin-bottom:15px;
+        }
+        .risk-con{
+            color: @text-primary;
+            font-size: @font-size-md;
+        }
+    }
+    .info-simple{
+        display: inline-block;
+        width: 550px;
+        //height: 50px;
+        margin-bottom: 10px;
+        min-height: 50px;
+        font-size: @font-size-md;
+        overflow: hidden;
+        &.margin-r{
+            margin-right: 30px;
+        }
+        span{
+            display: inline-block;
+            padding-left: 30px;
+        }
+        .info-one-left{
+            width: 130px;
+            color: @text-success;
+            background-color: @person-bg;
+            float: left;
+            padding-top: 13px;
+            padding-right: 30px;
+        }
+        .info-one-right{
+            width: 420px;
+            color: @text-info;
+            background-color: @icon-bg-color;
+            float: left;
+            padding-top: 13px;
+            padding-right: 30px;
+
+        }
+
+    }
+
+    
+    //.invest-plan{
+    //    .text-muted th{
+    //        width: 25%!important;
+    //    }
+    //    .lucky td {
+    //        width: 25%!important;
+    //    }
+    //    .no-plan{
+    //        padding-top: 15px;
+    //        padding-bottom: 15px;
+    //    }
+    //    .row{
+    //        padding-left: 15px;
+    //        padding-right: 15px;
+    //    }
+    //    .invest-all{
+    //        margin-bottom: 20px;
+    //        font-size: 1.4rem;
+    //    }
+    //    .to-invest-num{
+    //        margin-right: 30px;
+    //    }
+    //    .to-invest-color{
+    //        color: @brand-danger;
+    //    }
+    //    .refund{
+    //        background-color: @brand-success;
+    //        border-right: 2px solid white;
+    //        color: #777777;
+    //        font-size: 1.4rem;
+    //        //padding: 8px;
+    //        .refund-day{
+    //            color: #777;
+    //            line-height: 1.4rem;
+    //            vertical-align: top;
+    //            padding: 8px 0;
+    //        }
+    //    }
+    //    .refund-right{
+    //        border-right: none;
+    //    }
+    //    .refund-box{
+    //        .re-num-of{
+    //            height: 32px;
+    //            line-height: 32px;
+    //            font-size: 1.4rem;
+    //            background-color: white;
+    //            color: #121212 !important;
+    //        }
+    //    }
+    //    .refund-line{
+    //        border-bottom: 1px solid @brand-success;
+    //        height: 1px;
+    //    }
+    //
+    //
+    //}
+
+
+
+}

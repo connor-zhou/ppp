@@ -1,0 +1,82 @@
+<div class="overall">
+    <div class="overall-content">
+        <div class="line-overall"></div>
+        <div class="container">
+            <div class="tab">
+                <a class="tab-item" [ngClass]="{active:switch == 0}" (click)="getProject(0)">全部</a>
+                <a class="tab-item tab-width" [ngClass]="{active:switch == 1}" (click)="getProject(1)" >新手专区</a>
+                <a class="tab-item tab-width" [ngClass]="{active:switch == 2}" (click)="getProject(2)" >星理财</a>
+            </div>
+        </div>
+        <div class="container" >
+            <div class="borrow-line">
+                <span class="pay-left">
+                    <span class="deadline">发标时间：</span>
+                    <span class="all-borrow" [ngClass]="{selectword:data.period == 0}" (click)="selectPeriod(0)">全部</span>
+                    <span class="all-mon" [ngClass]="{selectword:data.period == 1}" (click)="selectPeriod(1)">30天之内</span>
+                    <span class="all-mon" [ngClass]="{selectword:data.period == 2}" (click)="selectPeriod(2)">30天-60天</span>
+                    <span class="all-mon" [ngClass]="{selectword:data.period == 3}" (click)="selectPeriod(3)">60天-120天</span>
+                </span>
+                <span class="pay-right text-success">
+                    <span class="deadline">排序:</span>
+                    <span class="all-borrow"  [class.text-warning]="orderDesc[0]['status'] == 1"  (click)="selectOrder(0)">默认</span>
+                    <span class="all-borrow"  [class.text-warning]="orderDesc[1]['status'] == 1" (click)="selectOrder(1)">借款金额 <b class="text-warning" *ngIf="orderDesc[1]['status'] == 1" [innerHtml]="orderDesc[1]['value'] == 1 ?'↑':'↓'"></b></span>
+                    <span class="all-borrow"  [class.text-warning]="orderDesc[2]['status'] == 1"  (click)="selectOrder(2)">期限 <b class="text-warning" *ngIf="orderDesc[2]['status'] == 1" [innerHtml]="orderDesc[2]['value'] == 1 ?'↑':'↓'"></b></span>
+                    <span class="all-borrow"  [class.text-warning]="orderDesc[3]['status'] == 1"  (click)="selectOrder(3)">年利率 <b class="text-warning" *ngIf="orderDesc[3]['status'] == 1" [innerHtml]="orderDesc[3]['value'] == 1 ?'↑':'↓'"></b></span>
+                    <span class="all-borrow"  [class.text-warning]="orderDesc[4]['status'] == 1"  (click)="selectOrder(4)">完成进度 <b class="text-warning" *ngIf="orderDesc[4]['status'] == 1" [innerHtml]="orderDesc[4]['value'] == 1 ?'↑':'↓'"></b></span>
+                </span>
+            </div>
+            <div loading>
+                <div class="project-item-group" *ngFor="let project of project.lists">
+                <a style="display: block" class="cursor-pointer" [routerLink]="['/invest/detail/'+project.id]">
+                    <h2 class="project-title"><span class="title-text" [innerHtml]="project.title"></span><span class="title-icon" [innerHtml]="project.repaymendMode">等额本息</span></h2>
+                    <div class="project-detail">
+                        <div class="item detail-rate">
+                            <div class="rate-box">
+                                <p class="rate-content"><span [innerHtml]="project.annualizedRate">45.25</span><small>%</small></p>
+                                <p class="remark">借款年利率</p>
+                            </div>
+                        </div>
+                        <div class="item detail-duration">
+                            <p class="duration-content"><span [innerHtml]="project.duration">45</span><small [innerHtml]="project.durationUnit">个月</small></p>
+                            <p class="remark">借款期限</p>
+                        </div>
+                        <div class="item detail-money">
+                            <p class="money-content" *ngIf="project.money >= 100000000"><span >{{project.money / 100000000}}</span><small>亿元</small></p>
+                            <p class="money-content" *ngIf="project.money >= 10000 && project.money < 100000000 "><span >{{project.money / 10000}}</span><small>万元</small></p>
+                            <p class="money-content" *ngIf="project.money >=0 && project.money < 10000"><span >{{project.money | number:'1.0-4'}}</span><small>元</small></p>
+                            <p class="remark">借款金额</p>
+                        </div>
+                        <div class="item detail-schedule">
+                            <div class="content">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-warning" role="progressbar"
+                                    aria-valuemin="0" aria-valuemax="100" [style.width]="project.schedule + '%'">
+                                    </div>
+                                    <!--<div class="progress-bar process-line-bg" role="progressbar"-->
+                                         <!--aria-valuemin="0" aria-valuemax="100" [style.width]="project.projectStatus == 1 ? project.schedule + '%':'100%' ">-->
+                                    <!--</div>-->
+                                </div>
+                            </div>
+                            <p class="schedule-remark">{{project.schedule + "%"}}</p>
+                        </div>
+                        <div class="item detail-invest">
+                            <a class="btn btn-md"
+                               [ngClass]="project.status != 0 ? 'btn-success':'btn-warning'"
+                               [innerHtml]="project.status == 0 ? '立即投资':project.status == 2 ? '已还款':'还款中'"
+                               [routerLink]="['/invest/detail/'+project.id]">立即投资</a>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            </div>
+            <p class="text-center font-size-xxlarge noData" *ngIf="project.lists.length <= 0">
+                <span class="icon-my-nodata"></span><br>
+                暂无项目
+            </p>
+            <div class="page-top" *ngIf="project.lists.length > 0">
+                <pager [refresh]="data.pageNumber == 1 ? true:false"  [totalPage]="project.count" (changePage)="selectPage($event)" ></pager>
+            </div>
+        </div>
+    </div>
+</div>

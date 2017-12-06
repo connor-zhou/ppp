@@ -1,0 +1,28 @@
+@import "../../../less/variables.less";
+
+.activate-banner{
+    line-height:50px;
+    background-color:@brand-warning;
+    color:#fff;
+    font-size:@font-size-md;
+    overflow: hidden;
+    .btn.btn-danger{
+        background-color:#fff;
+        color:@text-warning;
+        font-size:@font-size-md;
+        padding-top:0;
+        padding-bottom:0;
+        line-height:30px;
+        border:0;
+    }
+    .fr{
+        >span{
+            vertical-align: middle;
+            margin-right:5px;
+            text-decoration: underline;
+            &:hover{
+                cursor:pointer;
+            }
+        }
+    }
+}

@@ -1,0 +1,43 @@
+@import "../../../less/variables.less";
+
+.success{
+  height:550px;
+  position:relative;
+  .success-box{
+    position:absolute;
+    top:50%;left:50%;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    >dl{
+      dt{
+        margin-bottom:20px;
+      }
+      dd{
+        line-height:30px;
+        .open-mmm{
+          position:relative;
+          display:inline-block;
+          width:250px;height:250px;
+          //background:#fff url("@{img-path}/icon/icon-login-reg.png@{img-version}") no-repeat -171px -30px ;
+          >span{
+            position:absolute;
+            bottom:3rem;
+            left:50%;
+            -webkit-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            -o-transform: translateX(-50%);
+            transform: translateX(-50%);
+            display:inline-block;
+            width:60%;
+            padding:0 10px;
+            color:#fff;
+            border:1px solid #fff;
+          }
+        }
+      }
+    }
+
+  }
+}

@@ -1,0 +1,121 @@
+@import "../../../less/variables.less";
+
+.ban {
+    overflow: hidden;
+    width: 100%;
+    height: 440px;
+
+    .banner-box{
+        width: 100%;
+        height: 100%;
+        .carousel-inner{
+            max-height:440px;
+        }
+        .carousel-inner > .item > a > img{
+            height:100%;
+            max-width: none;
+            margin-left: 50%;
+            -webkit-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            -o-transform: translateX(-50%);
+            transform: translateX(-50%);
+        }
+    }
+    .container{
+        position:relative;
+        height:100%;
+    }
+    .login-box {
+        background-color: rgba(0, 0, 0, 0.8);
+        position: absolute;
+        right: 0;
+        top:-425px;
+        width: 360px;
+        height: 410px;
+        z-index:150;
+        > .info-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            width:70%;
+            > .title {
+                font-size: 42px;
+                margin-bottom: 1rem;
+            }
+            .revenue {
+                line-height: 150px;
+                font-size: 60px;
+                > small {
+                    font-size: 30%;
+                }
+            }
+
+            > .login-info {
+                line-height: 35px;
+                padding-right:45px;
+            }
+            &.isLogin{
+                width:80%;
+                top: 20%;
+                left:50%;
+                -ms-transform: translateX(-50%);
+                -webkit-transform: translateX(-50%);
+                transform: translateX(-50%);
+                font-size:@font-size-md;
+                >p{
+                    font-size:@font-size-large;
+                }
+                >.account-info{
+                    margin:5rem auto;
+                    text-align:left;
+                    .sign-in{
+                        border:1px solid rgba(255,255,255,0.6);
+                        margin-left:10px;
+                        padding:3px 15px;
+                        border-radius: 2rem;
+                        &.yes:hover{
+                            cursor:pointer;
+                        }
+                    }
+                    >p{
+                        margin-top:2rem;
+                        .hide-btn{
+                            margin-left:2rem;
+                            padding:2px 10px;
+                            border:1px solid rgba(255,255,255,0.6);
+                            border-radius: 2px;
+                            &:hover{
+                                cursor:pointer;
+                            }
+                        }
+
+                    }
+                }
+                .intoMy{
+                    display:block;
+                    width:100%;
+                    padding:5px 10px;
+                    border:1px solid rgba(255, 255, 255, 0.6);
+                    font-size:@font-size-md;
+                    margin:0 auto;
+                    text-align: center;
+                    color:#fff;
+                }
+            }
+        }
+        .register-tip{
+            display:inline-block;
+            line-height:50px;
+            padding:0 30px;
+            background-color:transparent;
+            border:1px solid #fff;
+            font-size:20px;
+            &:hover{
+                color:#fff;
+            }
+        }
+    }
+}

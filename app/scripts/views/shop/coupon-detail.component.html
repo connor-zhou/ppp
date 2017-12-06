@@ -1,0 +1,133 @@
+<div class="box coupondetail-content">
+    <div class="coupon-detail">
+        <div class="coupon-style">
+            <img [src]="couponDetail.profileWeb" alt="">
+            <!--<ul class="coupon-show">-->
+                <!--<li >-->
+                    <!--<div class="shop-ticket-box">-->
+                        <!--<img [src]="couponDetail.profile" alt="">-->
+                        <!--<div class="top-box icon-shop-cash">-->
+                            <!--<span class="word-box">-->
+                                <!--<span class="word-left" [innerHtml]="">-->
+                                    <!--10-->
+                                <!--</span>-->
+                                <!--<span class="word-right">-->
+                                    <!--<span class="right-top-word">￥</span><br>-->
+                                    <!--<span class="right-bottom-word">现金券</span>-->
+                                <!--</span>-->
+                            <!--</span>-->
+                        <!--</div>-->
+                        <!--<div class="bottom-box-color cash-bg">-->
+                            <!--<p class="line-word">-->
+                                <!--<span>使用规则：</span>-->
+                                <!--<span >投资券可用投资额</span>-->
+                            <!--</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</li>-->
+            <!--</ul>-->
+        </div>
+        <div class="about-coupon">
+            <div class="pay-title">
+                <span class="to-pay font-size-xlarge text-info" [innerHtml]="couponDetail.title">10</span>
+                <!--<span class="to-pay font-size-xlarge text-info" >元</span>-->
+                <!--<span class="to-pay font-size-xlarge text-info">现金券</span>-->
+            </div>
+            <div class="word">
+                <!--<p>-->
+                    <!--<span class="left text-success font-size-md" >商品编号</span>-->
+                    <!--<span class="text-info font-size-md" [innerHtml]="couponDetail.id">2342354234</span>-->
+                <!--</p>-->
+                <p>
+                    <span class="left text-success font-size-md" >兑换价格</span>
+                    <span class="text-danger font-size-xlarge" [innerHtml]="couponDetail.price">2342354234</span>
+                </p>
+                <p>
+                    <span class="left text-success font-size-md">库存数量</span>
+                    <span class="text-info font-size-md" [innerHtml]="couponDetail.count">59</span>
+                    <span class="text-info font-size-md">张</span>
+                </p>
+                <p style="position:relative;">
+                    <span class="left text-success font-size-md">兑换数量</span>
+                    <tip></tip>
+                    <span class="number">
+                        <span class="less hover" (click)="changeNumber(0)">&minus;</span>
+                        <span class="num">
+                            {{changeNum}}
+                            <!--<input type="text" [(ngModel)]="changeNum" style="width: 100%;height: 100%;" class="disabled">-->
+                        </span>
+                        <span class="more hover" (click)="changeNumber(1)">+</span>
+                    </span>
+                </p>
+                <div class="cup">
+                    <a class="btn-warning font-size-md border-radius-all btn-sign" (click)="sure()">立即兑换</a>
+                    <div><span  class="text-success font-size-md">我的星币：</span><span class="text-danger" [innerHtml]="accountInfo.integral">231231</span></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="star-left">
+        <div class="shop-detail">
+            <div class="pay-title">
+                <span class="to-pay font-size-xlarge">兑换须知</span>
+            </div>
+            <div class="coupon-infomation">
+                <p>1.星币商城所有商品以星币兑换，不开具发票。</p>
+                <p>2.兑换虚拟商品，如星湖金融的现金券，提现券、加息券，完成兑换后立即到账。</p>
+                <p>3.如无特殊情况，星币一经兑换，概不退换。</p>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="star-right">
+        <div class="record">
+            <div class="pay-title">
+                <span class="to-pay font-size-xlarge">参与记录</span>
+            </div>
+            <ul>
+                <li *ngFor="let change of exchangeRecords">
+                    <div class="have-exchange">
+                        <div class="content-l fl">
+                            <p class="" [innerHtml]="change.name">名字</p>
+                            <p class="">兑换了</p>
+                            <p>
+                                <span *ngIf="change.type == 0">{{change.value}}元&nbsp;&nbsp;现金券</span>
+                                <span *ngIf="change.type == 1">{{change.value}}%&nbsp;&nbsp;加息券</span>
+                                <span *ngIf="change.type == 2">{{change.value}}元&nbsp;&nbsp;提现券</span>
+                                *{{change.count}}</p>
+                        </div>
+                        <div class="content-r fr">
+                            <img [src]="change.profileWeb" alt="">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<div class="modal fade tip-alert" id="change" tabindex="-1" role="dialog" aria-labelledby="warningWithdrawBank" aria-hidden="false" data-backdrop="static">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body  font-size-md text-center">
+                <dl class="body-dl">
+                    <dt>
+                     <span class="icon-group icon-x-lg img-bottom">
+                        <span class="icon  icon-big-mark"></span>
+                     </span>
+                    </dt>
+                    <dd>
+                        <h3 class="text-info">提示！</h3>
+                        <p class="text-tip tip-warning">兑换{{changeNum}}张券,使用{{changeBi}}星币？</p>
+                    </dd>
+                    <dd>
+                        <a class="btn btn-md btn-affirm font-size-md" data-dismiss="modal" (click)="toChange(couponDetail.id)">确定</a>
+                        <a class="btn btn-md btn-cancel font-size-md" data-dismiss="modal" >取消</a>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

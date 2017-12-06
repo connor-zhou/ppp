@@ -1,0 +1,88 @@
+<div class="sign login-bg icon-register-bg">
+    <!--iocn-register-line-bg-->
+    <!--<img class="login-bg-line" src="../../../images/login/icon-register-bg.png" alt="">-->
+    <!--<div class="sign-bg-left">-->
+        <!--<div class="bg-left-box ">-->
+            <!--<img class="left-img" src="../../../images/login/icon-register-spacial-log.png" alt="">-->
+
+        <!--</div>-->
+    <!--</div>-->
+    <div class="sign-bg box">
+        <div class="box-content box-content-width">
+            <div class="content-title">
+                <div class="title-height">
+                    <p class="title-left fl font-size-xxlarge">注册</p>
+                </div>
+            </div>
+            <div class="content-auto " [ngClass]="{disabledform:isLogin}">
+                <div class="content-middle" >
+                    <div class="input-list-group register-group-margin">
+                        <div class="input-group " [ngClass]="tip.mobile ? 'error-addon':''">
+                            <span class="input-group-addon  icon-addon ">
+                                <i class="icon icon-bg-size icon-sign-phone " ></i>
+                            </span>
+                            <input  type="text" class="form-control"  autocomplete="off" [(ngModel)]="data.mobile"   (focus)="clearTip('mobile')" placeholder="请输入手机号" name="mobile">
+                            <span class="input-group-addon error-box" *ngIf="tip.mobile"><i>{{tip.mobile}}</i></span>
+                        </div>
+                        <div class="input-group" [ngClass]="tip.imageCode ? 'error-addon':''">
+                            <span class="input-group-addon icon-addon">
+                                <i class="icon icon-bg-size icon-sign-img-code"></i>
+                            </span>
+                            <input  type="text" class="form-control" [disabled]="smsCodeInfo.remainTime > 0" [(ngModel)]="data.imageCode"   (focus)="clearTip('imageCode')" placeholder="请输入图片验证码" name="imageCode">
+                            <span class="input-group-addon error-box" *ngIf="tip.imageCode"><i>{{tip.imageCode}}</i></span>
+                            <span class="input-group-addon cursor-pointer" (click)="getImageCode()">
+                                <span class="code-img">
+                                    <img  [src]="imgCodeUrl" alt="图形验证码">
+                                </span>
+                            </span>
+                        </div>
+                        <div class="input-group " [ngClass]="tip.smsCode ? 'error-addon':''">
+                            <span class="input-group-addon icon-addon">
+                                <i class="icon icon-bg-size icon-sign-code"></i>
+                            </span>
+                            <input type="text" class="form-control" autocomplete="off"  [(ngModel)]="data.smsCode"  (focus)="clearTip('smsCode')"  placeholder="请输入手机短信验证码" name="smsCode">
+                            <span class="input-group-addon error-box" *ngIf="tip.smsCode "><i>{{tip.smsCode }}</i></span>
+                            <span class="input-group-addon text-info cursor-pointer" (click)="sendSmsCode()">
+                                <span class="phone-code" [ngClass]="{'text-success':smsCodeInfo.remainTime > 0}">{{smsCodeInfo.text}}</span>
+                            </span>
+                        </div>
+                        <div class="input-group" [ngClass]="tip.pwd ? 'error-addon':''">
+                            <span class="input-group-addon icon-addon">
+                                <i class="icon icon-bg-size icon-sign-password"></i>
+                            </span>
+                            <input type="password" class="form-control" autocomplete="off" [(ngModel)]="data.pwd"  (focus)="clearTip('pwd')" placeholder="请输入登录密码"   name="pwd">
+                            <span class="input-group-addon error-box" *ngIf="tip.pwd"><i>{{tip.pwd}}</i></span>
+                        </div>
+                        <div class="input-group"  [ngClass]="tip.inviteCode ? 'error-addon':''">
+                            <span class="input-group-addon icon-addon">
+                                <i class="icon icon-bg-size icon-sign-recommend"></i>
+                            </span>
+                            <input type="text" class="form-control" [(ngModel)]="data.inviteCode"  (focus)="clearTip('inviteCode')" placeholder="请输入推荐码（选填）" name="inviteCode">
+                            <span class="input-group-addon error-box" *ngIf="tip.inviteCode"><i>{{tip.inviteCode}}</i></span>
+                        </div>
+                    </div>
+                </div>
+                <tip></tip>
+                <a class="btn btn-lg btn-block btn-warning" [innerHtml]="isLogin ? '注册中...':'注册'" [ngClass]="{'disabled':!data.agree || isLogin}" (click)="register()">注册</a>
+                <!--<a class="btn btn-lg btn-block btn-warning disabled" *ngIf="!loging">登录中...</a>-->
+                <div class="content-bottom">
+                    <p class="password-select">
+                        <span class="checkbox-custome  cursor-pointer"  [ngClass]="data.agree ? 'checked':''" (click)="data.agree = !data.agree"></span>
+                        <!--<input class="input-check" type="checkbox">-->
+                        <span class="input-check-r">我已经阅读</span>
+                        <a class="input-check-r text-warning" routerLink="/sign/agreement" target="_blank">使用条款</a>
+                        <span class="input-check-r">及</span>
+                        <a routerLink="/sign/terms" target="_blank" class="input-check-r text-warning">隐私条款</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--<div class="register-spacial-log">-->
+            <!--<div class="icon-register-spacial-log">-->
+
+            <!--</div>-->
+
+
+        <!--</div>-->
+    </div>
+</div>

@@ -1,0 +1,179 @@
+<div class="invest">
+   <div class="row shouyi">
+      <!--col-xs-12 col-sm-6-->
+      <div class="top-info">
+        <span class="icon-group icon-lg  spec font-size-md ">
+           <span class="icon icon-my-money-will"></span>
+           <span class="icon-txt text-info">
+              <i>待收本金</i><b class="icon-question"><i>投资尚未到期的金额</i></b>
+           </span><br>
+           <span class="icon-txt">
+              <i class="text-bold"
+                 [innerHtml]="userInfo.capitalWill|mathFloor">0</i><i class="font-size-xsmall text-success"
+                                                                                        [innerHtml]="'.'+(userInfo.capitalWill|fractional:2)+'元'">.00元</i>
+           </span>
+        </span>
+      </div>
+      <div class="top-info">
+         <span class="icon-group icon-lg  spec font-size-md ">
+           <span class="icon icon-my-interest-will"></span>
+           <span class="icon-txt text-info">
+              <i>待收收益</i><b class="icon-question"><i>未到期的预计收益</i></b>
+           </span><br>
+           <span class="icon-txt">
+              <i class="text-bold"
+                 [innerHtml]="userInfo.profitWill|mathFloor">0</i><i class="font-size-xsmall text-success"
+                                                                      [innerHtml]="'.'+(userInfo.profitWill|fractional:2)+'元'">.00元</i>
+           </span>
+        </span>
+      </div>
+      <div class="top-info">
+          <span class="icon-group icon-lg  spec font-size-md ">
+              <span class="icon icon-my-rest"></span>
+              <span class="icon-txt text-info">
+                 <i>已获收益</i><b class="icon-question"><i>已投资获取的收益</i></b>
+              </span><br>
+              <span class="icon-txt">
+                 <i class="text-bold"
+                    [innerHtml]="userInfo.profitSum|mathFloor">0</i><i class="font-size-md text-success"
+                                                                         [innerHtml]="'.'+(userInfo.profitSum|fractional:2)+'元'">.00元</i>
+              </span>
+        </span>
+      </div>
+   </div>
+   <div class="tab">
+      <!--<a class="tab-item text-success cursor-pointer"  [class.active]="switch == 4" (click)="setFlag(4)">全部</a>-->
+      <a class="tab-item text-success cursor-pointer"  [class.active]="switch == 0" (click)="setFlag(0)">持有中</a>
+      <a class="tab-item text-success cursor-pointer" [class.active]="switch == 1" (click)="setFlag(1)">投标中</a>
+      <a class="tab-item text-success cursor-pointer"  [class.active]="switch == 2" (click)="setFlag(2)">已结束</a>
+      <a class="to-invest fr font-size-md" routerLink="/invest">去投资</a>
+   </div>
+   <div class="content">
+      <table class="table table-hover text-info font-size-md">
+         <tr class="text-success">
+            <th>项目名称</th>
+            <th>投资金额（元）</th>
+            <th>年化利率</th>
+            <th *ngIf="switch != 2">待收收益（元）</th>
+            <th>已收收益（元）</th>
+            <th *ngIf="switch == 0">剩余天数</th>
+            <th *ngIf="switch == 2">结束日期</th>
+            <th>贷后披露</th>
+            <th>还款计划</th>
+            <th>借款协议</th>
+         </tr>
+         <tr class="lucky text-success bottom-line" *ngFor="let record of investmentRecords">
+            <td class="pointer pointer-middle text-warning" (click)="goToDetail(record.pId)"><span [innerHtml]="record.pTitle"></span></td>
+
+            <td><span [innerHtml]="record.money">36000</span></td>
+            <td><span [innerHtml]="record.annualizedRate+'%'"></span></td>
+            <td *ngIf="switch != 2"><span [innerHtml]="record.profitWill| number:'1.2-2'">0</span></td>
+            <td><span [innerHtml]="record.profit| number:'1.2-2'">0</span></td>
+            <td *ngIf="switch == 0"><span [innerHtml]="record.remainDays">0</span></td>
+            <td *ngIf="switch == 2"><span [innerHtml]="record.endTimeline|date:'y-MM-dd'"></span></td>
+            <td class="pointer pointer-middle text-warning" (click)="getExecutionInfo(record.pId)"><span >贷后披露</span></td>
+            <td class="pointer pointer-middle text-warning" (click)="getRepaymentPlan(record.id)"><span >还款计划</span></td>
+            <td class=""><a class="pointer pointer-middle text-warning" href="{{agreementLoanAll.agreementLoanUrl + record.id}}" target="_blank" ><span >借款协议</span></a></td>
+         </tr>
+      </table>
+   </div>
+   <div class="page-top" loading>
+      <p class="text-center font-size-md text-success" *ngIf="totalPage <= 0">
+         <span class="icon-my-nodata"></span><br>
+         暂无数据
+      </p>
+      <pager *ngIf="totalPage > 0" [refresh]="queryParam.pageNumber == 1 ? true:false"  [totalPage]="totalPage" (changePage)="selectPage($event)" ></pager>
+   </div>
+   <div class="modal fade" id="loanPlanModal" tabindex="-1" role="dialog" aria-labelledby="loanLabel" aria-hidden="true">
+      <!-- modal-sm-->
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="font-size-xxlarge">&times;</span><span class="sr-only">Close</span></button>
+               <!--<h4 class="modal-title text-info" id="myModalLabel" [innerHtml]="selectInfo.title"></h4>-->
+            </div>
+            <div class="modal-body  font-size-md">
+               <!--<div class="title">-->
+                  <!--<p class="fl">-->
+                     <!--<span class="text-muted">投资金额（元）：</span><span class="text-info" [innerHtml]="selectInfo.money"></span>-->
+                  <!--</p>-->
+                  <!--<p class="fr">-->
+                     <!--<span class="text-muted">年化收益：</span><span class="text-info" [innerHtml]="selectInfo.revenue + '%'"></span>-->
+                  <!--</p>-->
+               <!--</div>-->
+               <table class="table table-bordered">
+                  <tr class="table-title">
+                     <th>日期</th>
+                     <th>应收本金（元）</th>
+                     <th>应收收益（元）</th>
+                     <th>计息天数</th>
+                  </tr>
+                  <tr class="text-success" *ngFor="let record of repaymentPlan">
+                     <td [innerHtml]="record.timeline|date:'y-MM-dd'"></td>
+                     <td [innerHtml]="record.capital|number:'1.2-2'"></td>
+                     <td [innerHtml]="record.interest|number:'1.2-2'"></td>
+                     <td [innerHtml]="record.days">一环</td>
+                  </tr>
+               </table>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="modal fade" id="execution-info" tabindex="-1" role="dialog" aria-labelledby="mmmWarningLabel" aria-hidden="true" data-backdrop="static">
+      <div class="modal-dialog modal-sm">
+         <div class="modal-content">
+            <div class="modal-body  font-size-small text-center">
+               <dl class="body-dl">
+                  <!--<dt>-->
+                     <!--<span class="icon-group icon-x-lg ">-->
+                        <!--<span class="icon  icon-big-mark"></span>-->
+                     <!--</span>-->
+                  <!--</dt>-->
+                  <dd>
+                     <div class="info-invest">
+                        <div [innerHtml]="executionInfo" *ngIf="executionInfo">
+
+                        </div>
+                        <div *ngIf="!executionInfo" class="font-size-md">
+                           暂无信息
+                        </div>
+                     </div>
+                  </dd>
+                  <dd>
+                     <a class="btn btn-md btn-warning font-size-md" data-dismiss="modal" data-dismiss="modal">确定</a>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <!--指定投资项目的借款协议-->
+   <div class="modal fade" id="agreement-loan" tabindex="-1" role="dialog" aria-labelledby="mmmWarningLabel" aria-hidden="true" data-backdrop="static">
+      <div class="modal-dialog modal-sm">
+         <div class="modal-content">
+            <div class="modal-body  font-size-small text-center">
+               <dl class="body-dl">
+                  <!--<dt>-->
+                  <!--<span class="icon-group icon-x-lg ">-->
+                  <!--<span class="icon  icon-big-mark"></span>-->
+                  <!--</span>-->
+                  <!--</dt>-->
+                  <dd>
+                     <h3 class="text-info">提示！</h3>
+                     <p class="text-muted">借款协议</p>
+                     <div [innerHtml]="agreementLoan">
+
+                     </div>
+                  </dd>
+                  <dd>
+                     <a class="btn btn-md btn-warning font-size-md" data-dismiss="modal" data-dismiss="modal">确定</a>
+                  </dd>
+               </dl>
+            </div>
+         </div>
+      </div>
+   </div>
+
+
+</div>

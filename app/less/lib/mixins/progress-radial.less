@@ -1,0 +1,78 @@
+.progress-radial-bar-1(@n; @i:0) when (@i =< @n) {
+
+	&.progress-@{i}{
+		>.pie_right{
+			>.right{
+			  transform: rotate(@i*3.6deg);
+			  -webkit-transform: rotate(@i*3.6deg);
+			}
+		}
+	}
+	&.home-progress-@{i}{
+		>.pie_right{
+			>.right{
+			  transform: rotate(@i*3.6deg);
+			  -webkit-transform: rotate(@i*3.6deg);
+			}
+		}
+	}
+	.progress-radial-bar-1(@n; (@i + 1));    // 递归调用自身
+	 
+}
+.progress-radial-bar-2(@n; @i:51;) when (@i =< @n) {
+	&.progress-@{i}{
+		>.pie_right{
+			>.right{
+			  transform: rotate(180deg);
+			  -webkit-transform: rotate(180deg);
+			}
+		}
+		>.pie_left{
+			>.left{
+				transform: rotate(@i*3.6deg-180deg);
+				-webkit-transform: rotate(@i*3.6deg-180deg);
+			}
+		}
+	}
+	&.home-progress-@{i}{
+		>.pie_right{
+			>.right{
+			  transform: rotate(180deg);
+			  -webkit-transform: rotate(180deg);
+			}
+		}
+		>.pie_left{
+			>.left{
+				transform: rotate(@i*3.6deg-180deg);
+				-webkit-transform: rotate(@i*3.6deg-180deg);
+			}
+		}
+	}
+	.progress-radial-bar-2(@n; @i + 1);    // 递归调用自身
+	 
+}
+
+.progress-radial-dotted(@n; @i:0) when (@i =< @n) {
+  &.progress-@{i}{
+	    &:before {
+	      transform: rotate(3.6deg*@i) translate(0, -30px);
+	      -webkit-transform: rotate(3.6deg*@i) translate(0, -30px);
+	      -o-transform-transform: rotate(3.6deg*@i) translate(0, -30px);
+	      -moz-transform-transform: rotate(3.6deg*@i) translate(0, -30px);
+	    }
+	  }
+	.progress-radial-dotted(@n; @i + 1);    // 递归调用自身
+	 
+}
+.progress-radial-home (@n; @i:0)when (@i =< @n) {
+	&.home-progress-@{i}{
+	  &:before {
+		transform: rotate(3.6deg*@i) translate(0, -6.3rem);
+		-webkit-transform: rotate(3.6deg*@i) translate(0, -6.3rem);
+		-o-transform-transform: rotate(3.6deg*@i) translate(0, -6.3rem);
+		-moz-transform-transform: rotate(3.6deg*@i) translate(0, -6.3rem);
+	  }
+	}
+	.progress-radial-home(@n; @i + 1);
+}
+

@@ -1,0 +1,131 @@
+@import "../../../less/variables.less";
+
+.msgCenter{
+  min-width:970px;
+  //border:1px solid @brand-success;
+  padding:0px 30px 30px;
+  .select-icon{
+    display:inline-block;
+    vertical-align: middle;
+    width:11px;height:11px;
+    margin-right:5px;
+    +span{
+      margin-left:5px;
+    }
+  }
+  .select-zone{
+    margin-top:2.5rem;
+    min-height:3rem;
+    .fail{
+      background:#fff;
+      border:1px solid @brand-success;
+      color:@text-info;
+      font-size:@font-size-small;
+    }
+    >li{
+      float:left;
+      margin-right:3rem;
+      line-height:3rem;
+
+    }
+  }
+  .tab{
+    margin-top:2.5rem;
+  }
+  .active {
+    border-bottom: 2px solid @text-warning;
+    color: @text-warning !important;
+    line-height: 30px;
+    display: inline-block;
+  }
+  .activeRead{
+    //border:1px solid @text-warning;
+    color:@text-warning !important;
+    border: 1px solid @text-warning !important;
+  }
+  .sub-tab{
+    overflow:hidden;
+    border:1px solid transparent;
+    .icon{
+      width:26px;height:26px;
+    }
+    .btn{
+      background:#fff;
+      border:1px solid @brand-success;
+      color:@text-info;
+      font-size:@font-size-small;
+      &.active{
+        border:1px solid @text-warning;
+        color:@text-warning;
+        box-shadow:none;
+      }
+    }
+    >li{
+      float:left;
+      padding-right:15px;
+    }
+    >li:last-child{
+      padding-right:0;
+    }
+  }
+  #msgCenterAccordion{
+    .accordion-heading{
+      border-bottom:1px solid @brand-success;
+      .row{
+        margin-top:5px;
+        margin-bottom:5px;
+        >a.col-xs-11>span{
+          line-height:24px;
+        }
+      }
+      .row>div{
+        padding:0;
+        &:first-child{
+          padding-left:15px;
+        }
+        &:last-child{
+          padding-right:15px;
+        }
+      }
+      >a{
+        display:block;
+        line-height:3rem;
+      }
+    }
+    .accordion-inner{
+      >div{
+        padding:0;
+        &:last-child{
+          padding-right:15px;
+        }
+      }
+      .msg-info{
+        padding:15px;
+        background:#FFF6F1;
+        color:@text-info;
+        margin-top:15px;
+        border:1px solid @brand-success;
+        position:relative;
+        .operate{
+          margin-bottom:15px;
+        }
+      }
+    }
+  }
+  .modal-dialog{
+    dd{
+      padding:15px 0;
+      .btn{
+        width:6rem;
+        &.fail{
+          background:#fff;
+          color:@text-muted;
+          border:1px solid @brand-success;
+        }
+      }
+      h3{
+        margin-bottom:10px;
+      }
+    }
+  }
+}

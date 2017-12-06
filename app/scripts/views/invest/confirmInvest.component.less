@@ -1,0 +1,311 @@
+@import "../../../less/variables.less";
+.confirmInvest{
+    .container>h3{
+        margin-bottom: 2rem;
+    }
+    .main{
+        margin-top:20px;
+        margin-bottom:20px;
+        background:#fff;
+        border:1px solid @brand-success;
+        //padding-left:20px;
+        //padding-right:20px;
+        .pay-title{
+            padding-left:30px;
+            margin-bottom:0px;
+        }
+        .content{
+            width:100%;
+            //text-align:center;
+            padding-left: 30px;
+            padding-right: 30px;
+            margin:18px auto;
+            .btns-invest{
+                margin-top:2rem;
+                margin-bottom:2rem;
+                width:100%;
+                .fail{
+                    background:#fff;
+                    border:1px solid @brand-success;
+                    color:@text-info;
+                }
+                .padding-confirm{
+                    padding-left: 60px;
+                    padding-right: 60px;
+                }
+            }
+            .checkbox-custome{
+                vertical-align: middle;
+                margin-right:5px;
+            }
+            .checkbox-text{
+                display:inline-block;
+                vertical-align: middle;
+                &:hover{
+                    cursor:pointer;
+                }
+            }
+        }
+        .invest-info{
+            overflow:hidden;
+            padding-left: 30px;
+            >div {
+                min-height:30px;
+                padding-top:5px;
+                padding-bottom:5px;
+                float:left;
+                text-align:left;
+            }
+            .info-detail{
+                width:33%;
+                line-height:28px;
+                margin-top:42px;
+            }
+            .info-content{
+                width:34%;
+                line-height:40px;
+                //background-color:#eee;
+                border-left:1px solid @brand-success;
+
+                padding:10px 40px;
+                >p{
+                    overflow:hidden;
+                }
+                .select{
+                    margin-left:15px;
+                    color:@text-warning;
+                    .icon{
+                        display: inline-block;
+                        width: 26px;
+                        height: 26px;
+                        vertical-align: middle;
+                    }
+                    &:hover{
+                        cursor:pointer;
+                    }
+                }
+
+            }
+        }
+        //confirm
+        .project-item-group{
+            margin-top:30px;
+            min-height:190px;
+            background-color:#fff;
+            font-size:@font-size-md;
+            .project-title{
+                line-height:80px;
+                padding:0 30px;
+                border-bottom:1px dashed @brand-success;
+                font-size:20px;
+                font-weight:bold;
+                color:@text-info;
+                >span{
+                    vertical-align: middle;
+                }
+                .title-icon{
+                    font-size: 16px;
+                    /* display: inline-block; */
+                    /* vertical-align: text-bottom; */
+                    border: 1px solid #ff5400;
+                    color: #ff5400;
+                    padding: 4px 12px;
+                    border-radius: 4px;
+                    margin-left: 10px;
+                    font-weight: normal;
+                }
+            }
+            .project-detail{
+                overflow: hidden;
+                padding-top:15px;
+                >.item{
+                    width:33%;
+                    float:left;
+                    text-align:center;
+                    .rate-box{
+                        display:inline-block;
+                        padding-left: 30px;
+                        text-align: center;
+                        .rate-content{
+                            color:@text-warning;
+                        }
+                    }
+                    &.detail-rate{
+                        text-align:left;
+                    }
+                    &.detail-duration{
+                        text-align: left;
+                    }
+                    .rate-content,>.duration-content,>.money-content{
+                        color:@text-info;
+                        font-size:40px;
+                        >small{
+                            font-size:@font-size-xlarge;
+                        }
+                    }
+
+                    .remark{
+                        color:@text-success;
+                        font-size:@font-size-md;
+                        word-wrap: break-word;
+                    }
+                    &.detail-schedule {
+                        .schedule-remark{
+                            text-align:right;
+                            color:@text-warning;
+                            width:160px;
+                            margin:0 auto;
+                        }
+                        >.content{
+                            padding-top:40px;
+                            .progress{
+                                margin:0 auto 7px;
+                                width:160px;
+                            }
+
+                        }
+                    }
+
+                    &.detail-invest{
+                        .btn.btn-md{
+                            width:154px;
+                            height:40px;
+                            margin-top:32px;
+                            margin-right:-16px;
+                            font-size:@font-size-xlarge;
+                        }
+                        .btn-success{
+                            background:#969696;
+                            border:1px solid #969696;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .modal{
+        .modal-sm{
+            width:905px;
+        }
+        .modal-dialog{
+            padding-left:2.5rem;
+            padding-right:2.5rem;
+            .modal-body{
+                padding-top:0;
+                .title{
+                    overflow:hidden;
+                    border:1px solid transparent;
+                    >p{
+                        float:left;
+                        line-height:2rem;
+                    }
+                }
+                .content-select{
+                    margin-top:15px;
+                    >ul{
+                        overflow:hidden;
+                        li{
+                            //float:left;
+                            margin:5px;
+                            width:260px;
+                            //border:1px solid @text-muted;
+                            position:relative;
+                            display: inline-block;
+                            vertical-align: top;
+                            .source{
+                                margin-left: 28px;
+                                word-wrap: break-word;
+                                word-break: normal;
+                            }
+
+                            &:hover{
+                                cursor:pointer;
+                            }
+                            &.fail{
+                                cursor:auto;
+                                .content-detail .couponValue{
+                                    color:@text-muted !important;
+                                }
+                            }
+                            .content-detail{
+                                height:70px;
+                                padding:15px 0;
+                                text-align:center;
+                                border-bottom:1px solid @brand-primary;
+                                sup{
+                                    top: -2rem;
+                                    right: 5px;
+                                }
+                                .couponValue{
+                                    font-size:40px;
+                                    display: inline-block;
+                                    vertical-align: top;
+                                    line-height:44px;
+                                }
+                                .coupon-info{
+                                    display: inline-block;
+                                    >i{
+                                        line-height:22px;
+                                    }
+                                }
+
+                            }
+                            .bottom-text{
+                                line-height: 24px;
+                                text-align:center;
+                            }
+                            .mask{
+                                position:absolute;
+                                left:0;top:0;
+                                width:100%;
+                                height:100%;
+                                background-color:rgba(0,0,0,0.6);
+                                text-align:center;
+                                display:none;
+                                &.showMask{
+                                    display:table-cell;
+                                }
+                                >span{
+                                    display:inline-block;
+                                    //margin-top:52px;
+                                    width:58px;
+                                    height:58px;
+                                    //border-radius: 50%;
+                                    //background:#fff;
+                                    line-height:50px;
+                                    text-align:center;
+                                    font-size: 40px;
+                                    background-size: contain;
+                                    background-position: center center;
+                                    //color:rgba(0,0,0,0.6);
+                                    position: absolute;
+                                    left:50%;
+                                    top:50%;
+                                    transform: translate(-50%,-50%);
+                                    -ms-transform:translate(-50%,-50%);
+                                    -moz-transform:translate(-50%,-50%);
+                                    -webkit-transform:translate(-50%,-50%);
+                                    -o-transform:translate(-50%,-50%);
+                                }
+                            }
+                        }
+                    }
+                    .select-sure{
+                        margin-top:2rem;
+                        .btn{
+                            width:6rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+#agreementConsult{
+    height:98%;
+}
+.small-word{
+    display: inline-block;
+    transform: translateY(5px);
+    margin-left: 28px;
+}

@@ -1,0 +1,36 @@
+<div class="register">
+    <div class="box bg validate">
+        <div class="reg-box">
+            <div class="title">
+                <p class="font-size-xxlarge text-info">手机号码验证</p>
+            </div>
+            <div class="pay-tip">
+                <span class="icon-group icon-lg">
+                    <span class="icon icon-login-mark"></span>
+                    <span class="icon-txt phone-tip text-info text-left font-size-small">手机号码是您在星投资的重要安全凭证，为确保您的手机号码是真实有效的，须进行验证。</span>
+                </span>
+            </div>
+            <div class="reg-login-form no-addon">
+                <form class="form-horizontal" role="form">
+                    <div class="row">
+                        <div class="col-xs-7 msg">
+                            <div class="input-group">
+                                <input type="text" class="form-control font-size-small" [(ngModel)]="smsCode"   [ngModelOptions]="{standalone: true}"  placeholder="请输入手机验证码">
+                                <span class="unvalid-tip font-size-small" [hidden]="!smsCodeTip">*{{smsCodeTip}}</span>
+                            </div>
+                        </div>
+                        <div class="col-xs-5 getmsg">
+                            <button  type="button" class="btn btn-md btn-block font-size-small text-danger" [ngClass]="{'fail': remainTime > 0}" (click)="sendSmsCode()">{{smsText}}</button>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="invitation" class="text-info font-size-small">邀请人手机号码（选填）</label>
+                        <input type="text" class="form-control font-size-small" id="invitation" (blur)="isMobile()" [(ngModel)]="remPhone" [ngModelOptions]="{standalone: true}"  placeholder="请输入邀请人手机号码">
+                        <span class="unvalid-tip font-size-small" [hidden]="!remPhoneTip">*{{remPhoneTip}}</span>
+                    </div>
+                    <a class="btn btn-danger btn-block btn-md font-size-large confirm" (click)="confirm()">确定</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

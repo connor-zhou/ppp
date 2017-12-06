@@ -1,0 +1,197 @@
+@import "../framework";
+@import "../components";
+@import "../common";
+
+.index-color{
+  color:@index-color;
+}
+
+.view-more{ line-height:38px;}
+
+
+.safety {
+    overflow: hidden;
+    min-height: 201px;
+    padding: 51px 0;
+    font-size:20px;
+    > .box > div {
+      padding: 0;
+    }
+    dl {
+      margin: 0;
+      > dd:not(:last-child) {
+        margin: 15px 0;
+      }
+      > .info {
+        color: #777;
+      }
+    }
+  }
+.notice {
+    min-height: 70px;
+    background: #eee;
+    overflow: hidden;
+    margin-bottom:50px;
+    .row > div {
+      padding-top: 22px;
+      padding-bottom: 22px;
+    }
+    .more-notice{
+      margin-top:10px;
+      &:hover{
+        cursor:pointer;
+      }
+    }
+  }
+.novice {
+    margin: 60px 0;
+    width: 100%;
+    .box > .content-box {
+      padding-left: 15px;
+      padding-right: 15px;
+      .project {
+        margin-left: 0;
+        &.shuangdan-bg{
+          background-image:url("@{img-path}/others/sd2.png") !important;
+          background-repeat:no-repeat !important;
+          background-position:left top;
+          .over-ignore{
+            color:#fff !important;
+          }
+        }
+      }
+      > .row:first-child {
+        margin-bottom: 30px;
+      }
+      > .row:last-child {
+        background: #eee;
+        > div {
+          //padding:0;
+          &:first-child {
+            > p {
+              padding-left: 25px;
+              line-height: 70px;
+              font-weight: bold;
+              border-bottom: 1px solid #fff;
+            }
+          }
+          &:not(:first-child) {
+            padding: 15px 0;
+            img {
+              width: 250px;
+              height: 285px;
+            }
+          }
+        }
+      }
+    }
+    .project-info-1 {
+      padding-top: 35px;
+      > .row:first-child {
+        margin-bottom: 20px;
+      }
+      > .row > div > .btn {
+        margin-top: 5px;
+      }
+    }
+  }
+
+.recommend {
+    .content-header {
+      margin-bottom: 15px;
+    }
+    .project .title{
+      margin-right:0;
+      margin-left:-11px;
+    }
+    .content {
+      > div {
+        > .content-box {
+          background: #eee;
+          .title.activity-bg{
+            background-image:url("@{img-path}/others/sd11.jpg");
+            background-repeat:no-repeat;
+            background-size:100% 100%;
+            p{
+              color:#fff !important;
+              border-bottom:1px solid #eee !important;
+              margin: 0 !important;
+              height: 84px !important;
+              line-height: 95px !important;
+            }
+            +.content01{
+              margin-top:42px;
+            }
+          }
+        }
+      }
+      .icon-daojishi{
+        display:inline-block;
+        background:url("@{img-path}/icon/icon-index.png") no-repeat -332px -434px;
+        width:64px;height:41px;
+        font-size:35px;
+        padding-left: 7px;
+        letter-spacing: 12px;
+        color:@text-danger;
+      }
+      .title {
+
+        > div > p {
+          margin: 0 -15px;
+          line-height: 75px;
+          padding-left: 30px;
+          padding-right:15px;
+          font-weight: bold;
+          border-bottom: 1px solid #fff;
+        }
+      }
+      .content01 {
+        margin-top: 50px;
+        > div {
+          padding: 0;
+        }
+      }
+      .content02 {
+        margin: 35px 0 60px;
+        > div > p {
+          line-height: 42px;
+        }
+      }
+      .content03 {
+        > div > .btn {
+          width: 60%;
+          margin: 15px auto;
+          border: 0;
+          &.btn-info {
+            background: #666;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+.switch-02{
+  display:none;
+}
+
+.data >.col-xs-2{
+  min-width:200px;
+}
+.invest-fail{
+  background:#fff;
+  margin:100px 0 ;
+  dt{
+    margin-bottom:2rem
+  }
+  dd{
+    h4{
+      margin-bottom:1rem;
+    }
+  }
+}
+.overall .fenye{
+  margin:4rem 0;
+}
+
+
